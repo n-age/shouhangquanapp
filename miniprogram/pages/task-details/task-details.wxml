@@ -46,7 +46,7 @@
       <view class="publisher-section">
         <text class="section-title">发布者信息</text>
         <view class="publisher-card">
-          <image class="publisher-avatar" src="{{task.publisherInfo.avatarUrl || '/static/images/default-avatar.png'}}" mode="aspectFill"></image>
+          <image class="publisher-avatar" src="{{task.publisherInfo.avatarUrl || '../../static/images/default-avatar.png'}}" mode="aspectFill"></image>
           <view class="publisher-info">
             <text class="publisher-name">{{task.publisherInfo.nickName}}</text>
             <text class="publisher-verified-status">已实名认证</text>
