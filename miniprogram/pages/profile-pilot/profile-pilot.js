@@ -62,7 +62,7 @@ Page({
     setTimeout(() => {
         this.setData({
             pilotInfo: {
-                avatarUrl: '/static/images/default-avatar.png',
+                avatarUrl: '/static/images/pilot_avatar_1.png',
                 nickName: '无人机大师',
                 level: '平台认证高级飞手',
                 bio: '拥有超过1200小时安全飞行经验的认证高级飞手。专注于商业航拍、农业植保和3D测绘建模。',
@@ -73,8 +73,9 @@ Page({
                 },
                 skills: ['商业航拍', '农业植保', '测绘与建模', 'FPV'],
                 completedMissions: [
-                    { id: 1, title: '城市天际线商业宣传片航拍', imageUrl: '/static/images/mission-placeholder-1.png', date: '2023-10-15', location: '上海' },
-                    { id: 2, title: '万亩农田植保喷洒作业', imageUrl: '/static/images/mission-placeholder-2.png', date: '2023-09-22', location: '河南' }
+                    { id: 1, title: '城市天际线商业宣传片航拍', imageUrl: '/static/images/mission_image_1.png', date: '2023-10-15', location: '上海' },
+                    { id: 2, title: '万亩农田植保喷洒作业', imageUrl: '/static/images/mission_image_2.png', date: '2023-09-22', location: '河南' },
+                    { id: 3, title: '建筑工地3D实景建模项目', imageUrl: '/static/images/mission_image_3.png', date: '2023-08-05', location: '深圳' }
                 ]
             },
             isLoading: false
