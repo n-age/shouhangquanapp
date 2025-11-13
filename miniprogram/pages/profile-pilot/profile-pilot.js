@@ -36,51 +36,29 @@ Page({
   fetchPilotProfile(pilotId) {
     this.setData({ isLoading: true });
 
-    // wx.cloud.callFunction({
-    //   name: 'users', // 假设有一个名为 'users' 的云函数
-    //   data: {
-    //     action: 'getPilotProfile',
-    //     pilotId: pilotId
-    //   },
-    //   success: res => {
-    //     if (res.result && res.result.errCode === 0) {
-    //       this.setData({
-    //         pilotInfo: res.result.data,
-    //         isLoading: false
-    //       });
-    //     } else {
-    //       wx.showToast({ title: '加载失败', icon: 'none' });
-    //     }
-    //   },
-    //   fail: () => {
-    //     wx.showToast({ title: '请求失败', icon: 'none' });
-    //   }
-    // });
-
-    // --- 使用静态模拟数据 ---
-    // 在云函数未实现前，使用模拟数据进行UI开发和测试
-    setTimeout(() => {
-        this.setData({
-            pilotInfo: {
-                avatarUrl: '/static/images/pilot_avatar_1.png',
-                nickName: '无人机大师',
-                level: '平台认证高级飞手',
-                bio: '拥有超过1200小时安全飞行经验的认证高级飞手。专注于商业航拍、农业植保和3D测绘建模。',
-                stats: {
-                    flightHours: '1,200+',
-                    completedTasks: 85,
-                    rating: '4.9'
-                },
-                skills: ['商业航拍', '农业植保', '测绘与建模', 'FPV'],
-                completedMissions: [
-                    { id: 1, title: '城市天际线商业宣传片航拍', imageUrl: '/static/images/mission_image_1.png', date: '2023-10-15', location: '上海' },
-                    { id: 2, title: '万亩农田植保喷洒作业', imageUrl: '/static/images/mission_image_2.png', date: '2023-09-22', location: '河南' },
-                    { id: 3, title: '建筑工地3D实景建模项目', imageUrl: '/static/images/mission_image_3.png', date: '2023-08-05', location: '深圳' }
-                ]
-            },
+    wx.cloud.callFunction({
+      name: 'users',
+      data: {
+        action: 'getPilotProfile',
+        params: { pilotId: pilotId }
+      },
+      success: res => {
+        if (res.result && res.result.errCode === 0) {
+          this.setData({
+            pilotInfo: res.result.data,
             isLoading: false
-        });
-    }, 1000);
+          });
+        } else {
+          wx.showToast({ title: res.result.errMsg || '加载失败', icon: 'none' });
+          this.setData({ isLoading: false });
+        }
+      },
+      fail: (err) => {
+        wx.showToast({ title: '请求失败', icon: 'none' });
+        this.setData({ isLoading: false });
+        console.error("Failed to fetch pilot profile:", err);
+      }
+    });
   },
 
   navigateBack() {

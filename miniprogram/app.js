@@ -23,21 +23,51 @@ App({
     this.getUserOpenId();
   },
 
-  getUserOpenId: function() {
-    wx.cloud.callFunction({
-      name: 'auth', // 假设auth云函数中有'getOpenId'的action
-      data: {
-        action: 'getOpenId'
-      },
-      success: res => {
-        if (res.result && res.result.openid) {
-          this.globalData.openid = res.result.openid;
-          // 后续可以根据openid查询用户信息
+  onLaunch: function () {
+    // ... (cloud init code remains the same)
+
+    this.globalData = {
+      userInfo: null,
+      openid: null,
+      isLoggedIn: false,
+    };
+
+    // Encapsulate login in a promise
+    this.loginPromise = this.doLogin();
+  },
+
+  doLogin: function() {
+    return new Promise((resolve, reject) => {
+      wx.cloud.callFunction({
+        name: 'users',
+        data: {
+          action: 'login',
+          userInfo: {} // Initially pass empty user info
         }
-      },
-      fail: err => {
-        console.error('[云函数] [auth:getOpenId] 调用失败', err);
-      }
+      }).then(res => {
+        if (res.result && res.result.errCode === 0) {
+          console.log('Login successful, user data:', res.result.data);
+          this.globalData.userInfo = res.result.data;
+          this.globalData.openid = res.result.data._openid;
+          this.globalData.isLoggedIn = true;
+          // If there are callbacks waiting for login, execute them
+          if (this.loggedInCallback) {
+            this.loggedInCallback(res.result.data);
+          }
+          resolve(res.result.data);
+        } else {
+          console.error('[云函数] [users:login] failed:', res.result.errMsg);
+          reject(new Error(res.result.errMsg));
+        }
+      }).catch(err => {
+        console.error('[云函数] [users:login] call failed:', err);
+        reject(err);
+      });
     });
+  },
+
+  // Provide a function for pages to wait for login completion
+  waitForLogin: function() {
+    return this.loginPromise;
   }
 });

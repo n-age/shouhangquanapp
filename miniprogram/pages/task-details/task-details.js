@@ -64,20 +64,40 @@ Page({
   },
 
   acceptTask() {
-    // 抢单逻辑
-    // 1. 检查用户是否为已认证的飞手
-    // 2. 调用云函数创建订单
+    const app = getApp();
+    if (!app.globalData.isLoggedIn) {
+      return wx.showToast({ title: '请先登录', icon: 'none' });
+    }
+    if (!app.globalData.userInfo || !app.globalData.userInfo.isPilotVerified) {
+      return wx.showToast({ title: '只有认证飞手才能抢单', icon: 'none' });
+    }
+
     wx.showLoading({ title: '正在抢单...' });
 
-    // wx.cloud.callFunction({ name: 'orders', data: { action: 'createOrder', params: { taskId: this.data.taskId } } })
-    // .then(res => { ... });
-
-    // 模拟成功
-    setTimeout(() => {
-        wx.hideLoading();
+    wx.cloud.callFunction({
+      name: 'orders',
+      data: {
+        action: 'createOrder',
+        params: { taskId: this.data.taskId }
+      }
+    })
+    .then(res => {
+      wx.hideLoading();
+      if (res.result && res.result.errCode === 0) {
         wx.showToast({ title: '抢单成功！', icon: 'success' });
-        // 跳转到订单详情页
-    }, 1000);
+        // 抢单成功后，跳转到新生成的订单详情页
+        wx.redirectTo({
+          url: `/pages/order-details/order-details?id=${res.result.orderId}`
+        });
+      } else {
+        wx.showToast({ title: res.result.errMsg || '抢单失败', icon: 'none' });
+      }
+    })
+    .catch(err => {
+      wx.hideLoading();
+      wx.showToast({ title: '请求异常', icon: 'none' });
+      console.error("Failed to create order:", err);
+    });
   },
 
   navigateBack() {
