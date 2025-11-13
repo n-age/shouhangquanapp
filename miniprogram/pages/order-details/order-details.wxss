@@ -1,0 +1,60 @@
+/* miniprogram/pages/order-details/order-details.wxss */
+@import "/styles/common.wxss";
+
+page { background-color: #101822; color: #f0f0f0; }
+.container { display: flex; flex-direction: column; height: 100vh; }
+
+.header {
+  display: flex; align-items: center; padding: 1rem;
+  background-color: #101822; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky; top: 0; z-index: 100;
+}
+.back-button { display: flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; margin-left: -0.5rem; }
+.title { flex: 1; text-align: center; font-size: 1.125rem; font-weight: bold; margin-right: 2.5rem; }
+
+.content { flex: 1; padding: 1rem; padding-bottom: 6rem; /* space for footer */ }
+
+.headline-section { text-align: center; padding: 1.5rem 0; }
+.status-headline { font-size: 1.75rem; font-weight: bold; display: block; }
+.status-subline { font-size: 1rem; color: #a0a0a0; margin-top: 0.5rem; }
+.status-completed { color: #2ECC71; }
+
+.card { background-color: #18222c; border-radius: 0.75rem; padding: 1rem; margin-bottom: 1rem; }
+.card-title { font-size: 1rem; font-weight: bold; display: block; margin-bottom: 0.75rem; }
+
+.task-card { cursor: pointer; }
+.task-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; }
+.task-reward { color: #a0a0a0; font-weight: 500; }
+.details-button {
+  height: 2rem; padding: 0 1rem; border-radius: 0.5rem; font-size: 0.75rem; font-weight: bold;
+  background-color: rgba(19, 109, 236, 0.2); color: #60a5fa;
+}
+
+.card-title-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem; }
+.financial-amount { font-size: 1.125rem; font-weight: bold; }
+.financial-details { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.detail-row { display: flex; justify-content: space-between; font-size: 0.875rem; }
+.label { color: #a0a0a0; }
+.value { color: #f0f0f0; }
+.pay-status-unpaid { color: #FFA500; }
+.pay-status-paid { color: #2ECC71; }
+
+.user-card { display: flex; align-items: center; gap: 0.75rem; }
+.avatar { width: 3rem; height: 3rem; border-radius: 9999px; }
+.user-info { flex: 1; }
+.name { font-weight: 500; }
+.contact-button {
+  height: 2.25rem; padding: 0 1.25rem; border-radius: 0.5rem; font-size: 0.875rem;
+  background-color: rgba(255, 255, 255, 0.1); color: #f0f0f0;
+}
+
+.footer {
+  position: sticky; bottom: 0; padding: 1rem;
+  background-color: rgba(16, 24, 34, 0.8); backdrop-filter: blur(5px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; gap: 1rem;
+}
+.action-button { flex: 1; height: 3rem; border-radius: 0.75rem; font-size: 1rem; font-weight: bold; }
+.primary { background-color: #136dec; color: white; }
+.secondary { background-color: rgba(255, 255, 255, 0.1); color: white; }
+
+.loading-state { text-align: center; padding: 4rem 0; color: #a0a0a0; }

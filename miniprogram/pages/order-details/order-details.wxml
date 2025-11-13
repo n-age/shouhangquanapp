@@ -1,0 +1,76 @@
+<!-- miniprogram/pages/order-details/order-details.wxml -->
+<view class="container">
+  <!-- Top App Bar -->
+  <view class="header">
+    <view class="back-button" bindtap="navigateBack">
+      <text class="material-symbols-outlined">arrow_back_ios_new</text>
+    </view>
+    <text class="title">订单详情</text>
+  </view>
+
+  <block wx:if="{{!isLoading && order}}">
+    <scroll-view class="content" scroll-y="true">
+      <!-- Headline and Status -->
+      <view class="headline-section">
+        <text class="status-headline status-{{order.status}}">{{order.statusHeadline}}</text>
+        <text class="status-subline">{{order.statusSubline}}</text>
+      </view>
+
+      <!-- Order Status Timeline -->
+      <view class="timeline-section">
+        <!-- Timeline component will be implemented here -->
+      </view>
+
+      <!-- Task Info Card -->
+      <view class="card task-card" bindtap="goToTaskDetail">
+        <text class="card-title">关联任务：{{order.taskInfo.title}}</text>
+        <view class="task-footer">
+          <text class="task-reward">报酬: ¥{{order.amount}}</text>
+          <button class="details-button">查看详情</button>
+        </view>
+      </view>
+
+      <!-- Financial Details Card -->
+      <view class="card">
+        <view class="card-title-row">
+          <text class="card-title">订单金额</text>
+          <text class="financial-amount">¥{{order.amount}}</text>
+        </view>
+        <view class="financial-details">
+          <view class="detail-row"><text class="label">支付状态</text><text class="value pay-status-{{order.paymentStatus}}">{{order.paymentStatusText}}</text></view>
+          <view class="detail-row"><text class="label">订单编号</text><text class="value">{{order.orderNumber}}</text></view>
+          <view class="detail-row"><text class="label">创建时间</text><text class="value">{{order.formattedCreateDate}}</text></view>
+        </view>
+      </view>
+
+      <!-- Pilot/Publisher Info Card -->
+      <view class="card">
+        <text class="card-title">{{isPublisher ? '飞手信息' : '客户信息'}}</text>
+        <view class="user-card">
+          <image class="avatar" src="{{(isPublisher ? order.pilotInfo : order.publisherInfo).avatarUrl}}"></image>
+          <view class="user-info">
+            <text class="name">{{(isPublisher ? order.pilotInfo : order.publisherInfo).nickName}}</text>
+          </view>
+          <button class="contact-button">联系{{isPublisher ? '飞手' : '客户'}}</button>
+        </view>
+      </view>
+
+    </scroll-view>
+
+    <!-- Footer Action Buttons -->
+    <view class="footer">
+        <!-- Customer Actions -->
+        <block wx:if="{{isPublisher}}">
+            <button wx:if="{{order.status === 'pending_payment'}}" class="action-button primary" bindtap="handleAction" data-action="pay">立即支付</button>
+            <button wx:if="{{order.status === 'pending_confirmation'}}" class="action-button primary" bindtap="handleAction" data-action="complete">确认完成</button>
+        </block>
+        <!-- Pilot Actions -->
+        <block wx:if="{{!isPublisher}}">
+             <button wx:if="{{order.status === 'in_progress'}}" class="action-button primary" bindtap="handleAction" data-action="submit">提交工作成果</button>
+        </block>
+    </view>
+
+  </block>
+
+  <view class="loading-state" wx:else>加载中...</view>
+</view>

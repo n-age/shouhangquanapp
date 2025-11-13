@@ -14,10 +14,182 @@ exports.main = async (event, context) => {
   switch (action) {
     case 'createOrder':
       return await createOrder(openid, params.taskId);
+    case 'getOrderList':
+      return await getOrderList(openid, params);
+    case 'getOrderDetail':
+      return await getOrderDetail(openid, params.orderId);
+    case 'payOrder':
+      return await updateOrderStatus(openid, params.orderId, 'pay');
+    case 'submitWork':
+      return await updateOrderStatus(openid, params.orderId, 'submit', params.submission);
+    case 'confirmCompletion':
+      return await updateOrderStatus(openid, params.orderId, 'complete');
+    case 'cancelOrder':
+      return await updateOrderStatus(openid, params.orderId, 'cancel');
     default:
       return { errCode: 404, errMsg: 'Action not found' };
   }
 };
+
+async function getOrderList(openid, params) {
+    const { status, page = 1, pageSize = 10 } = params;
+    try {
+        const users = await db.collection('Users').where({ _openid: openid }).get();
+        if (users.data.length === 0) {
+            return { errCode: 1, errMsg: 'User not found' };
+        }
+        const userId = users.data[0]._id;
+
+        const query = _.or([
+            { publisherId: userId },
+            { pilotId: userId }
+        ]);
+
+        if (status && status !== 'all') {
+            query.status = status;
+        }
+
+        const ordersCollection = db.collection('Orders');
+        const total = await ordersCollection.where(query).count();
+
+        const orderRes = await ordersCollection.aggregate()
+            .match(query)
+            .sort({ createdAt: -1 })
+            .skip((page - 1) * pageSize)
+            .limit(pageSize)
+            .lookup({
+                from: 'Tasks',
+                localField: 'taskId',
+                foreignField: '_id',
+                as: 'taskInfo'
+            })
+            .project({
+                'taskInfo.description': 0, // Exclude large fields
+                taskInfo: cloud.aggregate.arrayElemAt(['$taskInfo', 0])
+            })
+            .end();
+
+        return {
+            errCode: 0,
+            errMsg: 'Success',
+            data: orderRes.list,
+            hasMore: (page * pageSize) < total.total
+        };
+    } catch (e) {
+        console.error("Error in getOrderList: ", e);
+        return { errCode: 500, errMsg: 'Database error' };
+    }
+}
+
+async function getOrderDetail(openid, orderId) {
+    if (!orderId) return { errCode: 1, errMsg: 'orderId is required' };
+    try {
+        const users = await db.collection('Users').where({ _openid: openid }).get();
+        if (users.data.length === 0) return { errCode: 2, errMsg: 'User not found' };
+        const currentUser = users.data[0];
+
+        const orderRes = await db.collection('Orders').aggregate()
+            .match({ _id: orderId })
+            .lookup({ from: 'Tasks', localField: 'taskId', foreignField: '_id', as: 'taskInfo' })
+            .lookup({ from: 'Users', localField: 'publisherId', foreignField: '_id', as: 'publisherInfo' })
+            .lookup({ from: 'Users', localField: 'pilotId', foreignField: '_id', as: 'pilotInfo' })
+            .project({
+                'taskInfo': cloud.aggregate.arrayElemAt(['$taskInfo', 0]),
+                'publisherInfo': cloud.aggregate.arrayElemAt(['$publisherInfo', 0]),
+                'pilotInfo': cloud.aggregate.arrayElemAt(['$pilotInfo', 0]),
+                // Include all original order fields
+                _id: 1, taskId: 1, publisherId: 1, pilotId: 1, orderNumber: 1, amount: 1,
+                status: 1, paymentStatus: 1, createdAt: 1, updatedAt: 1, workSubmission: 1,
+            })
+            .end();
+
+        if (orderRes.list.length === 0) {
+            return { errCode: 3, errMsg: 'Order not found' };
+        }
+
+        const order = orderRes.list[0];
+
+        // Security check: ensure the current user is part of this order
+        if (order.publisherId !== currentUser._id && order.pilotId !== currentUser._id) {
+            return { errCode: 403, errMsg: 'Permission denied' };
+        }
+
+        // Sanitize user data before sending to client
+        if (order.publisherInfo) {
+            order.publisherInfo = { _id: order.publisherInfo._id, nickName: order.publisherInfo.nickName, avatarUrl: order.publisherInfo.avatarUrl };
+        }
+        if (order.pilotInfo) {
+            order.pilotInfo = { _id: order.pilotInfo._id, nickName: order.pilotInfo.nickName, avatarUrl: order.pilotInfo.avatarUrl };
+        }
+
+        return { errCode: 0, errMsg: 'Success', data: order };
+    } catch (e) {
+        console.error("Error in getOrderDetail: ", e);
+        return { errCode: 500, errMsg: 'Database error' };
+    }
+}
+
+async function updateOrderStatus(openid, orderId, operation, payload = {}) {
+    if (!orderId) return { errCode: 1, errMsg: 'orderId is required' };
+    try {
+        const users = await db.collection('Users').where({ _openid: openid }).get();
+        if (users.data.length === 0) return { errCode: 2, errMsg: 'User not found' };
+        const currentUser = users.data[0];
+
+        // Start transaction
+        const transaction = await db.startTransaction();
+        const ordersInTransaction = transaction.collection('Orders');
+        const orderRes = await ordersInTransaction.doc(orderId).get();
+
+        if (!orderRes.data) {
+            await transaction.rollback();
+            return { errCode: 3, errMsg: 'Order not found' };
+        }
+        const order = orderRes.data;
+        let updateData = {};
+
+        // State machine logic
+        switch (operation) {
+            case 'pay':
+                if (order.publisherId !== currentUser._id) { await transaction.rollback(); return { errCode: 403, errMsg: 'Only the publisher can pay.' }; }
+                if (order.status !== 'pending_payment') { await transaction.rollback(); return { errCode: 4, errMsg: 'Order is not awaiting payment.' }; }
+                updateData = { status: 'in_progress', paymentStatus: 'paid', paidAt: new Date() };
+                break;
+            case 'submit':
+                if (order.pilotId !== currentUser._id) { await transaction.rollback(); return { errCode: 403, errMsg: 'Only the pilot can submit work.' }; }
+                if (order.status !== 'in_progress') { await transaction.rollback(); return { errCode: 4, errMsg: 'Order is not in progress.' }; }
+                updateData = { status: 'pending_confirmation', workSubmission: payload };
+                break;
+            case 'complete':
+                if (order.publisherId !== currentUser._id) { await transaction.rollback(); return { errCode: 403, errMsg: 'Only the publisher can complete the order.' }; }
+                if (order.status !== 'pending_confirmation') { await transaction.rollback(); return { errCode: 4, errMsg: 'Work has not been submitted yet.' }; }
+                updateData = { status: 'completed', completedAt: new Date() };
+                // Here you would also handle transferring funds from platform to pilot
+                break;
+            case 'cancel':
+                if (order.publisherId !== currentUser._id && order.pilotId !== currentUser._id) { await transaction.rollback(); return { errCode: 403, errMsg: 'Permission denied.' }; }
+                // More complex logic can be added here, e.g., cannot cancel after payment
+                if (['completed', 'cancelled'].includes(order.status)) { await transaction.rollback(); return { errCode: 4, errMsg: 'Order cannot be cancelled.' }; }
+                updateData = { status: 'cancelled' };
+                // Also need to revert the task status back to 'open'
+                await transaction.collection('Tasks').doc(order.taskId).update({ data: { status: 'open' }});
+                break;
+            default:
+                await transaction.rollback();
+                return { errCode: 5, errMsg: 'Invalid operation' };
+        }
+
+        updateData.updatedAt = new Date();
+        await ordersInTransaction.doc(orderId).update({ data: updateData });
+
+        await transaction.commit();
+        return { errCode: 0, errMsg: 'Status updated successfully' };
+    } catch (e) {
+        console.error("Error in updateOrderStatus: ", e);
+        // Transaction is auto-rolled back on error
+        return { errCode: 500, errMsg: 'Database error' };
+    }
+}
 
 /**
  * Creates an order when a pilot accepts a task.
