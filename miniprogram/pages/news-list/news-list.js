@@ -19,41 +19,27 @@ Page({
     this.fetchNews();
   },
 
+const api = require('../../utils/api.js');
+// ...
   fetchNews(isLoadMore = false) {
     if (!this.data.hasMore && isLoadMore) return;
     this.setData({ isLoading: true });
 
-    const { page, currentCategory } = this.data;
-
-    wx.cloud.callFunction({
-      name: 'news',
-      data: {
-        action: 'getNewsList',
-        params: {
-          category: currentCategory,
-          page: page,
-          pageSize: 10 // 每页加载10条
-        }
-      },
-      success: res => {
-        if (res.result && res.result.errCode === 0) {
-          const fetchedList = res.result.data.map(item => ({
-            ...item,
-            timeSince: this.formatTimeSince(item.publishedAt || item.createdAt)
-          }));
-
-          this.setData({
-            newsList: isLoadMore ? [...this.data.newsList, ...fetchedList] : fetchedList,
-            hasMore: fetchedList.length === 10,
-            isLoading: false
-          });
-        }
-      },
-      fail: err => {
-        this.setData({ isLoading: false });
-        wx.showToast({ title: '加载失败', icon: 'none' });
-      }
-    });
+    api.getNewsList({
+      category: this.data.currentCategory,
+      page: this.data.page,
+      pageSize: 10
+    }).then(res => {
+      const fetchedList = res.data.map(item => ({
+        ...item,
+        timeSince: this.formatTimeSince(item.publishedAt || item.createdAt)
+      }));
+      this.setData({
+        newsList: isLoadMore ? [...this.data.newsList, ...fetchedList] : fetchedList,
+        hasMore: res.hasMore,
+        isLoading: false
+      });
+    }).catch(() => this.setData({ isLoading: false }));
   },
 
   onCategoryTap(e) {

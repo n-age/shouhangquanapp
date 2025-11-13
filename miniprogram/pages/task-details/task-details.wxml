@@ -60,8 +60,8 @@
     </scroll-view>
 
     <!-- Footer Action Button -->
-    <view class="footer">
-      <button class="action-button" bindtap="acceptTask" disabled="{{task.status !== 'open'}}">
+    <view class="footer" wx:if="{{!isPublisher && userInfo.isPilotVerified}}">
+      <button class="action-button" bindtap="acceptTask" disabled="{{task.status !== 'open' || isAccepting}}" loading="{{isAccepting}}">
         {{task.status === 'open' ? '立即抢单' : '任务已关闭'}}
       </button>
     </view>

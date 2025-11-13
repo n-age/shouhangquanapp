@@ -18,28 +18,15 @@ Page({
   },
 
   fetchAuthDetail(authId) {
+const api = require('../../utils/api.js');
+// ...
     this.setData({ isLoading: true });
-    wx.cloud.callFunction({
-      name: 'admin',
-      data: {
-        action: 'getAuthDetail',
-        params: { authId }
-      }
-    }).then(res => {
-      if (res.result && res.result.errCode === 0) {
-        this.setData({
-          authDetail: this.formatAuthDetail(res.result.data),
-          isLoading: false
-        });
-      } else {
-        this.setData({ isLoading: false });
-        wx.showToast({ title: '加载失败', icon: 'none' });
-      }
-    }).catch(err => {
-      this.setData({ isLoading: false });
-      wx.showToast({ title: '请求失败', icon: 'none' });
-      console.error("Failed to fetch auth detail:", err);
-    });
+    api.getAuthDetail(authId).then(res => {
+      this.setData({
+        authDetail: this.formatAuthDetail(res.data),
+        isLoading: false
+      });
+    }).catch(() => this.setData({ isLoading: false }));
   },
 
   formatAuthDetail(detail) {
@@ -74,27 +61,13 @@ Page({
 
   updateAuthStatus(status, reason = '') {
     wx.showLoading({ title: '处理中...' });
-    wx.cloud.callFunction({
-      name: 'admin',
-      data: {
-        action: 'updateAuthStatus',
-        params: {
-          authId: this.data.authId,
-          status: status,
-          reason: reason
-        }
-      }
-    }).then(res => {
+    api.updateAuthStatus(this.data.authId, status, reason).then(() => {
       wx.hideLoading();
-      if (res.result && res.result.errCode === 0) {
-        wx.showToast({ title: '操作成功', icon: 'success' });
-        setTimeout(() => wx.navigateBack(), 1500);
-      } else {
-        wx.showToast({ title: '操作失败', icon: 'none' });
-      }
-    }).catch(err => {
+      wx.showToast({ title: '操作成功', icon: 'success' });
+      setTimeout(() => wx.navigateBack(), 1500);
+    }).catch(() => {
       wx.hideLoading();
-      wx.showToast({ title: '请求异常', icon: 'none' });
+      // Error toast is handled by api module
     });
   },
 

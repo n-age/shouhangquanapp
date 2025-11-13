@@ -212,7 +212,7 @@ async function createOrder(pilotOpenid, taskId) {
     }
     const pilotUser = pilotUserRes.data[0];
     if (!pilotUser.isPilotVerified) {
-      return { errCode: 2, errMsg: 'Only verified pilots can accept tasks.' };
+      return { errCode: 2, errMsg: '请先完成飞手认证再抢单' };
     }
 
     // Use a transaction to ensure atomicity
@@ -230,11 +230,11 @@ async function createOrder(pilotOpenid, taskId) {
 
     if (task.status !== 'open') {
       await transaction.rollback();
-      return { errCode: 4, errMsg: 'This task is no longer open for acceptance.' };
+      return { errCode: 4, errMsg: '手慢了，任务已被抢或已关闭' };
     }
     if (task.publisherId === pilotUser._id) {
       await transaction.rollback();
-      return { errCode: 5, errMsg: 'You cannot accept your own task.' };
+      return { errCode: 5, errMsg: '您不能抢自己发布的任务' };
     }
 
     // 3. Atomically update task status and create the order

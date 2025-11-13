@@ -1,0 +1,17 @@
+<!-- miniprogram/components/skeleton-task-card/skeleton-task-card.wxml -->
+<view class="skeleton-card">
+  <view class="skeleton-header">
+    <view class="skeleton-title skeleton-animate"></view>
+    <view class="skeleton-reward skeleton-animate"></view>
+  </view>
+  <view class="skeleton-tags">
+    <view class="skeleton-tag skeleton-animate"></view>
+    <view class="skeleton-tag skeleton-animate"></view>
+  </view>
+  <view class="skeleton-divider"></view>
+  <view class="skeleton-info">
+    <view class="skeleton-info-item skeleton-animate"></view>
+    <view class="skeleton-info-item skeleton-animate"></view>
+    <view class="skeleton-info-item skeleton-animate"></view>
+  </view>
+</view>

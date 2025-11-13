@@ -24,39 +24,31 @@ Page({
     });
   },
 
+const api = require('../../utils/api.js');
+
+// ... (Page data remains the same)
+
   fetchTasks() {
     if (!this.data.hasMore || this.data.isLoading) {
-      return Promise.resolve();
+      return;
     }
     this.setData({ isLoading: true });
 
-    return wx.cloud.callFunction({
-      name: 'tasks',
-      data: {
-        action: 'getTasks',
-        params: {
-          page: this.data.page,
-          pageSize: this.data.pageSize,
-          filters: this.data.filters
-        }
-      }
+    api.getTasks({
+      page: this.data.page,
+      pageSize: this.data.pageSize,
+      filters: this.data.filters
     }).then(res => {
-      if (res.result && res.result.errCode === 0) {
-        const fetchedTasks = res.result.data.map(task => this.formatTask(task));
-        this.setData({
-          taskList: this.data.taskList.concat(fetchedTasks),
-          hasMore: res.result.hasMore,
-          page: this.data.page + 1,
-          isLoading: false
-        });
-      } else {
-        this.setData({ isLoading: false });
-        wx.showToast({ title: '加载失败', icon: 'none' });
-      }
-    }).catch(err => {
+      const fetchedTasks = res.data.map(task => this.formatTask(task));
+      this.setData({
+        taskList: this.data.taskList.concat(fetchedTasks),
+        hasMore: res.hasMore,
+        page: this.data.page + 1,
+        isLoading: false
+      });
+    }).catch(() => {
       this.setData({ isLoading: false });
-      wx.showToast({ title: '请求异常', icon: 'none' });
-      console.error("Failed to fetch tasks: ", err);
+      // Error toast is now handled by the api module
     });
   },
 

@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "skeleton-task-card": "/components/skeleton-task-card/skeleton-task-card"
+  },
   "navigationBarTitleText": "任务大厅",
   "navigationStyle": "custom",
   "enablePullDownRefresh": true

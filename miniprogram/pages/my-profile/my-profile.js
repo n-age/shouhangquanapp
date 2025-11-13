@@ -34,23 +34,14 @@ Page({
       desc: '用于完善会员资料',
       success: (res) => {
         const userInfo = res.userInfo;
-        // 在这里，我们应该调用一个云函数来更新用户的头像和昵称
-        wx.cloud.callFunction({
-          name: 'users',
-          data: {
-            action: 'updateProfile',
-            userInfo: {
-              nickName: userInfo.nickName,
-              avatarUrl: userInfo.avatarUrl,
-              gender: userInfo.gender
-            }
-          }
-        }).then(() => {
+const api = require('../../utils/api.js');
+// ...
+    api.updateProfile(userInfo).then(() => {
           // 更新本地 globalData 和当前页面数据
           app.globalData.userInfo.nickName = userInfo.nickName;
-          app.globalData.userInfo.avatarUrl = userInfo.avatarUrl;
+      app.globalData.userInfo.avatarUrl = userInfo.avatarUrl;
           this.setData({
-            userInfo: app.globalData.userInfo
+        userInfo: app.globala.userInfo
           });
         });
       },

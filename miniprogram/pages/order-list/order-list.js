@@ -25,31 +25,23 @@ Page({
     });
   },
 
+const api = require('../../utils/api.js');
+// ...
   fetchOrders(isLoadMore = false) {
     if (!this.data.hasMore && isLoadMore) return;
     this.setData({ isLoading: true });
 
-    wx.cloud.callFunction({
-      name: 'orders',
-      data: {
-        action: 'getOrderList',
-        params: {
-          status: this.data.currentTab,
-          page: this.data.page,
-          pageSize: this.data.pageSize
-        }
-      }
+    api.getOrderList({
+      status: this.data.currentTab,
+      page: this.data.page,
+      pageSize: this.data.pageSize
     }).then(res => {
-      if (res.result && res.result.errCode === 0) {
-        const formattedList = res.result.data.map(this.formatOrder);
-        this.setData({
-          orderList: isLoadMore ? [...this.data.orderList, ...formattedList] : formattedList,
-          hasMore: res.result.hasMore,
-          isLoading: false
-        });
-      } else {
-        this.setData({ isLoading: false });
-      }
+      const formattedList = res.data.map(this.formatOrder);
+      this.setData({
+        orderList: isLoadMore ? [...this.data.orderList, ...formattedList] : formattedList,
+        hasMore: res.hasMore,
+        isLoading: false
+      });
     }).catch(() => this.setData({ isLoading: false }));
   },
 

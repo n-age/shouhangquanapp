@@ -69,46 +69,29 @@ Page({
       return wx.showToast({ title: '请输入有效的报酬金额', icon: 'none' });
     }
 
+const api = require('../../utils/api.js');
+// ...
     wx.showLoading({ title: '发布中...' });
 
-    // 调用云函数创建任务
-    wx.cloud.callFunction({
-      name: 'tasks',
-      data: {
-        action: 'createTask',
-        taskData: {
-          title: formData.title,
-          description: formData.description,
-          category: categories[categoryIndex],
-          reward: parseFloat(formData.reward),
-          deadline: formData.deadline,
-          location: {
-            address: location.address,
-            // 创建地理位置点
-            geo: new wx.cloud.database().Geo.Point(location.longitude, location.latitude)
-          }
-        }
-      },
-      success: res => {
-        wx.hideLoading();
-        if (res.result && res.result.errCode === 0) {
-          wx.showToast({ title: '发布成功', icon: 'success' });
-          // 发布成功后，跳转到任务大厅或我的发布列表
-          setTimeout(() => {
-            wx.redirectTo({
-              url: '/pages/task-hall/task-hall'
-            });
-          }, 1500);
-        } else {
-          wx.showToast({ title: res.result.errMsg || '发布失败', icon: 'none' });
-        }
-      },
-      fail: err => {
-        wx.hideLoading();
-        wx.showToast({ title: '请求失败，请重试', icon: 'none' });
-        console.error("Failed to create task: ", err);
+    const taskData = {
+      title: formData.title,
+      description: formData.description,
+      category: categories[categoryIndex],
+      reward: parseFloat(formData.reward),
+      deadline: formData.deadline,
+      location: {
+        address: location.address,
+        geo: new wx.cloud.database().Geo.Point(location.longitude, location.latitude)
       }
-    });
+    };
+
+    api.createTask(taskData).then(() => {
+      wx.hideLoading();
+      wx.showToast({ title: '发布成功', icon: 'success' });
+      setTimeout(() => {
+        wx.switchTab({ url: '/pages/task-hall/task-hall' });
+      }, 1500);
+    }).catch(() => wx.hideLoading());
   },
 
   navigateBack() {

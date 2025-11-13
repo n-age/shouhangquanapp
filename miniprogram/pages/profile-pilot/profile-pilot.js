@@ -33,32 +33,16 @@ Page({
     }
   },
 
+const api = require('../../utils/api.js');
+// ...
   fetchPilotProfile(pilotId) {
     this.setData({ isLoading: true });
-
-    wx.cloud.callFunction({
-      name: 'users',
-      data: {
-        action: 'getPilotProfile',
-        params: { pilotId: pilotId }
-      },
-      success: res => {
-        if (res.result && res.result.errCode === 0) {
-          this.setData({
-            pilotInfo: res.result.data,
-            isLoading: false
-          });
-        } else {
-          wx.showToast({ title: res.result.errMsg || '加载失败', icon: 'none' });
-          this.setData({ isLoading: false });
-        }
-      },
-      fail: (err) => {
-        wx.showToast({ title: '请求失败', icon: 'none' });
-        this.setData({ isLoading: false });
-        console.error("Failed to fetch pilot profile:", err);
-      }
-    });
+    api.getPilotProfile(pilotId).then(res => {
+      this.setData({
+        pilotInfo: res.data,
+        isLoading: false
+      });
+    }).catch(() => this.setData({ isLoading: false }));
   },
 
   navigateBack() {

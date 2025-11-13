@@ -21,22 +21,16 @@ Page({
     });
   },
 
+const api = require('../../utils/api.js');
+// ...
   fetchOrderDetail(orderId) {
     this.setData({ isLoading: true });
-    wx.cloud.callFunction({
-      name: 'orders',
-      data: { action: 'getOrderDetail', params: { orderId } }
-    }).then(res => {
-      if (res.result && res.result.errCode === 0) {
-        this.setData({
-          order: this.formatOrder(res.result.data),
-          isPublisher: res.result.data.publisherId === app.globalData.userInfo._id,
-          isLoading: false
-        });
-      } else {
-        this.setData({ isLoading: false });
-        wx.showToast({ title: res.result.errMsg || '加载失败', icon: 'none' });
-      }
+    api.getOrderDetail(orderId).then(res => {
+      this.setData({
+        order: this.formatOrder(res.data),
+        isPublisher: res.data.publisherId === app.globalData.userInfo._id,
+        isLoading: false
+      });
     }).catch(() => this.setData({ isLoading: false }));
   },
 
@@ -63,24 +57,15 @@ Page({
     const { action } = e.currentTarget.dataset;
     wx.showLoading({ title: '处理中...' });
 
-    wx.cloud.callFunction({
-      name: 'orders',
-      data: {
-        action: `${action}Order`, // e.g., 'payOrder', 'completeOrder'
-        params: { orderId: this.data.orderId }
-        // For 'submitWork', you'd include a payload: params: { orderId: '...', submission: {...} }
-      }
-    }).then(res => {
+    // The api module has functions like payOrder, confirmCompletion, etc.
+    // We can call them dynamically.
+    api[`${action}Order`](this.data.orderId).then(() => {
       wx.hideLoading();
-      if (res.result && res.result.errCode === 0) {
-        wx.showToast({ title: '操作成功', icon: 'success' });
-        this.fetchOrderDetail(this.data.orderId); // Refresh data
-      } else {
-        wx.showToast({ title: res.result.errMsg || '操作失败', icon: 'none' });
-      }
+      wx.showToast({ title: '操作成功', icon: 'success' });
+      this.fetchOrderDetail(this.data.orderId); // Refresh data
     }).catch(() => {
-        wx.hideLoading();
-        wx.showToast({ title: '请求异常', icon: 'none' });
+      wx.hideLoading();
+      // Error is handled in api.js
     });
   },
 

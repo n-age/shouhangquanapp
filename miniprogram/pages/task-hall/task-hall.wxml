@@ -55,7 +55,14 @@
         </view>
       </view>
     </block>
-    <view class="loading-state" wx:if="{{isLoading}}">加载中...</view>
+    <!-- Skeleton UI -->
+    <block wx:if="{{isLoading && taskList.length === 0}}">
+      <skeleton-task-card></skeleton-task-card>
+      <skeleton-task-card></skeleton-task-card>
+      <skeleton-task-card></skeleton-task-card>
+    </block>
+
+    <view class="loading-state" wx:if="{{isLoading && taskList.length > 0}}">正在加载更多...</view>
     <view class="loading-state" wx:if="{{!hasMore && taskList.length > 0}}">没有更多任务了</view>
   </scroll-view>
 

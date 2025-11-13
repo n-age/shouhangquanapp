@@ -16,40 +16,26 @@ Page({
     this.getPendingAuths();
   },
 
+const api = require('../../utils/api.js');
+// ...
   getPendingAuths() {
     this.setData({ isLoading: true });
-    wx.cloud.callFunction({
-      name: 'admin',
-      data: {
-        action: 'getPendingAuths'
-      },
-      success: res => {
-        if (res.result && res.result.errCode === 0) {
-          const formattedList = res.result.data.map(item => {
-            return {
-              ...item,
-              icon: this.getIconForType(item.type),
-              title: this.getTitleForType(item.type, item.data),
-              description: this.getDescriptionForType(item.type, item.data),
-              timeSince: this.formatTimeSince(item.createdAt)
-            };
-          });
-          this.setData({
-            pendingList: formattedList,
-            pendingCount: formattedList.length,
-            isLoading: false
-          });
-        } else {
-          wx.showToast({ title: '加载失败', icon: 'none' });
-          this.setData({ isLoading: false });
-        }
-      },
-      fail: err => {
-        wx.showToast({ title: '请求失败', icon: 'none' });
-        this.setData({ isLoading: false });
-        console.error("Failed to get pending auths: ", err);
-      }
-    });
+    api.getPendingAuths().then(res => {
+      const formattedList = res.data.map(item => {
+        return {
+          ...item,
+          icon: this.getIconForType(item.type),
+          title: this.getTitleForType(item.type, item.data),
+          description: this.getDescriptionForType(item.type, item.data),
+          timeSince: this.formatTimeSince(item.createdAt)
+        };
+      });
+      this.setData({
+        pendingList: formattedList,
+        pendingCount: formattedList.length,
+        isLoading: false
+      });
+    }).catch(() => this.setData({ isLoading: false }));
   },
 
   getIconForType(type) {

@@ -36,33 +36,22 @@ App({
     this.loginPromise = this.doLogin();
   },
 
+const api = require('./utils/api.js');
+
+// ...
+
   doLogin: function() {
-    return new Promise((resolve, reject) => {
-      wx.cloud.callFunction({
-        name: 'users',
-        data: {
-          action: 'login',
-          userInfo: {} // Initially pass empty user info
-        }
-      }).then(res => {
-        if (res.result && res.result.errCode === 0) {
-          console.log('Login successful, user data:', res.result.data);
-          this.globalData.userInfo = res.result.data;
-          this.globalData.openid = res.result.data._openid;
-          this.globalData.isLoggedIn = true;
-          // If there are callbacks waiting for login, execute them
-          if (this.loggedInCallback) {
-            this.loggedInCallback(res.result.data);
-          }
-          resolve(res.result.data);
-        } else {
-          console.error('[云函数] [users:login] failed:', res.result.errMsg);
-          reject(new Error(res.result.errMsg));
-        }
-      }).catch(err => {
-        console.error('[云函数] [users:login] call failed:', err);
-        reject(err);
-      });
+    // The api module already returns a promise and handles errors
+    return api.login({}).then(res => {
+      console.log('Login successful, user data:', res.data);
+      this.globalData.userInfo = res.data;
+      this.globalData.openid = res.data._openid;
+      this.globalData.isLoggedIn = true;
+      // If there are callbacks waiting for login, execute them
+      if (this.loggedInCallback) {
+        this.loggedInCallback(res.data);
+      }
+      return res.data; // Resolve the promise with user data
     });
   },
 
