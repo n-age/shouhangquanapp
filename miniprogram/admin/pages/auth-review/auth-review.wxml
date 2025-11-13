@@ -1,0 +1,43 @@
+<!-- miniprogram/admin/pages/auth-review/auth-review.wxml -->
+<view class="container">
+  <!-- Top App Bar -->
+  <view class="header">
+    <view class="back-button" bindtap="navigateBack">
+      <text class="material-symbols-outlined">arrow_back_ios_new</text>
+    </view>
+    <text class="title">认证审核</text>
+  </view>
+
+  <!-- Filter Tabs -->
+  <view class="tabs">
+    <view class="tab active">待审核 ({{pendingCount}})</view>
+    <view class="tab">已处理</view>
+  </view>
+
+  <!-- Request List -->
+  <view class="list-container" wx:if="{{pendingList.length > 0}}">
+    <block wx:for="{{pendingList}}" wx:key="_id">
+      <view class="list-item" bindtap="goToReviewDetail" data-id="{{item._id}}">
+        <view class="item-icon-container">
+          <text class="material-symbols-outlined icon">{{item.icon}}</text>
+        </view>
+        <view class="item-content">
+          <view class="item-title-row">
+            <text class="item-title">{{item.title}}</text>
+            <text class="item-time">{{item.timeSince}}</text>
+          </view>
+          <text class="item-description">{{item.description}}</text>
+        </view>
+        <view class="item-chevron">
+           <text class="material-symbols-outlined">chevron_right</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- Empty State -->
+  <view class="empty-state" wx:else>
+    <text class="material-symbols-outlined empty-icon">task_alt</text>
+    <text class="empty-text">当前没有待审核的申请</text>
+  </view>
+</view>

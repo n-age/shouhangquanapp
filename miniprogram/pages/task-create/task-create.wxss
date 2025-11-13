@@ -1,0 +1,123 @@
+/* miniprogram/pages/task-create/task-create.wxss */
+@import "/styles/common.wxss";
+
+page {
+  background-color: #f6f7f8;
+}
+
+.container {
+  padding-bottom: 6rem; /* for footer */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  padding-bottom: 0.5rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: -0.5rem;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #1F2937;
+  margin-right: 2.5rem;
+}
+
+.form-section {
+  margin: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem 1rem;
+}
+
+.section-title {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #111827;
+  padding: 1rem 0;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.input, .textarea, .picker {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.input::placeholder, .textarea::placeholder {
+  color: #9ca3af;
+}
+
+.textarea {
+  height: 120px;
+  line-height: 1.5;
+}
+
+.picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #111827;
+}
+
+.picker .material-symbols-outlined {
+  color: #9ca3af;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  z-index: 100;
+}
+
+.submit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background-color: #136dec;
+  color: #ffffff;
+  font-size: 1.125rem;
+  font-weight: bold;
+  box-shadow: 0 4px 14px rgba(19, 109, 236, 0.3);
+}
+
+.submit-button:active {
+  background-color: #0f58bd;
+}

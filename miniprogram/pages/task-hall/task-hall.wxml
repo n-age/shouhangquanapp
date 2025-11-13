@@ -1,0 +1,67 @@
+<!-- miniprogram/pages/task-hall/task-hall.wxml -->
+<view class="container">
+  <!-- Top App Bar -->
+  <view class="header">
+    <text class="title">任务大厅</text>
+    <view class="profile-icon-container" bindtap="goToMyProfile">
+      <text class="material-symbols-outlined">account_circle</text>
+    </view>
+  </view>
+
+  <!-- Search & Filters -->
+  <view class="filters-container">
+    <!-- Search Bar -->
+    <view class="search-bar">
+      <text class="material-symbols-outlined search-icon">search</text>
+      <input class="search-input" placeholder="搜索任务标题/地点" />
+    </view>
+    <!-- Filter Chips -->
+    <view class="chips-row">
+      <view class="chip">状态<text class="material-symbols-outlined">expand_more</text></view>
+      <view class="chip">类型<text class="material-symbols-outlined">expand_more</text></view>
+      <view class="chip">地点<text class="material-symbols-outlined">expand_more</text></view>
+      <view class="chip">排序<text class="material-symbols-outlined">expand_more</text></view>
+    </view>
+  </view>
+
+  <!-- Task List -->
+  <scroll-view class="task-list" scroll-y="true" bindscrolltolower="loadMoreTasks">
+    <block wx:for="{{taskList}}" wx:key="_id">
+      <view class="task-card" bindtap="goToTaskDetail" data-id="{{item._id}}">
+        <view class="card-header">
+          <text class="task-title">{{item.title}}</text>
+          <text class="task-reward">¥{{item.reward}}</text>
+        </view>
+        <view class="task-tags">
+          <view class="tag-status status-{{item.status}}">{{item.statusText}}</view>
+          <block wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">
+             <view class="tag-category">{{tag}}</view>
+          </block>
+        </view>
+        <view class="divider"></view>
+        <view class="task-info">
+          <view class="info-item">
+            <text class="material-symbols-outlined">business_center</text>
+            <text>发布方: {{item.publisherInfo.nickName}}</text>
+          </view>
+          <view class="info-item">
+            <text class="material-symbols-outlined">location_on</text>
+            <text>地点: {{item.address}}</text>
+          </view>
+          <view class="info-item">
+            <text class="material-symbols-outlined">event_busy</text>
+            <text>截止: {{item.deadline}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="loading-state" wx:if="{{isLoading}}">加载中...</view>
+    <view class="loading-state" wx:if="{{!hasMore && taskList.length > 0}}">没有更多任务了</view>
+  </scroll-view>
+
+  <!-- Floating Action Button -->
+  <view class="fab-container" bindtap="goToCreateTask">
+    <text class="material-symbols-outlined">add</text>
+    <text class="fab-text">发布任务</text>
+  </view>
+</view>

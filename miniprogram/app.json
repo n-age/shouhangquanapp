@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/task-hall/task-hall",
+    "pages/news-list/news-list",
+    "pages/task-create/task-create",
+    "pages/my-profile/my-profile",
+    "pages/task-details/task-details",
+    "pages/order-list/order-list",
+    "pages/order-details/order-details",
+    "pages/auth-center/auth-center",
+    "pages/auth-real-name/auth-real-name",
+    "pages/auth-enterprise/auth-enterprise",
+    "pages/auth-pilot/auth-pilot",
+    "pages/news-details/news-details",
+    "pages/profile-pilot/profile-pilot",
+    "pages/about-us/about-us",
+    "pages/feedback/feedback",
+    "admin/pages/auth-review-detail/auth-review-detail"
+  ],
+  "window": {
+    "backgroundColor": "#F6F7F8",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F7F8",
+    "navigationBarTitleText": "无人机飞手平台",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#136dec",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/task-hall/task-hall",
+        "text": "任务大厅",
+        "iconPath": "static/images/icon_task_off.png",
+        "selectedIconPath": "static/images/icon_task_on.png"
+      },
+      {
+        "pagePath": "pages/news-list/news-list",
+        "text": "资讯",
+        "iconPath": "static/images/icon_news_off.png",
+        "selectedIconPath": "static/images/icon_news_on.png"
+      },
+      {
+        "pagePath": "pages/task-create/task-create",
+        "text": "发布任务",
+        "iconPath": "static/images/icon_publish.png",
+        "selectedIconPath": "static/images/icon_publish_on.png"
+      },
+      {
+        "pagePath": "pages/my-profile/my-profile",
+        "text": "我的",
+        "iconPath": "static/images/icon_profile_off.png",
+        "selectedIconPath": "static/images/icon_profile_on.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

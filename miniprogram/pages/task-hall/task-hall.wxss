@@ -1,0 +1,187 @@
+/* miniprogram/pages/task-hall/task-hall.wxss */
+@import "/styles/common.wxss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f6f7f8;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f6f7f8;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #111827;
+}
+
+.profile-icon-container {
+  font-size: 1.75rem;
+  color: #1f2937;
+}
+
+.filters-container {
+  padding: 0 1rem 0.5rem;
+  background-color: #f6f7f8;
+  position: sticky;
+  top: 72px; /* Adjust based on header height */
+  z-index: 10;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  height: 3rem;
+  padding: 0 0.75rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.search-icon { color: #9ca3af; }
+
+.search-input {
+  flex: 1;
+  height: 100%;
+  padding-left: 0.5rem;
+}
+
+.chips-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.75rem;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.chip .material-symbols-outlined { font-size: 1.25rem; }
+
+.task-list {
+  flex: 1;
+  padding: 0 1rem;
+}
+
+.task-card {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.task-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #111827;
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.task-reward {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #136dec;
+}
+
+.task-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.tag-status, .tag-category {
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 9999px;
+}
+
+.tag-status {
+  color: #166534;
+  background-color: #dcfce7;
+}
+
+/* Add other statuses, e.g., in-progress */
+.tag-status.status-in_progress {
+  color: #c2410c;
+  background-color: #fff7ed;
+}
+
+.tag-category {
+  color: #4b5563;
+  background-color: #f3f4f6;
+}
+
+.divider {
+  height: 1px;
+  background-color: #f3f4f6;
+  margin: 1rem 0;
+}
+
+.task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.info-item .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 1rem;
+  color: #9ca3af;
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  height: 3.5rem;
+  padding: 0 1.5rem;
+  background-color: #136dec;
+  color: white;
+  border-radius: 9999px;
+  box-shadow: 0 4px 14px rgba(19, 109, 236, 0.4);
+  font-size: 1rem;
+  font-weight: bold;
+  z-index: 20;
+}

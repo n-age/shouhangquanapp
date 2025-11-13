@@ -1,0 +1,126 @@
+/* miniprogram/admin/pages/auth-review-detail/auth-review-detail.wxss */
+@import "/styles/common.wxss";
+
+page {
+  background-color: #f6f7f8;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex; align-items: center; padding: 1rem;
+  background-color: #ffffff; border-bottom: 1px solid #e5e7eb;
+  position: sticky; top: 0; z-index: 100;
+}
+.back-button {
+  display: flex; align-items: center; justify-content: center;
+  width: 2.5rem; height: 2.5rem; margin-left: -0.5rem;
+}
+.title {
+  flex: 1; text-align: center; font-size: 1.125rem;
+  font-weight: bold; color: #1F2937; margin-right: 2.5rem;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.section {
+  margin-bottom: 1.5rem;
+}
+.section-title {
+  display: block; font-size: 1rem; font-weight: 600;
+  color: #4b5563; margin-bottom: 0.75rem;
+}
+
+.info-card, .details-card {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background-color: #e5e7eb;
+}
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+.nickname {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #111827;
+}
+.join-time {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.details-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.detail-item {
+  display: flex;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.label {
+  width: 8em; /* 8个字符宽度 */
+  color: #6b7280;
+  flex-shrink: 0;
+}
+.value {
+  color: #111827;
+  word-break: break-all;
+}
+.image-item {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.preview-image {
+  margin-top: 0.5rem;
+  max-width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.footer {
+  position: sticky; bottom: 0; padding: 1rem;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  gap: 1rem;
+}
+.action-button {
+  flex: 1; height: 3rem; border-radius: 0.5rem;
+  font-size: 1rem; font-weight: bold;
+  display: flex; align-items: center; justify-content: center;
+}
+.reject {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+.approve {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.loading-state {
+  text-align: center; padding: 4rem 0; color: #9ca3af;
+}
