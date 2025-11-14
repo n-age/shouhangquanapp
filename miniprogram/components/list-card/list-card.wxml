@@ -1,21 +1,21 @@
 <!-- miniprogram/components/list-card/list-card.wxml -->
 <view class="card" bindtap="onTap">
   <view class="card-header">
-    <text class="title">{{item.title}}</text>
-    <text class="reward" wx:if="{{item.reward}}">¥{{item.reward}}</text>
+    <text class="title">{{formattedItem.title}}</text>
+    <text class="reward" wx:if="{{formattedItem.reward}}">¥{{formattedItem.reward}}</text>
   </view>
 
   <view class="tags">
-    <view class="tag-status status-{{item.status}}" wx:if="{{item.statusText}}">{{item.statusText}}</view>
-    <block wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">
+    <view class="tag-status status-{{formattedItem.status}}" wx:if="{{formattedItem.statusText}}">{{formattedItem.statusText}}</view>
+    <block wx:for="{{formattedItem.tags}}" wx:for-item="tag" wx:key="*this">
        <view class="tag-category">{{tag}}</view>
     </block>
   </view>
 
-  <view class="divider" wx:if="{{item.info.length > 0}}"></view>
+  <view class="divider" wx:if="{{formattedItem.info.length > 0}}"></view>
 
   <view class="info-section">
-    <block wx:for="{{item.info}}" wx:for-item="infoItem" wx:key="index">
+    <block wx:for="{{formattedItem.info}}" wx:for-item="infoItem" wx:key="index">
       <view class="info-item">
         <text class="material-symbols-outlined">{{infoItem.icon}}</text>
         <text>{{infoItem.text}}</text>
@@ -23,8 +23,8 @@
     </block>
   </view>
 
-  <view class="footer" wx:if="{{item.actions.length > 0}}">
-      <block wx:for="{{item.actions}}" wx:for-item="action" wx:key="text">
+  <view class="footer" wx:if="{{formattedItem.actions.length > 0}}">
+      <block wx:for="{{formattedItem.actions}}" wx:for-item="action" wx:key="text">
           <button class="action-button {{action.type}}">{{action.text}}</button>
       </block>
   </view>

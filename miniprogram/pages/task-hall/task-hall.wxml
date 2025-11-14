@@ -25,9 +25,11 @@
   </view>
 
   <!-- Task List -->
-  <scroll-view class="task-list" scroll-y="true" bindscrolltolower="loadMoreTasks">
+  <scroll-view class="task-list" scroll-y="true" bindscrolltolower="onReachBottom" lower-threshold="200">
     <block wx:for="{{taskList}}" wx:key="_id">
-      <list-card item="{{item}}" bind:cardtap="goToTaskDetail" />
+      <view data-item="{{item}}" bindtap="handleCardTap">
+        <list-card item="{{item}}" type="task" />
+      </view>
     </block>
     <!-- Skeleton UI -->
     <block wx:if="{{isLoading && taskList.length === 0}}">

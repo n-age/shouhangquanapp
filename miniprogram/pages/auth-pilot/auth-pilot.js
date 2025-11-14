@@ -1,9 +1,10 @@
 // miniprogram/pages/auth-pilot/auth-pilot.js
 const api = require('../../utils/api.js');
+const config = require('../../utils/config.js');
 
 Page({
   data: {
-    certificateTypes: ['民航局UTC执照', '中国AOPA合格证', 'ASFC证书'],
+    certificateTypes: config.CERTIFICATE_TYPES,
     certificateIndex: null,
     certificateNumber: '',
     // canSubmit is now handled implicitly by checking form fields before submit

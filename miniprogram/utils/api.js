@@ -1,74 +1,84 @@
 // miniprogram/utils/api.js
 
 /**
- * 通用的云函数调用封装
- * @param {string} name - 云函数名称
- * @param {string} action - 需要调用的 action
- * @param {object} params - 传递给 action 的参数
+ * A unified wrapper for calling the main cloud function.
+ * @param {string} type - The route/action type (e.g., 'users.login').
+ * @param {object} payload - The data to be sent to the function.
+ * @param {boolean} [showLoading=false] - Whether to show a loading toast.
  * @returns {Promise}
  */
-const callCloudFunction = (name, action, params = {}) => {
+const callCloud = (type, payload = {}, showLoading = false) => {
   return new Promise((resolve, reject) => {
+    if (showLoading) {
+      wx.showLoading({ title: '加载中...' });
+    }
+
     wx.cloud.callFunction({
-      name: name,
+      name: 'main', // All calls go to the 'main' function
       data: {
-        action: action,
-        params: params
+        type: type,
+        payload: payload
       }
     }).then(res => {
-      if (res.result && res.result.errCode === 0) {
-        resolve(res.result); // 只返回云函数的结果部分
+      if (showLoading) {
+        wx.hideLoading();
+      }
+      if (res.result && res.result.success) {
+        resolve(res.result); // Resolve with the entire result object { success, data, ... }
       } else {
-        // 统一处理业务逻辑错误
+        // Handle business logic errors returned from the cloud function
         wx.showToast({
-          title: res.result.errMsg || '操作失败',
+          title: res.result.message || '操作失败',
           icon: 'none'
         });
+        console.error(`[API Error][${type}]`, res.result);
         reject(res.result);
       }
     }).catch(err => {
-      // 统一处理网络或系统错误
+      if (showLoading) {
+        wx.hideLoading();
+      }
+      // Handle network or system errors
       wx.showToast({
-        title: '请求异常，请重试',
+        title: '网络请求失败',
         icon: 'none'
       });
-      console.error(`[API][${name}.${action}] Call failed:`, err);
+      console.error(`[API Call Failed][${type}]`, err);
       reject(err);
     });
   });
 };
 
-// 导出所有API
+// Export all API methods
 module.exports = {
-  // 用户相关
-  login: (userInfo) => callCloudFunction('users', 'login', { userInfo }),
-  updateProfile: (userInfo) => callCloudFunction('users', 'updateProfile', { userInfo }),
-  getPilotProfile: (pilotId) => callCloudFunction('users', 'getPilotProfile', { pilotId }),
+  // User related
+  login: () => callCloud('users.login'),
+  updateProfile: (userInfo) => callCloud('users.updateProfile', userInfo),
+  getPilotProfile: (pilotId) => callCloud('users.getPilotProfile', { pilotId }),
 
-  // 任务相关
-  createTask: (taskData) => callCloudFunction('tasks', 'createTask', { taskData }),
-  getTasks: (params) => callCloudFunction('tasks', 'getTasks', params),
-  getTaskDetail: (taskId) => callCloudFunction('tasks', 'getTaskDetail', { taskId }),
+  // Task related
+  createTask: (taskData) => callCloud('tasks.createTask', taskData, true),
+  getTasks: (params) => callCloud('tasks.getTasks', params),
+  getTaskDetail: (id) => callCloud('tasks.getTaskDetail', { id }, true),
+  getPublishedTasks: () => callCloud('tasks.getPublishedTasks'),
 
-  // 订单相关
-  createOrder: (taskId) => callCloudFunction('orders', 'createOrder', { taskId }),
-  getOrderList: (params) => callCloudFunction('orders', 'getOrderList', params),
-  getOrderDetail: (orderId) => callCloudFunction('orders', 'getOrderDetail', { orderId }),
-  payOrder: (orderId) => callCloudFunction('orders', 'payOrder', { orderId }),
-  submitWork: (orderId, submission) => callCloudFunction('orders', 'submitWork', { orderId, submission }),
-  confirmCompletion: (orderId) => callCloudFunction('orders', 'confirmCompletion', { orderId }),
-  cancelOrder: (orderId) => callCloudFunction('orders', 'cancelOrder', { orderId }),
+  // Order related
+  createOrder: (taskId) => callCloud('orders.createOrder', { taskId }, true),
+  getOrderList: (params) => callCloud('orders.getOrderList', params),
+  getOrderDetail: (id) => callCloud('orders.getOrderDetail', { id }, true),
+  updateOrderStatus: (orderId, action, data) => callCloud('orders.updateOrderStatus', { orderId, action, data }, true),
 
-  // 新闻相关
-  getNewsList: (params) => callCloudFunction('news', 'getNewsList', params),
+  // News related
+  getNewsList: (params) => callCloud('news.getNewsList', params),
+  getNewsDetail: (id) => callCloud('news.getNewsDetail', { id }, true),
 
-  // 认证相关
-  submitRealNameAuth: (authData) => callCloudFunction('auth', 'submitRealNameAuth', { authData }),
-  submitEnterpriseAuth: (authData) => callCloudFunction('auth', 'submitEnterpriseAuth', { authData }),
-  submitPilotAuth: (authData) => callCloudFunction('auth', 'submitPilotAuth', { authData }),
+  // Auth related
+  submitRealName: (authData) => callCloud('auth.submitRealName', authData, true),
+  submitEnterprise: (authData) => callCloud('auth.submitEnterprise', authData, true),
+  submitPilot: (authData) => callCloud('auth.submitPilot', authData, true),
+  getAuthStatus: () => callCloud('auth.getAuthStatus'),
 
-  // 管理员相关
-  getPendingAuths: () => callCloudFunction('admin', 'getPendingAuths'),
-  getAuthDetail: (authId) => callCloudFunction('admin', 'getAuthDetail', { authId }),
-  updateAuthStatus: (authId, status, reason) => callCloudFunction('admin', 'updateAuthStatus', { authId, status, reason }),
+  // Admin related
+  getReviewList: () => callCloud('admin.getReviewList'),
+  review: (authId, status, reason) => callCloud('admin.review', { authId, status, reason }, true),
 };

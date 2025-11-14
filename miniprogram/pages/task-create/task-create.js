@@ -1,7 +1,9 @@
 // miniprogram/pages/task-create/task-create.js
+const config = require('../../utils/config.js');
+
 Page({
   data: {
-    categories: ['航拍摄影', '测绘勘察', '农业植保', '巡检安防', '影视制作'],
+    categories: config.TASK_CATEGORIES,
     categoryIndex: null,
     currentDate: new Date().toISOString().split('T')[0],
     deadline: '',

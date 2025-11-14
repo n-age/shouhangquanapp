@@ -23,24 +23,20 @@
   <!-- Order List -->
   <scroll-view class="order-list" scroll-y="true" bindscrolltolower="loadMoreOrders">
     <block wx:if="{{orderList.length > 0}}">
-      <view class="order-card" wx:for="{{orderList}}" wx:key="_id" bindtap="goToOrderDetail" data-id="{{item._id}}">
-        <view class="card-header">
-          <text class="task-title">{{item.taskInfo.title}}</text>
-          <text class="status-text status-{{item.status}}">{{item.statusText}}</text>
+       <block wx:for="{{orderList}}" wx:key="_id">
+        <view bindtap="goToOrderDetail" data-id="{{item._id}}">
+            <list-card item="{{item}}" type="order" />
         </view>
-        <view class="card-body">
-          <text class="info-text">订单金额: <text class="amount">¥{{item.amount}}</text></text>
-          <text class="info-text">下单时间: {{item.formattedCreateDate}}</text>
-        </view>
-        <view class="card-footer">
-          <!-- Action buttons will be added in order-details page -->
-          <button class="action-button primary">查看详情</button>
-        </view>
-      </view>
+       </block>
+    </block>
+
+    <block wx:if="{{isLoading && orderList.length === 0}}">
+        <skeleton-task-card></skeleton-task-card>
+        <skeleton-task-card></skeleton-task-card>
     </block>
 
     <!-- Empty State -->
-    <view class="empty-state" wx:else>
+    <view class="empty-state" wx:if="{{!isLoading && orderList.length === 0}}">
       <text class="material-symbols-outlined empty-icon">receipt_long</text>
       <text class="empty-text">暂无相关订单</text>
     </view>

@@ -1,0 +1,16 @@
+{
+  "triggers": [
+    {
+      "name": "main-image-trigger",
+      "type": "cos",
+      "config": {
+        "bucket": "cloud1-4gg85tsx9a6ee449.cos.ap-guangzhou.myqcloud.com",
+        "events": ["cos:ObjectCreated:*"],
+        "filter": {
+          "prefix": "uploads/",
+          "suffix": ".jpg|.png|.jpeg|.gif"
+        }
+      }
+    }
+  ]
+}

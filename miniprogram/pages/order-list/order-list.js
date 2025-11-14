@@ -26,9 +26,12 @@ Page({
   },
 
 const api = require('../../utils/api.js');
+const config = require('../../utils/config.js');
+
 // ...
   fetchOrders(isLoadMore = false) {
     if (!this.data.hasMore && isLoadMore) return;
+    if (this.data.isLoading) return;
     this.setData({ isLoading: true });
 
     api.getOrderList({
@@ -36,25 +39,13 @@ const api = require('../../utils/api.js');
       page: this.data.page,
       pageSize: this.data.pageSize
     }).then(res => {
-      const formattedList = res.data.map(this.formatOrder);
       this.setData({
-        orderList: isLoadMore ? [...this.data.orderList, ...formattedList] : formattedList,
+        orderList: isLoadMore ? [...this.data.orderList, ...res.data] : res.data,
         hasMore: res.hasMore,
+        page: this.data.page + 1,
         isLoading: false
       });
     }).catch(() => this.setData({ isLoading: false }));
-  },
-
-  formatOrder(order) {
-      const statusMap = {
-        'pending_payment': '待支付', 'in_progress': '进行中', 'pending_confirmation': '待确认',
-        'completed': '已完成', 'cancelled': '已取消'
-      };
-      return {
-          ...order,
-          statusText: statusMap[order.status] || '未知',
-          formattedCreateDate: new Date(order.createdAt).toLocaleString()
-      }
   },
 
   onTabClick(e) {

@@ -1,4 +1,5 @@
-// miniprogram/pages/task-hall/task-hall.js
+const api = require('../../utils/api.js');
+
 Page({
   data: {
     taskList: [],
@@ -11,6 +12,11 @@ Page({
 
   onLoad(options) {
     this.fetchTasks();
+  },
+
+  onShow() {
+    // Refresh data on show in case a task was created or updated
+    this.onPullDownRefresh();
   },
 
   onSearchInput(e) {
@@ -26,12 +32,12 @@ Page({
   },
 
   onFilterTap(e) {
-      // Placeholder for more complex filter logic (e.g., showing a dropdown menu)
-      const filterType = e.currentTarget.dataset.type;
-      wx.showToast({
-        title: `Filter by ${filterType} (not implemented)`,
-        icon: 'none'
-      });
+    // Placeholder for more complex filter logic (e.g., showing a dropdown menu)
+    const filterType = e.currentTarget.dataset.type;
+    wx.showToast({
+      title: `Filter by ${filterType} (not implemented yet)`,
+      icon: 'none'
+    });
   },
 
   onPullDownRefresh() {
@@ -45,22 +51,23 @@ Page({
     });
   },
 
-const api = require('../../utils/api.js');
-
-// ... (Page data remains the same)
+  onReachBottom() {
+    this.fetchTasks();
+  },
 
   fetchTasks() {
     if (!this.data.hasMore || this.data.isLoading) {
-      return;
+      return Promise.resolve();
     }
     this.setData({ isLoading: true });
 
-    api.getTasks({
+    return api.getTasks({
       page: this.data.page,
       pageSize: this.data.pageSize,
       filters: this.data.filters
     }).then(res => {
-      const fetchedTasks = res.data.map(task => this.formatTask(task));
+      // Now we pass the raw task data directly to the list
+      const fetchedTasks = res.data;
       this.setData({
         taskList: this.data.taskList.concat(fetchedTasks),
         hasMore: res.hasMore,
@@ -69,46 +76,13 @@ const api = require('../../utils/api.js');
       });
     }).catch(() => {
       this.setData({ isLoading: false });
-      // Error toast is now handled by the api module
     });
   },
 
-  loadMoreTasks() {
-    this.fetchTasks();
-  },
-
-  formatTask(task) {
-    // Format task data to match the list-card component's expected structure
-    return {
-      _id: task._id,
-      title: task.title,
-      reward: task.reward,
-      status: task.status,
-      statusText: this.getStatusText(task.status),
-      tags: task.tags || [],
-      info: [
-        { icon: 'business_center', text: `发布方: ${task.publisherInfo.nickName || '匿名用户'}` },
-        { icon: 'location_on', text: `地点: ${task.address}` },
-        { icon: 'event_busy', text: `截止: ${new Date(task.deadline).toLocaleDateString()}` }
-      ],
-      actions: [] // No actions on the list view
-    };
-  },
-
-  getStatusText(status) {
-    const statusMap = {
-      'open': '招募中',
-      'in_progress': '进行中',
-      'completed': '已完成',
-      'cancelled': '已取消'
-    };
-    return statusMap[status] || '未知';
-  },
-
-  goToTaskDetail(e) {
-    const { itemId } = e.detail;
+  handleCardTap(e) {
+    const taskId = e.currentTarget.dataset.item._id;
     wx.navigateTo({
-      url: `/pages/task-details/task-details?id=${itemId}`,
+      url: `/pages/task-details/task-details?id=${taskId}`,
     });
   },
 
