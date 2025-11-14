@@ -13,6 +13,27 @@ Page({
     this.fetchTasks();
   },
 
+  onSearchInput(e) {
+    this.setData({
+      'filters.keyword': e.detail.value,
+      taskList: [],
+      page: 1,
+      hasMore: true,
+    });
+    // Add a debounce to avoid frequent API calls
+    if (this.searchTimeout) clearTimeout(this.searchTimeout);
+    this.searchTimeout = setTimeout(() => this.fetchTasks(), 300);
+  },
+
+  onFilterTap(e) {
+      // Placeholder for more complex filter logic (e.g., showing a dropdown menu)
+      const filterType = e.currentTarget.dataset.type;
+      wx.showToast({
+        title: `Filter by ${filterType} (not implemented)`,
+        icon: 'none'
+      });
+  },
+
   onPullDownRefresh() {
     this.setData({
       taskList: [],
@@ -57,12 +78,20 @@ const api = require('../../utils/api.js');
   },
 
   formatTask(task) {
-    // Format data for display
+    // Format task data to match the list-card component's expected structure
     return {
-      ...task,
-      deadline: new Date(task.deadline).toLocaleDateString(),
+      _id: task._id,
+      title: task.title,
+      reward: task.reward,
+      status: task.status,
       statusText: this.getStatusText(task.status),
-      publisherInfo: task.publisherInfo || { nickName: '匿名用户' } // handle missing publisher info
+      tags: task.tags || [],
+      info: [
+        { icon: 'business_center', text: `发布方: ${task.publisherInfo.nickName || '匿名用户'}` },
+        { icon: 'location_on', text: `地点: ${task.address}` },
+        { icon: 'event_busy', text: `截止: ${new Date(task.deadline).toLocaleDateString()}` }
+      ],
+      actions: [] // No actions on the list view
     };
   },
 
@@ -77,9 +106,9 @@ const api = require('../../utils/api.js');
   },
 
   goToTaskDetail(e) {
-    const { id } = e.currentTarget.dataset;
+    const { itemId } = e.detail;
     wx.navigateTo({
-      url: `/pages/task-details/task-details?id=${id}`,
+      url: `/pages/task-details/task-details?id=${itemId}`,
     });
   },
 

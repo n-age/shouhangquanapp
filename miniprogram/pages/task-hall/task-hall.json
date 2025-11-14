@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "skeleton-task-card": "/components/skeleton-task-card/skeleton-task-card"
+    "skeleton-task-card": "/components/skeleton-task-card/skeleton-task-card",
+    "list-card": "/components/list-card/list-card"
   },
   "navigationBarTitleText": "任务大厅",
   "navigationStyle": "custom",

@@ -58,5 +58,28 @@ const api = require('./utils/api.js');
   // Provide a function for pages to wait for login completion
   waitForLogin: function() {
     return this.loginPromise;
+  },
+
+  // Simple Pub/Sub for globalData
+  watchers: {},
+
+  watch: function(key, callback) {
+    if (!this.watchers[key]) {
+      this.watchers[key] = [];
+    }
+    this.watchers[key].push(callback);
+  },
+
+  unwatch: function(key, callback) {
+    if (this.watchers[key]) {
+      this.watchers[key] = this.watchers[key].filter(watcher => watcher !== callback);
+    }
+  },
+
+  _updateGlobalData: function(key, value) {
+    this.globalData[key] = value;
+    if (this.watchers[key]) {
+      this.watchers[key].forEach(callback => callback(value));
+    }
   }
 });

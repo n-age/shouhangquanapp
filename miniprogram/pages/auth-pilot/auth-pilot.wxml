@@ -31,18 +31,11 @@
     <!-- Certificate Photo -->
     <view class="form-group">
       <label class="label">证书照片</label>
-      <view class="image-uploader" bindtap="chooseImage">
-        <block wx:if="!certificateImageUrl">
-          <view class="upload-icon-container">
-            <text class="material-symbols-outlined">add_a_photo</text>
-          </view>
-          <text class="upload-title">上传照片</text>
-          <text class="upload-subtitle">请上传清晰的证书正面照</text>
-        </block>
-        <block wx:else>
-          <image class="preview-image" src="{{certificateImageUrl}}" mode="aspectFit"></image>
-        </block>
-      </view>
+      <image-uploader
+        id="uploader"
+        title="上传证书照片"
+        subtitle="请确保照片清晰、完整"
+      />
     </view>
   </view>
 

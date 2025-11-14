@@ -100,10 +100,19 @@ async function getTasks(params) {
   const { page = 1, pageSize = 10, filters = {} } = params;
 
   try {
-    const query = {
+    let query = {
       status: 'open' // 默认只查询开放中的任务
-      // ...未来可以基于filters添加更多查询条件
     };
+
+    if (filters.keyword) {
+      query = _.and([
+        query,
+        _.or([
+          { title: db.RegExp({ regexp: filters.keyword, options: 'i' }) },
+          { address: db.RegExp({ regexp: filters.keyword, options: 'i' }) }
+        ])
+      ]);
+    }
 
     const tasksCollection = db.collection('Tasks');
 

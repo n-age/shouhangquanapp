@@ -6,52 +6,36 @@ Page({
     certificateTypes: ['民航局UTC执照', '中国AOPA合格证', 'ASFC证书'],
     certificateIndex: null,
     certificateNumber: '',
-    certificateImageUrl: '',
-    canSubmit: false,
-  },
-
-  validateForm() {
-    const { certificateIndex, certificateNumber, certificateImageUrl } = this.data;
-    const isFormValid = certificateIndex !== null &&
-                        certificateNumber.trim().length > 0 &&
-                        certificateImageUrl;
-    this.setData({ canSubmit: !!isFormValid });
+    // canSubmit is now handled implicitly by checking form fields before submit
   },
 
   onPickerChange(e) {
-    this.setData({ certificateIndex: e.detail.value }, () => this.validateForm());
+    this.setData({ certificateIndex: e.detail.value });
   },
 
   onInput(e) {
-    this.setData({ certificateNumber: e.detail.value }, () => this.validateForm());
-  },
-
-  chooseImage() {
-    wx.chooseMedia({
-      count: 1,
-      mediaType: ['image'],
-      sourceType: ['album', 'camera'],
-      success: res => {
-        this.setData({ certificateImageUrl: res.tempFiles[0].tempFilePath }, () => this.validateForm());
-      }
-    });
+    this.setData({ certificateNumber: e.detail.value });
   },
 
   submit() {
-    if (!this.data.canSubmit) return;
+    const { certificateTypes, certificateIndex, certificateNumber } = this.data;
+    if (certificateIndex === null || !certificateNumber.trim()) {
+      return wx.showToast({ title: '请填写所有信息', icon: 'none' });
+    }
+
+    const uploader = this.selectComponent('#uploader');
+    if (!uploader.data.tempFilePath) {
+        return wx.showToast({ title: '请上传证书照片', icon: 'none' });
+    }
 
     wx.showLoading({ title: '正在提交...' });
-    const { certificateTypes, certificateIndex, certificateNumber, certificateImageUrl } = this.data;
-    const cloudPath = `auth-images/pilot-cert-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    const cloudPath = `auth-images/pilot-cert-${Date.now()}`;
 
-    wx.cloud.uploadFile({
-      cloudPath: cloudPath + certificateImageUrl.match(/\.[^.]+?$/)[0],
-      filePath: certificateImageUrl
-    }).then(res => {
+    uploader.upload(cloudPath).then(fileID => {
       return api.submitPilotAuth({
         certificateType: certificateTypes[certificateIndex],
         certificateNumber,
-        certificateFileID: res.fileID
+        certificateFileID: fileID
       });
     }).then(() => {
       wx.hideLoading();
@@ -59,6 +43,7 @@ Page({
       setTimeout(() => wx.navigateBack(), 2000);
     }).catch(err => {
       wx.hideLoading();
+      wx.showToast({ title: '提交失败，请重试', icon: 'none' });
       console.error('Pilot auth submission failed:', err);
     });
   },

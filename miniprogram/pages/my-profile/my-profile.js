@@ -7,23 +7,26 @@ Page({
     isLoggedIn: false
   },
 
-  onShow() {
-    // 页面显示时，尝试从 globalData 获取用户信息
-    // 这是为了确保即使用户信息在后台更新，页面返回时也能展示最新状态
-    this.setData({
-      userInfo: app.globalData.userInfo,
-      isLoggedIn: app.globalData.isLoggedIn
-    });
+  onLoad() {
+    // Watch for changes in global userInfo
+    app.watch('userInfo', this.userInfoHandler);
+  },
 
-    // 如果 globalData 还没有用户信息，则等待登录完成
-    if (!app.globalData.isLoggedIn) {
-      app.loggedInCallback = userInfo => {
-        this.setData({
-          userInfo: userInfo,
-          isLoggedIn: true
-        });
-      };
-    }
+  onUnload() {
+    // Unwatch to prevent memory leaks
+    app.unwatch('userInfo', this.userInfoHandler);
+  },
+
+  userInfoHandler(userInfo) {
+    this.setData({
+      userInfo: userInfo,
+      isLoggedIn: !!userInfo
+    });
+  },
+
+  onShow() {
+    // Set initial data on show
+    this.userInfoHandler(app.globalData.userInfo);
   },
 
   handleLogin() {
@@ -37,12 +40,9 @@ Page({
 const api = require('../../utils/api.js');
 // ...
     api.updateProfile(userInfo).then(() => {
-          // 更新本地 globalData 和当前页面数据
-          app.globalData.userInfo.nickName = userInfo.nickName;
-      app.globalData.userInfo.avatarUrl = userInfo.avatarUrl;
-          this.setData({
-        userInfo: app.globala.userInfo
-          });
+      const newUserInfo = { ...app.globalData.userInfo, ...userInfo };
+      app._updateGlobalData('userInfo', newUserInfo);
+      // The watcher will update the current page's data
         });
       },
       fail: () => {
