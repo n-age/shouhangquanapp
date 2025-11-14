@@ -1,0 +1,53 @@
+<!-- miniprogram/pages/auth-pilot/auth-pilot.wxml -->
+<view class="container">
+  <!-- Top App Bar -->
+  <view class="header">
+    <view class="back-button" bindtap="navigateBack">
+      <text class="material-symbols-outlined">arrow_back_ios_new</text>
+    </view>
+    <text class="title">飞手认证</text>
+  </view>
+
+  <view class="content">
+    <text class="description">请提交您的有效飞手证书以完成认证</text>
+
+    <!-- Certificate Type -->
+    <view class="form-group">
+      <label class="label">证书类型</label>
+      <picker class="picker" bindchange="onPickerChange" value="{{certificateIndex}}" range="{{certificateTypes}}">
+        <view class="picker-text">
+          {{certificateTypes[certificateIndex] || '请选择证书类型'}}
+        </view>
+        <text class="material-symbols-outlined">expand_more</text>
+      </picker>
+    </view>
+
+    <!-- Certificate Number -->
+    <view class="form-group">
+      <label class="label">证书编号</label>
+      <input class="input" placeholder="请输入您的证书编号" bindinput="onInput" data-field="certificateNumber" />
+    </view>
+
+    <!-- Certificate Photo -->
+    <view class="form-group">
+      <label class="label">证书照片</label>
+      <view class="image-uploader" bindtap="chooseImage">
+        <block wx:if="!certificateImageUrl">
+          <view class="upload-icon-container">
+            <text class="material-symbols-outlined">add_a_photo</text>
+          </view>
+          <text class="upload-title">上传照片</text>
+          <text class="upload-subtitle">请上传清晰的证书正面照</text>
+        </block>
+        <block wx:else>
+          <image class="preview-image" src="{{certificateImageUrl}}" mode="aspectFit"></image>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <!-- Footer -->
+  <view class="footer">
+    <button class="submit-button" bindtap="submit" disabled="{{!canSubmit}}">提交审核</button>
+  </view>
+</view>

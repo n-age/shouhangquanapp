@@ -1,0 +1,52 @@
+<!-- miniprogram/pages/auth-center/auth-center.wxml -->
+<view class="container">
+  <!-- Top App Bar -->
+  <view class="header">
+    <view class="back-button" bindtap="navigateBack">
+      <text class="material-symbols-outlined">arrow_back_ios_new</text>
+    </view>
+    <text class="title">认证中心</text>
+  </view>
+
+  <view class="content">
+    <text class="description">完成认证以解锁更多平台功能，保障您的账户安全。</text>
+
+    <view class="auth-list">
+      <!-- Real Name Auth -->
+      <view class="auth-item" bindtap="navigateToAuth" data-type="realName" data-status="{{authStatus.realName}}">
+        <view class="auth-info">
+          <text class="auth-title">个人实名认证</text>
+          <text class="auth-subtitle">保障账户安全，开启交易功能</text>
+        </view>
+        <view class="auth-status-container">
+          <text class="auth-status status-{{authStatus.realName}}">{{authStatus.realNameText}}</text>
+          <text class="material-symbols-outlined chevron">chevron_right</text>
+        </view>
+      </view>
+
+      <!-- Enterprise Auth -->
+      <view class="auth-item" bindtap="navigateToAuth" data-type="enterprise" data-status="{{authStatus.enterprise}}">
+        <view class="auth-info">
+          <text class="auth-title">企业认证</text>
+          <text class="auth-subtitle">以企业身份发布任务，提升信誉</text>
+        </view>
+        <view class="auth-status-container">
+          <text class="auth-status status-{{authStatus.enterprise}}">{{authStatus.enterpriseText}}</text>
+          <text class="material-symbols-outlined chevron">chevron_right</text>
+        </view>
+      </view>
+
+      <!-- Pilot Auth -->
+      <view class="auth-item" bindtap="navigateToAuth" data-type="pilot" data-status="{{authStatus.pilot}}">
+        <view class="auth-info">
+          <text class="auth-title">飞手认证</text>
+          <text class="auth-subtitle">承接平台任务，开启赚钱之旅</text>
+        </view>
+        <view class="auth-status-container">
+          <text class="auth-status status-{{authStatus.pilot}}">{{authStatus.pilotText}}</text>
+          <text class="material-symbols-outlined chevron">chevron_right</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

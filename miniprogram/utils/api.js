@@ -64,6 +64,8 @@ module.exports = {
 
   // 认证相关
   submitRealNameAuth: (authData) => callCloudFunction('auth', 'submitRealNameAuth', { authData }),
+  submitEnterpriseAuth: (authData) => callCloudFunction('auth', 'submitEnterpriseAuth', { authData }),
+  submitPilotAuth: (authData) => callCloudFunction('auth', 'submitPilotAuth', { authData }),
 
   // 管理员相关
   getPendingAuths: () => callCloudFunction('admin', 'getPendingAuths'),

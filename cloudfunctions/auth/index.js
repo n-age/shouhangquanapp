@@ -21,7 +21,10 @@ exports.main = async (event, context) => {
       };
     case 'submitRealNameAuth':
       return await submitRealNameAuth(openid, authData);
-    // 可以在此添加其他认证相关的action，如 submitEnterpriseAuth, submitPilotAuth等
+    case 'submitEnterpriseAuth':
+      return await submitEnterpriseAuth(openid, authData);
+    case 'submitPilotAuth':
+      return await submitPilotAuth(openid, authData);
     default:
       return {
         errCode: 404,
@@ -102,5 +105,77 @@ async function submitRealNameAuth(openid, authData) {
       errMsg: 'Database operation failed',
       error: e
     };
+  }
+}
+
+async function submitEnterpriseAuth(openid, authData) {
+  const { enterpriseName, creditCode, licenseFileID } = authData;
+  if (!enterpriseName || !creditCode || !licenseFileID) {
+    return { errCode: 1, errMsg: 'Missing required fields' };
+  }
+
+  try {
+    const users = db.collection('Users');
+    const userResult = await users.where({ _openid: openid }).limit(1).get();
+    if (userResult.data.length === 0) {
+      return { errCode: 2, errMsg: 'User not found' };
+    }
+    const userId = userResult.data[0]._id;
+
+    await db.collection('Authentications').add({
+      data: {
+        userId: userId,
+        type: 'enterprise',
+        data: {
+          enterpriseName,
+          creditCode,
+          licenseUrl: licenseFileID,
+        },
+        status: 'pending',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+    });
+
+    return { errCode: 0, errMsg: 'Submission successful' };
+  } catch (e) {
+    console.error('Error in submitEnterpriseAuth:', e);
+    return { errCode: 500, errMsg: 'Database operation failed' };
+  }
+}
+
+async function submitPilotAuth(openid, authData) {
+  const { certificateType, certificateNumber, certificateFileID } = authData;
+  if (!certificateType || !certificateNumber || !certificateFileID) {
+    return { errCode: 1, errMsg: 'Missing required fields' };
+  }
+
+  try {
+    const users = db.collection('Users');
+    const userResult = await users.where({ _openid: openid }).limit(1).get();
+    if (userResult.data.length === 0) {
+      return { errCode: 2, errMsg: 'User not found' };
+    }
+    const userId = userResult.data[0]._id;
+
+    await db.collection('Authentications').add({
+      data: {
+        userId: userId,
+        type: 'pilot',
+        data: {
+          certificateType,
+          certificateNumber,
+          certificateUrl: certificateFileID,
+        },
+        status: 'pending',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+    });
+
+    return { errCode: 0, errMsg: 'Submission successful' };
+  } catch (e) {
+    console.error('Error in submitPilotAuth:', e);
+    return { errCode: 500, errMsg: 'Database operation failed' };
   }
 }

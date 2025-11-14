@@ -26,7 +26,7 @@
       <view class="section">
         <view class="section-title">认证资料 ({{authDetail.typeText}})</view>
         <view class="details-card">
-          <!-- Dynamically render details based on auth type -->
+          <!-- Real Name Auth Details -->
           <block wx:if="{{authDetail.type === 'realName'}}">
             <view class="detail-item"><text class="label">姓名:</text> <text class="value">{{authDetail.data.realName}}</text></view>
             <view class="detail-item"><text class="label">身份证号:</text> <text class="value">{{authDetail.data.idCardNumber}}</text></view>
@@ -36,12 +36,24 @@
             </view>
           </block>
 
-          <block wx:if="{{authDetail.type === 'enterprise'}}">
-             <!-- Enterprise auth fields here -->
+          <!-- Enterprise Auth Details -->
+          <block wx:elif="{{authDetail.type === 'enterprise'}}">
+            <view class="detail-item"><text class="label">企业名称:</text> <text class="value">{{authDetail.data.enterpriseName}}</text></view>
+            <view class="detail-item"><text class="label">信用代码:</text> <text class="value">{{authDetail.data.creditCode}}</text></view>
+            <view class="detail-item image-item">
+              <text class="label">营业执照:</text>
+              <image class="preview-image" src="{{authDetail.data.licenseUrl}}" mode="widthFix" bindtap="previewImage" data-src="{{authDetail.data.licenseUrl}}"></image>
+            </view>
           </block>
 
-          <block wx:if="{{authDetail.type === 'pilot'}}">
-             <!-- Pilot auth fields here -->
+          <!-- Pilot Auth Details -->
+          <block wx:elif="{{authDetail.type === 'pilot'}}">
+            <view class="detail-item"><text class="label">证书类型:</text> <text class="value">{{authDetail.data.certificateType}}</text></view>
+            <view class="detail-item"><text class="label">证书编号:</text> <text class="value">{{authDetail.data.certificateNumber}}</text></view>
+            <view class="detail-item image-item">
+              <text class="label">证书照片:</text>
+              <image class="preview-image" src="{{authDetail.data.certificateUrl}}" mode="widthFix" bindtap="previewImage" data-src="{{authDetail.data.certificateUrl}}"></image>
+            </view>
           </block>
         </view>
       </view>

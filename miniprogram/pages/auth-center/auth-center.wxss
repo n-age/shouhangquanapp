@@ -1,0 +1,90 @@
+/* miniprogram/pages/auth-center/auth-center.wxss */
+@import "/styles/common.wxss";
+
+page {
+  background-color: #101822;
+  color: #f0f0f0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex; align-items: center; padding: 1rem;
+  background-color: #101822;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky; top: 0; z-index: 100;
+}
+.back-button {
+  display: flex; align-items: center; justify-content: center;
+  width: 2.5rem; height: 2.5rem; margin-left: -0.5rem;
+}
+.title {
+  flex: 1; text-align: center; font-size: 1.125rem;
+  font-weight: bold; margin-right: 2.5rem;
+}
+
+.content {
+  padding: 1.5rem 1rem;
+}
+
+.description {
+  display: block;
+  font-size: 0.9375rem;
+  color: #a0a0a0;
+  margin-bottom: 2rem;
+}
+
+.auth-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #18222c;
+  border-radius: 0.75rem;
+  transition: background-color 0.2s;
+}
+.auth-item:active {
+  background-color: #2c3a4a;
+}
+
+.auth-info {
+  display: flex;
+  flex-direction: column;
+}
+.auth-title {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.auth-subtitle {
+  font-size: 0.8125rem;
+  color: #a0a0a0;
+  margin-top: 0.25rem;
+}
+
+.auth-status-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.auth-status {
+  font-size: 0.875rem;
+}
+.chevron {
+  color: #a0a0a0;
+}
+
+/* Status Colors */
+.status-unverified { color: #FFA500; }
+.status-pending { color: #136dec; }
+.status-approved { color: #2ECC71; }
+.status-rejected { color: #dc2626; }
