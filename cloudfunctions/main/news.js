@@ -5,11 +5,6 @@ const db = cloud.database();
 
 /**
  * Retrieves a paginated list of news articles.
- * @param {object} event - The event object.
- * @param {object} event.payload - The query parameters.
- * @param {string} [event.payload.category] - The category to filter by.
- * @param {number} [event.payload.page=1] - The page number.
- * @param {number} [event.payload.pageSize=10] - The number of items per page.
  */
 async function getNewsList(event, context) {
   const { category, page = 1, pageSize = 10 } = event.payload;
@@ -30,7 +25,7 @@ async function getNewsList(event, context) {
       .skip((page - 1) * pageSize)
       .limit(pageSize)
       .field({
-        content: 0, // Exclude full content for list view
+        content: 0,
       })
       .get();
 
@@ -47,9 +42,6 @@ async function getNewsList(event, context) {
 
 /**
  * Retrieves the full details of a single news article.
- * @param {object} event - The event object.
- * @param {object} event.payload - The query parameters.
- * @param {string} event.payload.id - The ID of the news article.
  */
 async function getNewsDetail(event, context) {
   const { id } = event.payload;
@@ -63,9 +55,6 @@ async function getNewsDetail(event, context) {
     if (!newsResult.data || !newsResult.data.isPublished) {
         return { success: false, message: 'News article not found or not published.' };
     }
-
-    // Optional: Increment view count here
-    // await db.collection('News').doc(id).update({ data: { views: db.command.inc(1) } });
 
     return { success: true, data: newsResult.data };
   } catch (e) {

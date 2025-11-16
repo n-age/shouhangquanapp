@@ -12,9 +12,13 @@ const db = cloud.database();
  */
 async function submitAuth(userId, type, data) {
   try {
-    // Check for an existing pending request of the same type for this user
+    const userResult = await db.collection('Users').where({_openid: userId}).get();
+    if(userResult.data.length === 0) return {success: false, message: 'User not found'};
+
+    const user = userResult.data[0];
+
     const existingAuth = await db.collection('Authentications').where({
-      userId: userId,
+      userId: user._id,
       type: type,
       status: 'pending'
     }).count();
@@ -23,10 +27,9 @@ async function submitAuth(userId, type, data) {
       return { success: false, message: 'You already have a pending request of this type.' };
     }
 
-    // Create a new authentication record
     await db.collection('Authentications').add({
       data: {
-        userId: userId,
+        userId: user._id,
         type: type,
         data: data,
         status: 'pending',
@@ -44,8 +47,6 @@ async function submitAuth(userId, type, data) {
 
 /**
  * Handles the submission of real name verification.
- * @param {object} event - The event object.
- * @param {object} event.payload - The data for the request.
  */
 async function submitRealName(event, context) {
   const wxContext = cloud.getWXContext();
@@ -60,8 +61,6 @@ async function submitRealName(event, context) {
 
 /**
  * Handles the submission of enterprise verification.
- * @param {object} event - The event object.
- * @param {object} event.payload - The data for the request.
  */
 async function submitEnterprise(event, context) {
   const wxContext = cloud.getWXContext();
@@ -76,8 +75,6 @@ async function submitEnterprise(event, context) {
 
 /**
  * Handles the submission of pilot verification.
- * @param {object} event - The event object.
- * @param {object} event.payload - The data for the request.
  */
 async function submitPilot(event, context) {
   const wxContext = cloud.getWXContext();
@@ -104,7 +101,6 @@ async function getAuthStatus(event, context) {
         }
         const user = userResult.data[0];
 
-        // Also fetch the latest pending or rejected requests for more context
         const authRequests = await db.collection('Authentications')
             .where({ userId: user._id })
             .orderBy('createdAt', 'desc')
@@ -125,7 +121,6 @@ async function getAuthStatus(event, context) {
             }
         });
 
-        // If user record shows verified, it overrides any other status
         if (user.verifications?.realName?.status === 'approved') {
             status.realName.status = 'approved';
         }
@@ -136,7 +131,6 @@ async function getAuthStatus(event, context) {
             status.pilot.status = 'approved';
         }
 
-
         return { success: true, data: status };
 
     } catch (e) {
@@ -144,7 +138,6 @@ async function getAuthStatus(event, context) {
         return { success: false, message: 'Database error.', error: e.message };
     }
 }
-
 
 module.exports = {
   submitRealName,

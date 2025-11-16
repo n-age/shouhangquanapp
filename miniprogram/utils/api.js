@@ -1,12 +1,5 @@
 // miniprogram/utils/api.js
 
-/**
- * A unified wrapper for calling the main cloud function.
- * @param {string} type - The route/action type (e.g., 'users.login').
- * @param {object} payload - The data to be sent to the function.
- * @param {boolean} [showLoading=false] - Whether to show a loading toast.
- * @returns {Promise}
- */
 const callCloud = (type, payload = {}, showLoading = false) => {
   return new Promise((resolve, reject) => {
     if (showLoading) {
@@ -14,7 +7,7 @@ const callCloud = (type, payload = {}, showLoading = false) => {
     }
 
     wx.cloud.callFunction({
-      name: 'main', // All calls go to the 'main' function
+      name: 'main',
       data: {
         type: type,
         payload: payload
@@ -24,9 +17,8 @@ const callCloud = (type, payload = {}, showLoading = false) => {
         wx.hideLoading();
       }
       if (res.result && res.result.success) {
-        resolve(res.result); // Resolve with the entire result object { success, data, ... }
+        resolve(res.result);
       } else {
-        // Handle business logic errors returned from the cloud function
         wx.showToast({
           title: res.result.message || '操作失败',
           icon: 'none'
@@ -38,7 +30,6 @@ const callCloud = (type, payload = {}, showLoading = false) => {
       if (showLoading) {
         wx.hideLoading();
       }
-      // Handle network or system errors
       wx.showToast({
         title: '网络请求失败',
         icon: 'none'
@@ -49,7 +40,6 @@ const callCloud = (type, payload = {}, showLoading = false) => {
   });
 };
 
-// Export all API methods
 module.exports = {
   // User related
   login: () => callCloud('users.login'),

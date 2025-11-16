@@ -4,11 +4,6 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV });
 const db = cloud.database();
 const _ = db.command;
 
-/**
- * Creates a new task.
- * @param {object} event - The event object.
- * @param {object} event.payload - The task data.
- */
 async function createTask(event, context) {
     const wxContext = cloud.getWXContext();
     const openid = wxContext.OPENID;
@@ -18,7 +13,6 @@ async function createTask(event, context) {
         return { success: false, message: 'Missing required fields.' };
     }
 
-    // Basic validation
     if (typeof reward !== 'number' || reward <= 0) {
         return { success: false, message: 'Invalid reward amount.'};
     }
@@ -28,16 +22,14 @@ async function createTask(event, context) {
         if (userResult.data.length === 0) {
             return { success: false, message: 'User not found.' };
         }
-        // It's good practice to check if the user is verified before allowing task creation
         const user = userResult.data[0];
-        if (!user.verifications?.realName?.status === 'approved' && !user.verifications?.enterprise?.status === 'approved') {
+        if (user.verifications?.realName?.status !== 'approved' && user.verifications?.enterprise?.status !== 'approved') {
             return { success: false, message: 'Please complete real-name or enterprise verification before publishing tasks.' };
         }
 
         const addTaskResult = await db.collection('Tasks').add({
             data: {
                 publisherId: user._id,
-                _openid: openid, // Store openid for easier queries
                 title,
                 description,
                 tags: [category],
@@ -58,11 +50,6 @@ async function createTask(event, context) {
     }
 }
 
-/**
- * Retrieves a list of tasks, typically for the task hall.
- * @param {object} event - The event object.
- * @param {object} event.payload - The query parameters.
- */
 async function getTasks(event, context) {
     const { page = 1, pageSize = 10, filters = {} } = event.payload;
 
@@ -107,12 +94,6 @@ async function getTasks(event, context) {
     }
 }
 
-/**
- * Retrieves the details of a single task.
- * @param {object} event - The event object.
- * @param {object} event.payload - The query parameters.
- * @param {string} event.payload.id - The ID of the task.
- */
 async function getTaskDetail(event, context) {
     const { id } = event.payload;
     if (!id) return { success: false, message: 'Task ID is required.' };
@@ -144,17 +125,17 @@ async function getTaskDetail(event, context) {
     }
 }
 
-/**
- * Retrieves tasks published by the current user.
- * @param {object} event - The event object.
- */
 async function getPublishedTasks(event, context) {
     const wxContext = cloud.getWXContext();
-    const openid = wx.OPENID;
+    const openid = wxContext.OPENID;
 
     try {
+        const user = await db.collection('Users').where({_openid: openid}).get();
+        if(user.data.length === 0) return {success: false, message: 'User not found.'};
+        const userId = user.data[0]._id;
+
         const tasks = await db.collection('Tasks').where({
-            _openid: openid
+            publisherId: userId
         })
         .orderBy('createdAt', 'desc')
         .get();

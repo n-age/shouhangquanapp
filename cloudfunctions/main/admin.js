@@ -10,8 +10,8 @@ const db = cloud.database();
  */
 async function checkIsAdmin(openid) {
   // In a real project, this should be a robust check against a user role database.
-  const adminConfig = await db.collection('Config').doc('admin_users').get();
-  const adminList = adminConfig.data ? adminConfig.data.openids : [];
+  const adminConfig = await db.collection('Config').doc('admin_users').get().catch(() => null);
+  const adminList = adminConfig && adminConfig.data ? adminConfig.data.openids : [];
 
   const user = await db.collection('Users').where({ _openid: openid }).get();
   if (user.data.length > 0 && user.data[0].roles && user.data[0].roles.includes('admin')) {
@@ -99,13 +99,11 @@ async function review(event, context) {
             }
         });
 
-        // If approved, update the corresponding user's verification status
         if (status === 'approved') {
             const userDoc = transaction.collection('Users').doc(authRecord.data.userId);
             const updateData = {};
-            const authType = authRecord.data.type; // 'realName', 'enterprise', 'pilot'
+            const authType = authRecord.data.type;
 
-            // Construct the update object dynamically
             const verificationField = `verifications.${authType}`;
             updateData[verificationField] = {
                 status: 'approved',

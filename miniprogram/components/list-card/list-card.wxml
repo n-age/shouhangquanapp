@@ -2,17 +2,17 @@
 <view class="card" bindtap="onTap">
   <view class="card-header">
     <text class="title">{{formattedItem.title}}</text>
-    <text class="reward" wx:if="{{formattedItem.reward}}">¥{{formattedItem.reward}}</text>
+    <text class="reward" wx:if="{{formattedItem.reward}}">{{formattedItem.reward}}</text>
   </view>
 
   <view class="tags">
-    <view class="tag-status status-{{formattedItem.status}}" wx:if="{{formattedItem.statusText}}">{{formattedItem.statusText}}</view>
+    <view class="tag-status status-{{formattedItem.statusClass}}" wx:if="{{formattedItem.statusText}}">{{formattedItem.statusText}}</view>
     <block wx:for="{{formattedItem.tags}}" wx:for-item="tag" wx:key="*this">
        <view class="tag-category">{{tag}}</view>
     </block>
   </view>
 
-  <view class="divider" wx:if="{{formattedItem.info.length > 0}}"></view>
+  <view class="divider" wx:if="{{formattedItem.info && formattedItem.info.length > 0}}"></view>
 
   <view class="info-section">
     <block wx:for="{{formattedItem.info}}" wx:for-item="infoItem" wx:key="index">
@@ -23,7 +23,7 @@
     </block>
   </view>
 
-  <view class="footer" wx:if="{{formattedItem.actions.length > 0}}">
+  <view class="footer" wx:if="{{formattedItem.actions && formattedItem.actions.length > 0}}">
       <block wx:for="{{formattedItem.actions}}" wx:for-item="action" wx:key="text">
           <button class="action-button {{action.type}}">{{action.text}}</button>
       </block>

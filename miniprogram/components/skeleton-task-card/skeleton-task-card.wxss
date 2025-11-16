@@ -1,75 +1,67 @@
 /* miniprogram/components/skeleton-task-card/skeleton-task-card.wxss */
+@keyframes skeleton-loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: -100% 50%; }
+}
+
 .skeleton-card {
   background-color: #ffffff;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.dark .skeleton-card {
+    background-color: #1a242f;
+}
+
+.skeleton-line {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+.dark .skeleton-line {
+    background: linear-gradient(90deg, #2c3542 25%, #374151 50%, #2c3542 75%);
+    background-size: 200% 100%;
 }
 
 .skeleton-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
 }
 
-.skeleton-title {
-  width: 70%;
-  height: 24px;
-  background-color: #f3f4f6;
+.skeleton-line.title {
+  width: 60%;
+  height: 20px;
 }
 
-.skeleton-reward {
+.skeleton-line.reward {
   width: 20%;
-  height: 28px;
-  background-color: #f3f4f6;
+  height: 24px;
 }
 
 .skeleton-tags {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
-.skeleton-tag {
+.skeleton-line.tag {
   width: 25%;
-  height: 20px;
-  background-color: #f3f4f6;
-  border-radius: 9999px;
+  height: 24px;
 }
 
-.skeleton-divider {
-  height: 1px;
-  background-color: #f3f4f6;
-  margin: 1rem 0;
-}
-
-.skeleton-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.skeleton-info-item {
-  width: 50%;
+.skeleton-info .info-line {
+  width: 80%;
   height: 16px;
-  background-color: #f3f4f6;
-}
-.skeleton-info-item:last-child {
-  width: 40%;
+  margin-bottom: 8px;
 }
 
-.skeleton-animate {
-  background-image: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 37%, #f3f4f6 63%);
-  background-size: 400% 100%;
-  animation: skeleton-loading 1.4s ease infinite;
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
+.skeleton-info .info-line:last-child {
+  width: 50%;
 }

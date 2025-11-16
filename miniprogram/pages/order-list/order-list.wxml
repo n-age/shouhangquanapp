@@ -24,9 +24,7 @@
   <scroll-view class="order-list" scroll-y="true" bindscrolltolower="loadMoreOrders">
     <block wx:if="{{orderList.length > 0}}">
        <block wx:for="{{orderList}}" wx:key="_id">
-        <view bindtap="goToOrderDetail" data-id="{{item._id}}">
-            <list-card item="{{item}}" type="order" />
-        </view>
+        <list-card item="{{item}}" type="order" bind:cardtap="goToOrderDetail" />
        </block>
     </block>
 

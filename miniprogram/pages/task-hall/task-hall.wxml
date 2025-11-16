@@ -10,12 +10,10 @@
 
   <!-- Search & Filters -->
   <view class="filters-container">
-    <!-- Search Bar -->
     <view class="search-bar">
       <text class="material-symbols-outlined search-icon">search</text>
       <input class="search-input" placeholder="搜索任务标题/地点" bindinput="onSearchInput" />
     </view>
-    <!-- Filter Chips -->
     <view class="chips-row">
       <view class="chip" bindtap="onFilterTap" data-type="status">状态<text class="material-symbols-outlined">expand_more</text></view>
       <view class="chip" bindtap="onFilterTap" data-type="category">类型<text class="material-symbols-outlined">expand_more</text></view>
@@ -27,10 +25,9 @@
   <!-- Task List -->
   <scroll-view class="task-list" scroll-y="true" bindscrolltolower="onReachBottom" lower-threshold="200">
     <block wx:for="{{taskList}}" wx:key="_id">
-      <view data-item="{{item}}" bindtap="handleCardTap">
-        <list-card item="{{item}}" type="task" />
-      </view>
+      <list-card item="{{item}}" type="task" bind:cardtap="handleCardTap" />
     </block>
+
     <!-- Skeleton UI -->
     <block wx:if="{{isLoading && taskList.length === 0}}">
       <skeleton-task-card></skeleton-task-card>

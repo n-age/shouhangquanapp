@@ -12,14 +12,13 @@ const imageHandler = require('./image');
 
 
 exports.main = async (event, context) => {
-  // Check if the function was triggered by COS
   if (event.Records && event.Records[0] && event.Records[0].cos) {
     console.log('COS trigger detected. Starting image processing...');
     return await imageHandler.processUpload(event, context);
   }
 
-  // Standard API call routing
   const { type, payload } = event;
+
   console.log(`Incoming API call type: ${type}`);
 
   switch (type) {
@@ -66,8 +65,12 @@ exports.main = async (event, context) => {
         return await tasksHandler.getPublishedTasks(event, context);
 
     // Users routes
+    case 'users.login':
+        return await usersHandler.login(event, context);
     case 'users.updateProfile':
       return await usersHandler.updateProfile(event, context);
+    case 'users.getPilotProfile':
+      return await usersHandler.getPilotProfile(event, context);
 
     default:
       return {

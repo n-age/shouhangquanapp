@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "image-uploader": "/components/image-uploader/image-uploader"
-  },
-  "navigationBarTitleText": "飞手认证",
-  "navigationStyle": "custom"
-}

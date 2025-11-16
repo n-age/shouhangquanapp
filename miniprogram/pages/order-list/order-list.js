@@ -1,15 +1,14 @@
 // miniprogram/pages/order-list/order-list.js
 const app = getApp();
+const api = require('../../utils/api.js');
+const config = require('../../utils/config.js');
 
 Page({
   data: {
-    tabs: [
-      { label: '全部', status: 'all' },
-      { label: '待支付', status: 'pending_payment' },
-      { label: '进行中', status: 'in_progress' },
-      { label: '待确认', status: 'pending_confirmation' },
-      { label: '已完成', status: 'completed' }
-    ],
+    tabs: Object.keys(config.ORDER_STATUS_MAP).map(key => ({
+        label: config.ORDER_STATUS_MAP[key],
+        status: key
+    })),
     currentTab: 'all',
     orderList: [],
     page: 1,
@@ -19,19 +18,21 @@ Page({
   },
 
   onLoad(options) {
-    // Wait for login to complete before fetching data
     app.waitForLogin().then(() => {
         this.fetchOrders();
     });
   },
 
-const api = require('../../utils/api.js');
-const config = require('../../utils/config.js');
+  onPullDownRefresh() {
+    this.resetAndFetch();
+  },
 
-// ...
+  onReachBottom() {
+      this.fetchOrders(true);
+  },
+
   fetchOrders(isLoadMore = false) {
-    if (!this.data.hasMore && isLoadMore) return;
-    if (this.data.isLoading) return;
+    if ((!this.data.hasMore && isLoadMore) || this.data.isLoading) return;
     this.setData({ isLoading: true });
 
     api.getOrderList({
@@ -45,13 +46,12 @@ const config = require('../../utils/config.js');
         page: this.data.page + 1,
         isLoading: false
       });
-    }).catch(() => this.setData({ isLoading: false }));
+    }).catch(() => this.setData({ isLoading: false }))
+      .finally(() => wx.stopPullDownRefresh());
   },
 
-  onTabClick(e) {
-    const { status } = e.currentTarget.dataset;
+  resetAndFetch() {
     this.setData({
-      currentTab: status,
       orderList: [],
       page: 1,
       hasMore: true,
@@ -60,14 +60,16 @@ const config = require('../../utils/config.js');
     });
   },
 
-  loadMoreOrders() {
-    this.fetchOrders(true);
+  onTabClick(e) {
+    const { status } = e.currentTarget.dataset;
+    this.setData({ currentTab: status });
+    this.resetAndFetch();
   },
 
   goToOrderDetail(e) {
-      const { id } = e.currentTarget.dataset;
+      const { itemId } = e.detail;
       wx.navigateTo({
-          url: `/pages/order-details/order-details?id=${id}`,
+          url: `/pages/order-details/order-details?id=${itemId}`,
       });
   },
 

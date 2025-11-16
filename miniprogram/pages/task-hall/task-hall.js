@@ -1,4 +1,6 @@
+// miniprogram/pages/task-hall/task-hall.js
 const api = require('../../utils/api.js');
+const app = getApp();
 
 Page({
   data: {
@@ -7,16 +9,23 @@ Page({
     pageSize: 10,
     hasMore: true,
     isLoading: false,
-    filters: {} // for future filter implementation
+    filters: {}
   },
 
   onLoad(options) {
-    this.fetchTasks();
+    app.waitForLogin().then(() => {
+        this.fetchTasks();
+    });
   },
 
   onShow() {
-    // Refresh data on show in case a task was created or updated
-    this.onPullDownRefresh();
+      if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+        this.getTabBar().setData({
+          selected: 0
+        })
+      }
+      // Refresh data in case of changes
+      this.onPullDownRefresh();
   },
 
   onSearchInput(e) {
@@ -26,18 +35,16 @@ Page({
       page: 1,
       hasMore: true,
     });
-    // Add a debounce to avoid frequent API calls
     if (this.searchTimeout) clearTimeout(this.searchTimeout);
     this.searchTimeout = setTimeout(() => this.fetchTasks(), 300);
   },
 
   onFilterTap(e) {
-    // Placeholder for more complex filter logic (e.g., showing a dropdown menu)
-    const filterType = e.currentTarget.dataset.type;
-    wx.showToast({
-      title: `Filter by ${filterType} (not implemented yet)`,
-      icon: 'none'
-    });
+      const filterType = e.currentTarget.dataset.type;
+      wx.showToast({
+        title: `Filter by ${filterType} (not yet implemented)`,
+        icon: 'none'
+      });
   },
 
   onPullDownRefresh() {
@@ -46,7 +53,7 @@ Page({
       page: 1,
       hasMore: true,
     });
-    this.fetchTasks().then(() => {
+    this.fetchTasks().finally(() => {
       wx.stopPullDownRefresh();
     });
   },
@@ -66,10 +73,8 @@ Page({
       pageSize: this.data.pageSize,
       filters: this.data.filters
     }).then(res => {
-      // Now we pass the raw task data directly to the list
-      const fetchedTasks = res.data;
       this.setData({
-        taskList: this.data.taskList.concat(fetchedTasks),
+        taskList: this.data.taskList.concat(res.data),
         hasMore: res.hasMore,
         page: this.data.page + 1,
         isLoading: false
@@ -80,9 +85,9 @@ Page({
   },
 
   handleCardTap(e) {
-    const taskId = e.currentTarget.dataset.item._id;
+    const { itemId } = e.detail;
     wx.navigateTo({
-      url: `/pages/task-details/task-details?id=${taskId}`,
+      url: `/pages/task-details/task-details?id=${itemId}`,
     });
   },
 
