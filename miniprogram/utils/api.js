@@ -19,8 +19,10 @@ const callCloud = (type, payload = {}, showLoading = false) => {
       if (res.result && res.result.success) {
         resolve(res.result);
       } else {
+        // Use the specific error message from the backend, or a default one.
+        const errorMessage = res.result && res.result.message ? res.result.message : '操作失败，请稍后重试';
         wx.showToast({
-          title: res.result.message || '操作失败',
+          title: errorMessage,
           icon: 'none'
         });
         console.error(`[API Error][${type}]`, res.result);
