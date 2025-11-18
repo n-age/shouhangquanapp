@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>任务大厅 - 无人机飞手服务平台</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#136dec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101822",
+              "surface-dark": "#1a232e",
+              "success": "#22c55e",
+              "warning": "#f59e0b",
+              "muted": "#64748b"
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="flex size-12 shrink-0 items-center">
+<!-- Placeholder for potential left icon -->
+</div>
+<h1 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">任务大厅</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-12 text-slate-900 dark:text-white min-w-0 p-0">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 dark:text-slate-400 flex border-none bg-white dark:bg-surface-dark items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-white dark:bg-surface-dark focus:border-none h-full placeholder:text-slate-400 dark:placeholder:text-slate-500 px-4 rounded-l-none pl-2 text-base font-normal leading-normal" placeholder="搜索任务标题/地点" value=""/>
+</div>
+</label>
+</div>
+<!-- Chips / Filters -->
+<div class="flex gap-3 px-4 pb-3 overflow-x-auto">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-surface-dark pl-4 pr-2">
+<p class="text-slate-900 dark:text-white text-sm font-medium leading-normal">状态</p>
+<span class="material-symbols-outlined text-slate-900 dark:text-white !text-xl">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-surface-dark pl-4 pr-2">
+<p class="text-slate-900 dark:text-white text-sm font-medium leading-normal">类型</p>
+<span class="material-symbols-outlined text-slate-900 dark:text-white !text-xl">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-surface-dark pl-4 pr-2">
+<p class="text-slate-900 dark:text-white text-sm font-medium leading-normal">地点</p>
+<span class="material-symbols-outlined text-slate-900 dark:text-white !text-xl">expand_more</span>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-surface-dark pl-4 pr-2">
+<p class="text-slate-900 dark:text-white text-sm font-medium leading-normal">排序</p>
+<span class="material-symbols-outlined text-slate-900 dark:text-white !text-xl">expand_more</span>
+</button>
+</div>
+</header>
+<!-- Main Content: Task List -->
+<main class="flex-1 px-4 pb-24 space-y-4">
+<!-- Task Card 1 -->
+<div class="flex cursor-pointer flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-4">
+<div class="flex items-start justify-between">
+<h2 class="text-slate-900 dark:text-white text-base font-bold leading-tight flex-1 pr-4">XX地产项目航拍</h2>
+<p class="text-primary text-lg font-bold leading-tight">¥2,000</p>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<div class="inline-flex items-center justify-center rounded-full bg-success/20 px-3 py-1 text-xs font-medium text-success">招募中</div>
+<div class="inline-flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">航拍</div>
+<div class="inline-flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">地产</div>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-700"></div>
+<div class="flex flex-col gap-2 text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">business_center</span>
+<p>发布方: 科技创新公司</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">location_on</span>
+<p>地点: 北京 朝阳区</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">event_busy</span>
+<p>截止: 2024-08-15</p>
+</div>
+</div>
+</div>
+<!-- Task Card 2 -->
+<div class="flex cursor-pointer flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-4">
+<div class="flex items-start justify-between">
+<h2 class="text-slate-900 dark:text-white text-base font-bold leading-tight flex-1 pr-4">城市桥梁巡检</h2>
+<p class="text-primary text-lg font-bold leading-tight">¥500/小时</p>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<div class="inline-flex items-center justify-center rounded-full bg-success/20 px-3 py-1 text-xs font-medium text-success">招募中</div>
+<div class="inline-flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">巡检</div>
+<div class="inline-flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">测绘</div>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-700"></div>
+<div class="flex flex-col gap-2 text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">business_center</span>
+<p>发布方: 城市交通局</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">location_on</span>
+<p>地点: 上海 浦东新区</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">event_busy</span>
+<p>截止: 2024-08-20</p>
+</div>
+</div>
+</div>
+<!-- Task Card 3 -->
+<div class="flex cursor-pointer flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-4">
+<div class="flex items-start justify-between">
+<h2 class="text-slate-900 dark:text-white text-base font-bold leading-tight flex-1 pr-4">景区宣传片素材拍摄</h2>
+<p class="text-primary text-lg font-bold leading-tight">¥3,500</p>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<div class="inline-flex items-center justify-center rounded-full bg-warning/20 px-3 py-1 text-xs font-medium text-warning">进行中</div>
+<div class="inline-flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">影视制作</div>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-700"></div>
+<div class="flex flex-col gap-2 text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">business_center</span>
+<p>发布方: 风景旅游集团</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">location_on</span>
+<p>地点: 杭州 西湖区</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">event_busy</span>
+<p>截止: 2024-08-10</p>
+</div>
+</div>
+</div>
+<!-- Task Card 4 -->
+<div class="flex cursor-pointer flex-col gap-4 rounded-xl bg-white dark:bg-surface-dark p-4 opacity-70">
+<div class="flex items-start justify-between">
+<h2 class="text-slate-900 dark:text-white text-base font-bold leading-tight flex-1 pr-4">农田植保作业</h2>
+<p class="text-slate-500 dark:text-slate-400 text-lg font-bold leading-tight">¥1,800</p>
+</div>
+<div class="flex flex-wrap items-center gap-2">
+<div class="inline-flex items-center justify-center rounded-full bg-muted/20 px-3 py-1 text-xs font-medium text-muted">已结束</div>
+<div class="inline-flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300">农业</div>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-700"></div>
+<div class="flex flex-col gap-2 text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">business_center</span>
+<p>发布方: 现代农业合作社</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">location_on</span>
+<p>地点: 河南 郑州市</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined !text-base">event_busy</span>
+<p>截止: 2024-07-30</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-8 right-6">
+<button class="flex h-14 items-center justify-center gap-2 rounded-full bg-primary pl-5 pr-6 text-white shadow-lg">
+<span class="material-symbols-outlined">add</span>
+<span class="text-base font-bold">发布任务</span>
+</button>
+</div>
+</div>
+</body></html>

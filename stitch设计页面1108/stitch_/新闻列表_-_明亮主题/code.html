@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>无人机飞手服务平台 - 资讯</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2C6DFF",
+            "background-light": "#F8F9FA",
+            "background-dark": "#101822",
+            "text-primary-light": "#1F2937",
+            "text-secondary-light": "#6B7280",
+            "text-primary-dark": "#F8F9FA",
+            "text-secondary-dark": "#9CA3AF",
+            "border-light": "#E9ECEF",
+            "border-dark": "#374151"
+          },
+          fontFamily: {
+            "display": ["Manrope", "Noto Sans SC", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-text-primary-light dark:text-text-primary-dark" style="font-size: 28px;">arrow_back_ios_new</span>
+</div>
+<h1 class="text-lg font-bold tracking-[-0.015em] text-text-primary-light dark:text-text-primary-dark flex-1 text-center">资讯</h1>
+<div class="size-12 shrink-0"></div>
+</div>
+</header>
+<main class="flex flex-col flex-1">
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-text-secondary-light dark:text-text-secondary-dark flex border-none bg-border-light dark:bg-gray-800 items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined" style="font-size: 24px;">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-text-primary-light dark:text-text-primary-dark focus:outline-0 focus:ring-0 border-none bg-border-light dark:bg-gray-800 focus:border-none h-full placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark px-4 pl-2 text-base font-normal leading-normal" placeholder="搜索行业新闻、法规政策" value=""/>
+</div>
+</label>
+</div>
+<!-- Chips / Category Filter -->
+<div class="flex gap-3 px-4 py-2 overflow-x-auto whitespace-nowrap">
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary pl-4 pr-4">
+<p class="text-white text-sm font-medium leading-normal">全部</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-border-light dark:bg-gray-800 pl-4 pr-4">
+<p class="text-text-primary-light dark:text-text-primary-dark text-sm font-medium leading-normal">行业动态</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-border-light dark:bg-gray-800 pl-4 pr-4">
+<p class="text-text-primary-light dark:text-text-primary-dark text-sm font-medium leading-normal">政策法规</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-border-light dark:bg-gray-800 pl-4 pr-4">
+<p class="text-text-primary-light dark:text-text-primary-dark text-sm font-medium leading-normal">技术前沿</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-border-light dark:bg-gray-800 pl-4 pr-4">
+<p class="text-text-primary-light dark:text-text-primary-dark text-sm font-medium leading-normal">飞行安全</p>
+</div>
+</div>
+<!-- News Cards List -->
+<div class="flex flex-col gap-2 p-4 pt-4">
+<!-- Card 1 -->
+<div class="bg-white dark:bg-gray-800 rounded-xl p-4">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-[2_2_0px] flex-col gap-2">
+<p class="text-text-primary-light dark:text-text-primary-dark text-base font-bold leading-tight line-clamp-2">新款农业无人机发布，效率提升30%，助力智慧农业新发展</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal">来源: 无人机网 | 3小时前</p>
+</div>
+<div class="w-28 h-20 bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-shrink-0" data-alt="A new agricultural drone flying over a green field" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCoKgpzAyuBPm0eVXF143WQ27O5NEn4Hvh3u9mX6TePzENisaLOfGzCfe4BuNZeKVmT6OMrrOr7flTYdTHy5gXzIeyYMVUom_9lGwRUR9-gPt7on8Rh_9jhScY_vbKQyPBFqWlyeKOokNdH2nI2VEZfGn8z1wWkuCLBXZwy2ezQmRXbBoX7ve05j9vsS_f_bDj6KiyWXBlK2pKf2PPvjy1EY8iDdiuHFd0qKITbKjnzTi03spJVx5HqW6k_LV29yYH1ZMI_6ALcXEo");'></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white dark:bg-gray-800 rounded-xl p-4">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-[2_2_0px] flex-col gap-2">
+<p class="text-text-primary-light dark:text-text-primary-dark text-base font-bold leading-tight line-clamp-2">民航局发布无人机飞行新规草案，公开征求意见</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal">来源: 政策前沿 | 1天前</p>
+</div>
+<div class="w-28 h-20 bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-shrink-0" data-alt="An official document with a gavel, representing regulations" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDRLMAvmrUuHQAi-qI-5ylzJs2aRT2XSENaLEuDqHLra5FMKvcbmHr2s7YOwvgtUJ2rXyyLbjAK-WnQb55XZBJUOV6oTCeUWQCxSkYW1WwlG2BkIzRrDffv6Q1OBtsmHwtNQJoAou7az1bT1A85Uvtjlotb3e9c0FMsJNAwcd3-5cft8VqfYn_kLlKVLfC9Y4b5y5jst4c6YECsLkX6HR0Ulz_aQQF4zwqdhgNbRIsmhmXsIY2deIRBvSO3RQbObgNz3pk-vMpIOHk");'></div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white dark:bg-gray-800 rounded-xl p-4">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-[2_2_0px] flex-col gap-2">
+<p class="text-text-primary-light dark:text-text-primary-dark text-base font-bold leading-tight line-clamp-2">无人机在城市物流中的应用前景与挑战分析</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal">来源: 科技日报 | 2天前</p>
+</div>
+<div class="w-28 h-20 bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-shrink-0" data-alt="A delivery drone carrying a package over a cityscape" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDIi0zQNlk-x530Sf5mBJmZ7n23hle0Uto-x_IShZYlgNNqnxwxe8r1G6a2N5_y3fV01HlhIXiC5DscGIHnm5K0jOiUwBKr3qqWZdemVuVQXTg2IFsSCiLgMIWmzHNjYyGBjyv5P56QIP-0CvUhx06UsITDiI_OEgMtFJDBMy8Ia72WZKrhrDcSALe8CBjp-NDDH8AcxfjrQiMFfCjAVJlaL-lVRAJkzTAetQGfTePK3POA8slrE7eFeRdRQNuJyYjGIbTQerlr8Rw");'></div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-white dark:bg-gray-800 rounded-xl p-4">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-[2_2_0px] flex-col gap-2">
+<p class="text-text-primary-light dark:text-text-primary-dark text-base font-bold leading-tight line-clamp-2">如何成为一名合格的无人机飞手？考证全攻略</p>
+<p class="text-text-secondary-light dark:text-text-secondary-dark text-sm font-normal leading-normal">来源: 飞手学院 | 3天前</p>
+</div>
+<div class="w-28 h-20 bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-shrink-0" data-alt="A person operating a drone controller with the drone in the background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCV4sCET4AEGx2znzOWq-61UjPD3kJ4ccSD8zrnpdcYIWDJjQIEq9wgUrlyUMskVix2Ur4SryZcbiF1Kdrhtqk1AIISO9Ypz9HcAE69-H6Z-R7PCPB7PMVb3HBiaWGUdkAb7Esp0E2dq5O0j41bBz7b6qbndhK3sXU-Tp86ZE0k_d9rQznJjQ0HWsBldg2YQ1UTKLW6GHBlE5oV_mNjC1Nq6j3uLu4gckvvqzdIqVh82h5sMrlC0n_PyWp34V-ngtuJktZzztxusy8");'></div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

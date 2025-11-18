@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>实名认证</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#136dec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101822",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start text-slate-900 dark:text-white">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">实名认证</h2>
+</div>
+<div class="flex-grow px-4">
+<!-- Body Text -->
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-normal pb-6 pt-1">为保障平台安全与您的权益，请完成实名认证</p>
+<!-- Form Section -->
+<div class="space-y-6">
+<!-- Name TextField -->
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal pb-2">姓名</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary border-slate-300 dark:border-slate-700 bg-slate-200/50 dark:bg-slate-800/50 h-14 placeholder:text-slate-400 dark:placeholder:text-slate-500 p-4 text-base font-normal leading-normal" placeholder="请输入您的真实姓名" value=""/>
+</label>
+<!-- ID Number TextField -->
+<label class="flex flex-col min-w-40 flex-1">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal pb-2">身份证号</p>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary border-slate-300 dark:border-slate-700 bg-slate-200/50 dark:bg-slate-800/50 h-14 placeholder:text-slate-400 dark:placeholder:text-slate-500 p-4 text-base font-normal leading-normal" placeholder="请输入您的18位身份证号码" value=""/>
+</label>
+</div>
+<!-- Image Uploader -->
+<div class="mt-8">
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal pb-2">手持身份证照片</p>
+<div class="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-200/50 dark:bg-slate-800/50 p-6 text-center aspect-[16/10]">
+<div class="flex items-center justify-center size-16 rounded-full bg-primary/20 text-primary mb-4">
+<span class="material-symbols-outlined text-4xl">add_a_photo</span>
+</div>
+<p class="text-base font-medium text-slate-900 dark:text-white">点击上传照片</p>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">请确保照片清晰、信息完整可见</p>
+</div>
+</div>
+</div>
+<!-- Footer Section with CTA -->
+<div class="p-4 pt-8 sticky bottom-0 bg-background-light dark:bg-background-dark">
+<button class="flex w-full items-center justify-center rounded-xl bg-primary h-14 text-base font-bold text-white transition-opacity hover:opacity-90 active:opacity-80">
+            提交审核
+        </button>
+<p class="text-center text-xs text-slate-500 dark:text-slate-400 pt-4">信息仅用于审核，我们将严格保密</p>
+</div>
+</div>
+</body></html>

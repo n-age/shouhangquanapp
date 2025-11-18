@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#136dec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101822",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex items-center justify-between bg-background-light/80 p-4 pb-2 backdrop-blur-sm dark:bg-background-dark/80">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-gray-300 text-3xl">admin_panel_settings</span>
+</div>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-gray-800 dark:text-white">平台管理后台</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="flex h-12 cursor-pointer items-center justify-center rounded-lg bg-transparent p-0 text-gray-400 hover:text-white">
+<span class="material-symbols-outlined">logout</span>
+</button>
+</div>
+</header>
+<main class="flex-1 p-4">
+<!-- Stats Section -->
+<section class="mb-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-1 flex-col gap-2 rounded-xl bg-gray-200/50 p-4 dark:bg-white/5">
+<p class="text-sm font-medium text-gray-600 dark:text-gray-400">用户总数</p>
+<p class="text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">1,482</p>
+</div>
+<div class="flex flex-1 flex-col gap-2 rounded-xl bg-gray-200/50 p-4 dark:bg-white/5">
+<p class="text-sm font-medium text-gray-600 dark:text-gray-400">进行中任务</p>
+<p class="text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">112</p>
+</div>
+<div class="flex flex-1 flex-col gap-2 rounded-xl bg-gray-200/50 p-4 dark:bg-white/5">
+<p class="text-sm font-medium text-gray-600 dark:text-gray-400">待处理订单</p>
+<p class="text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white">36</p>
+</div>
+<div class="flex flex-1 flex-col gap-2 rounded-xl bg-primary/20 p-4 dark:bg-primary/20">
+<p class="text-sm font-medium text-primary dark:text-primary/90">待审核认证</p>
+<p class="text-2xl font-bold leading-tight tracking-tight text-primary dark:text-white">8</p>
+</div>
+</div>
+</section>
+<!-- Management Navigation List -->
+<section class="space-y-3">
+<a class="flex items-center justify-between gap-4 rounded-xl bg-gray-200/50 p-4 active:bg-gray-300/50 dark:bg-white/5 dark:active:bg-white/10" href="#">
+<div class="flex items-center gap-4">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gray-300/60 dark:bg-gray-700/80">
+<span class="material-symbols-outlined text-gray-700 dark:text-gray-300">group</span>
+</div>
+<p class="flex-1 truncate text-base font-medium leading-normal text-gray-900 dark:text-white">用户管理</p>
+</div>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-500">arrow_forward_ios</span>
+</div>
+</a>
+<a class="flex items-center justify-between gap-4 rounded-xl bg-gray-200/50 p-4 active:bg-gray-300/50 dark:bg-white/5 dark:active:bg-white/10" href="#">
+<div class="flex items-center gap-4">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gray-300/60 dark:bg-gray-700/80">
+<span class="material-symbols-outlined text-gray-700 dark:text-gray-300">checklist</span>
+</div>
+<p class="flex-1 truncate text-base font-medium leading-normal text-gray-900 dark:text-white">任务管理</p>
+</div>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-500">arrow_forward_ios</span>
+</div>
+</a>
+<a class="flex items-center justify-between gap-4 rounded-xl bg-gray-200/50 p-4 active:bg-gray-300/50 dark:bg-white/5 dark:active:bg-white/10" href="#">
+<div class="flex items-center gap-4">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gray-300/60 dark:bg-gray-700/80">
+<span class="material-symbols-outlined text-gray-700 dark:text-gray-300">shopping_cart</span>
+</div>
+<p class="flex-1 truncate text-base font-medium leading-normal text-gray-900 dark:text-white">订单管理</p>
+</div>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-500">arrow_forward_ios</span>
+</div>
+</a>
+<a class="flex items-center justify-between gap-4 rounded-xl bg-gray-200/50 p-4 active:bg-gray-300/50 dark:bg-white/5 dark:active:bg-white/10" href="#">
+<div class="flex items-center gap-4">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-gray-300/60 dark:bg-gray-700/80">
+<span class="material-symbols-outlined text-gray-700 dark:text-gray-300">newspaper</span>
+</div>
+<p class="flex-1 truncate text-base font-medium leading-normal text-gray-900 dark:text-white">新闻管理</p>
+</div>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-500">arrow_forward_ios</span>
+</div>
+</a>
+<a class="flex items-center justify-between gap-4 rounded-xl bg-gray-200/50 p-4 active:bg-gray-300/50 dark:bg-white/5 dark:active:bg-white/10" href="#">
+<div class="flex items-center gap-4">
+<div class="relative flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/20 dark:bg-primary/30">
+<span class="material-symbols-outlined text-primary dark:text-primary">verified_user</span>
+<div class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">8</div>
+</div>
+<p class="flex-1 truncate text-base font-medium leading-normal text-gray-900 dark:text-white">认证审核</p>
+</div>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-gray-500 dark:text-gray-500">arrow_forward_ios</span>
+</div>
+</a>
+</section>
+</main>
+</div>
+</body></html>

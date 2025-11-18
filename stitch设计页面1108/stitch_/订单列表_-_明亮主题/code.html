@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="zh"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>我的订单</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#136dec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101822",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 bg-white dark:bg-background-dark dark:border-b dark:border-gray-800 shadow-sm">
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-gray-800 dark:text-gray-200 flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</div>
+<h1 class="text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center text-gray-900 dark:text-white">我的订单</h1>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-transparent text-gray-800 dark:text-gray-200 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-0 overflow-x-auto">
+<div class="flex border-b border-gray-200 dark:border-gray-800 px-4 gap-6 whitespace-nowrap">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-3 pt-2" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">全部</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-500 dark:text-gray-400 pb-3 pt-2" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">待支付</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-500 dark:text-gray-400 pb-3 pt-2" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">进行中</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-500 dark:text-gray-400 pb-3 pt-2" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">待确认</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-500 dark:text-gray-400 pb-3 pt-2" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">已完成</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-500 dark:text-gray-400 pb-3 pt-2" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">已取消</p>
+</a>
+</div>
+</div>
+</header>
+<main class="flex-1 p-4 space-y-4">
+<!-- Order Card 1: Awaiting Payment -->
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.08)] bg-white dark:bg-gray-800">
+<div class="flex w-full grow flex-col items-stretch justify-center gap-3 p-4">
+<div class="flex items-center justify-between">
+<p class="text-base font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">XX 商业区航拍项目</p>
+<p class="text-sm font-medium leading-normal text-orange-600 dark:text-orange-400">待支付</p>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-700 pt-3 flex flex-col gap-1.5">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">订单金额: <span class="font-medium text-gray-800 dark:text-gray-200">¥5,000.00</span></p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">下单时间: 2023-10-27 10:30</p>
+</div>
+</div>
+<div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-end border-t border-gray-100 dark:border-gray-700">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-gray-600 dark:text-gray-300 ring-1 ring-gray-300 dark:ring-gray-600 text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">取消订单</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">去支付</span>
+</button>
+</div>
+</div>
+<!-- Order Card 2: In Progress -->
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.08)] bg-white dark:bg-gray-800">
+<div class="flex w-full grow flex-col items-stretch justify-center gap-3 p-4">
+<div class="flex items-center justify-between">
+<p class="text-base font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">城市宣传片航拍</p>
+<p class="text-sm font-medium leading-normal text-blue-600 dark:text-blue-400">进行中</p>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-700 pt-3 flex flex-col gap-1.5">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">订单金额: <span class="font-medium text-gray-800 dark:text-gray-200">¥8,800.00</span></p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">下单时间: 2023-10-26 14:00</p>
+</div>
+</div>
+<div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-end border-t border-gray-100 dark:border-gray-700">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">查看详情</span>
+</button>
+</div>
+</div>
+<!-- Order Card 3: Awaiting Confirmation -->
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.08)] bg-white dark:bg-gray-800">
+<div class="flex w-full grow flex-col items-stretch justify-center gap-3 p-4">
+<div class="flex items-center justify-between">
+<p class="text-base font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">房地产楼盘跟拍服务</p>
+<p class="text-sm font-medium leading-normal text-purple-600 dark:text-purple-400">待确认</p>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-700 pt-3 flex flex-col gap-1.5">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">订单金额: <span class="font-medium text-gray-800 dark:text-gray-200">¥12,500.00</span></p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">下单时间: 2023-10-25 09:00</p>
+</div>
+</div>
+<div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-end border-t border-gray-100 dark:border-gray-700">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">确认完成</span>
+</button>
+</div>
+</div>
+<!-- Order Card 4: Completed -->
+<div class="flex flex-col items-stretch justify-start rounded-xl shadow-[0_2px_8px_rgba(0,0,0,0.08)] bg-white dark:bg-gray-800">
+<div class="flex w-full grow flex-col items-stretch justify-center gap-3 p-4">
+<div class="flex items-center justify-between">
+<p class="text-base font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">婚礼庆典航拍记录</p>
+<p class="text-sm font-medium leading-normal text-green-600 dark:text-green-400">已完成</p>
+</div>
+<div class="border-t border-gray-100 dark:border-gray-700 pt-3 flex flex-col gap-1.5">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">订单金额: <span class="font-medium text-gray-800 dark:text-gray-200">¥3,200.00</span></p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">下单时间: 2023-10-22 18:00</p>
+</div>
+</div>
+<div class="flex flex-1 gap-3 flex-wrap px-4 py-3 justify-end border-t border-gray-100 dark:border-gray-700">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-transparent text-gray-600 dark:text-gray-300 ring-1 ring-gray-300 dark:ring-gray-600 text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">评价</span>
+</button>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">查看详情</span>
+</button>
+</div>
+</div>
+<!-- Empty State -->
+<div class="flex flex-col items-center justify-center py-20 text-center">
+<div class="flex items-center justify-center w-20 h-20 rounded-full bg-gray-100 dark:bg-gray-800 mb-4">
+<span class="material-symbols-outlined text-4xl text-gray-400 dark:text-gray-500">receipt_long</span>
+</div>
+<h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">暂无相关订单</h3>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">切换筛选条件或稍后再试</p>
+</div>
+</main>
+</div>
+</body></html>

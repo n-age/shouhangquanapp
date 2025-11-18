@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>飞手个人主页</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#136dec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101822",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<div class="flex items-center bg-background-dark/80 backdrop-blur-sm p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center text-white">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">飞手主页</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 w-10 bg-transparent text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-2xl">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Profile Header -->
+<div class="p-4 @container">
+<div class="flex w-full flex-col gap-4 @[520px]:flex-row @[520px]:justify-between @[520px]:items-center">
+<div class="flex gap-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-24 w-24 shrink-0" data-alt="Profile picture of the drone pilot" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9AkabCCNKgsoqF9vdFljq7C4lkRSYxyEttJA8iFnfL_cpjv27huq0-OVDVUlRH76A_cJqAM7682GrNeqPyt8MNZ_FiqJJCPMxPyK-ufBeAcySNTO1LT7wjHDhjy2hsTwVm1nR5pkm3ED_PuhN-YYer74_D4R96pSmFjH5jv66njh_ijyQlygVP67eyEV__Bbi0TbaM4lZUNrZO2hEwx8LxPJpfvvMPyewyzJ3TKv2fTYuG6IjE5LDYVYilfYl1HcQGudo3wHdEKs");'></div>
+<div class="flex flex-col justify-center gap-1">
+<div class="flex items-center gap-2">
+<p class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">无人机大师</p>
+<span class="material-symbols-outlined text-primary text-xl">verified</span>
+</div>
+<p class="text-gray-400 text-base font-normal leading-normal">平台认证飞手</p>
+</div>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] w-full max-w-[480px] @[480px]:w-auto">
+<span class="truncate">关注</span>
+</button>
+</div>
+</div>
+<!-- Profile Stats -->
+<div class="flex flex-wrap gap-3 px-4 py-3">
+<div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-xl bg-gray-800/50 p-3 items-start">
+<p class="text-white tracking-light text-2xl font-bold leading-tight">500+</p>
+<div class="flex items-center gap-2"><p class="text-gray-400 text-sm font-normal leading-normal">飞行小时</p></div>
+</div>
+<div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-xl bg-gray-800/50 p-3 items-start">
+<p class="text-white tracking-light text-2xl font-bold leading-tight">4.9</p>
+<div class="flex items-center gap-2"><p class="text-gray-400 text-sm font-normal leading-normal">综合评分</p></div>
+</div>
+<div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-xl bg-gray-800/50 p-3 items-start">
+<p class="text-white tracking-light text-2xl font-bold leading-tight">120</p>
+<div class="flex items-center gap-2"><p class="text-gray-400 text-sm font-normal leading-normal">完成任务</p></div>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-3 sticky top-[72px] bg-background-dark/80 backdrop-blur-sm z-10">
+<div class="flex border-b border-gray-700 px-4 justify-between">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary pb-[13px] pt-4 flex-1" href="#">
+<p class="text-white text-sm font-bold leading-normal tracking-[0.015em]">简介</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-400 pb-[13px] pt-4 flex-1" href="#">
+<p class="text-gray-400 text-sm font-bold leading-normal tracking-[0.015em]">任务列表</p>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-6 px-4 py-4 pb-28">
+<!-- About Me Section -->
+<div class="flex flex-col gap-3">
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">关于我</h3>
+<p class="text-gray-300 text-sm leading-relaxed">拥有超过5年无人机飞行经验，精通大疆全系列机型。专注于影视航拍与三维建模，致力于用独特的空中视角创造震撼的视觉作品。安全飞行500+小时，零事故记录。</p>
+</div>
+<!-- Skills Section -->
+<div class="flex flex-col gap-3">
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">擅长领域</h3>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1.5 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-base">photo_camera</span> 影视航拍
+                    </span>
+<span class="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1.5 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-base">view_in_ar</span> 3D建模
+                    </span>
+<span class="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1.5 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-base">agriculture</span> 农业植保
+                    </span>
+<span class="inline-flex items-center gap-2 rounded-full bg-primary/20 px-3 py-1.5 text-sm font-medium text-primary">
+<span class="material-symbols-outlined text-base">theaters</span> FPV穿越机
+                    </span>
+</div>
+</div>
+<!-- Equipment Section -->
+<div class="flex flex-col gap-3">
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">我的设备</h3>
+<div class="flex flex-col gap-3 rounded-xl bg-gray-800/50 p-4">
+<div class="flex items-center justify-between">
+<p class="text-white font-semibold">DJI Inspire 3</p>
+<p class="text-gray-400 text-sm">主力机</p>
+</div>
+<div class="w-full h-px bg-gray-700"></div>
+<div class="flex items-center justify-between">
+<p class="text-white font-semibold">DJI Mavic 3 Pro</p>
+<p class="text-gray-400 text-sm">备用机</p>
+</div>
+<div class="w-full h-px bg-gray-700"></div>
+<div class="flex items-center justify-between">
+<p class="text-white font-semibold">DJI Avata</p>
+<p class="text-gray-400 text-sm">FPV机</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Fixed Bottom Button -->
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-background-dark/80 backdrop-blur-sm border-t border-t-gray-800 z-20">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl h-12 bg-primary px-6 text-white text-base font-bold">
+<span class="material-symbols-outlined">chat</span>
+<span>联系飞手</span>
+</button>
+</div>
+</div>
+</body></html>

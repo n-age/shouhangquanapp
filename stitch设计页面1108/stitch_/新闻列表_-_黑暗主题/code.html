@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>无人机资讯</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#136dec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101822",
+            },
+            fontFamily: {
+              "display": ["Newsreader", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center p-4 pb-2 justify-between">
+<h1 class="text-slate-900 dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em] flex-1">无人机资讯</h1>
+<div class="text-slate-500 dark:text-slate-400 flex size-12 shrink-0 items-center justify-end">
+<span class="material-symbols-outlined text-2xl">
+                    notifications
+                </span>
+</div>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="sticky top-[72px] z-10 bg-background-light dark:bg-background-dark/80 backdrop-blur-sm px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-slate-500 dark:text-slate-400 flex bg-slate-200 dark:bg-[#1C2530] items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined">
+                        search
+                    </span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-slate-200 dark:bg-[#1C2530] focus:border-none h-full placeholder:text-slate-500 dark:placeholder:text-slate-400 pl-2 text-base font-normal leading-normal" placeholder="搜索无人机资讯" value=""/>
+</div>
+</label>
+</div>
+<!-- Chips / Filter Tabs -->
+<div class="px-4 py-3">
+<div class="flex gap-3 overflow-x-auto pb-2">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary pl-5 pr-5">
+<p class="text-white text-sm font-medium leading-normal">全部</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-200 dark:bg-[#1C2530] pl-5 pr-5">
+<p class="text-slate-800 dark:text-slate-300 text-sm font-medium leading-normal">行业动态</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-200 dark:bg-[#1C2530] pl-5 pr-5">
+<p class="text-slate-800 dark:text-slate-300 text-sm font-medium leading-normal">政策法规</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-200 dark:bg-[#1C2530] pl-5 pr-5">
+<p class="text-slate-800 dark:text-slate-300 text-sm font-medium leading-normal">技术前沿</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-200 dark:bg-[#1C2530] pl-5 pr-5">
+<p class="text-slate-800 dark:text-slate-300 text-sm font-medium leading-normal">飞手故事</p>
+</button>
+</div>
+</div>
+<!-- News Card List -->
+<div class="flex flex-col gap-4 p-4 pt-2">
+<!-- Card 1 -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-slate-100 dark:bg-[#1C2530] p-4">
+<div class="flex flex-col gap-2 flex-[2_2_0px]">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">新款农业无人机发布，效率提升30%，助力智慧农业新篇章</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-normal mt-auto">科技前沿 • 2小时前</p>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex-1" data-alt="A sleek new agricultural drone hovering over a green field." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDyP7wJgHsXndwvTPSoqMRb0cQZkdmZycuXrkh4JKOn-J3Wz41wQzMmc1fRfSMqab1lChh61yCGcDV3viGo8E6yV3KPpW2rDcL1pWMROOz6eJUOjoaRE6DxxBSPUDn65hq7EE4bE5R3aXqwX8vR88jYMYg5hhYBxpYoqhfsDMLun7vEp854-MGo2QO0KifAfk03_CnzPpvFoew2ZUK1nGzqSyFAMSsglE6Zsy9oiR294gdJPzQ_Jr_lUUsnN8TSOPDDJIh4rzYJwNc");'></div>
+</div>
+<!-- Card 2 -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-slate-100 dark:bg-[#1C2530] p-4">
+<div class="flex flex-col gap-2 flex-[2_2_0px]">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">民航局发布无人机飞行新规，明确空域划分与申报流程</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-normal mt-auto">政策法规解读 • 5小时前</p>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex-1" data-alt="An official document with a gavel and a small drone model on top." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDunAqQ5DlKE41UAZRwmGfe3MUmt2EExZTEeTCspTZJwFMQfej80WfCp6v-IuqpYGk4ifVLRa-NAqpe2skZBH9-hmmx8Ju05bGXEvP6GbvTOhy7rhMWb-JS10OFWSHgWUzSth0Hmo3b-4M9AoCEdmyz-DCxmfHnIa4NtuMaHBB8__3O-wPCGMMPqPJgT9hRjmveHMyL0CAp7Aj4uLWBF5J0TwXFVrLyr1KAV8HQvm3bLJum6yR_EBDJJ3UDbMGaarMEMxMVTQ0bs1E");'></div>
+</div>
+<!-- Card 3 -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-slate-100 dark:bg-[#1C2530] p-4">
+<div class="flex flex-col gap-2 flex-[2_2_0px]">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">专访资深飞手李明：从航拍爱好者到商业无人机飞行专家</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-normal mt-auto">飞手故事 • 昨天</p>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex-1" data-alt="A portrait of a person holding a drone controller, smiling." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJtRe2IipoLa1IceQPGgUz6sO7X-ai-wPHDsOzKmFeRNNHQK0i8SEJqjaYTzg5tZgYGD4UWpGujFm1T_NjwWXVKgBGlGFe1ku_qj9TYlg4gqVE-ohl5kGXuf3NuMXtGtnoBEVYoZ3XXZWq0NqcpZ5qPbPgZo3hPjF9XGtDJ78oks90nApvIhhj0s3qiteZkkCXz5h4K2y6AL5xlr2988AkwviKZ-r6CSxrkA29ZkmfkNZGMSORNuqbhj0BzYSQkDzZhHNF26_K9K4");'></div>
+</div>
+<!-- Card 4 -->
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-slate-100 dark:bg-[#1C2530] p-4">
+<div class="flex flex-col gap-2 flex-[2_2_0px]">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">无人机物流配送试点城市扩大，你的快递可能从天而降</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-normal leading-normal mt-auto">行业动态 • 3天前</p>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex-1" data-alt="A delivery drone carrying a package flying over a suburban neighborhood." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB4BP30VLRSzWr3yutfi6dPODLziZYgNVc21ML8c8lwWwKxbsif56-q_s6PKJGuG0Um6Rxd8bME5iS6v0j3oWrYVAupH6HgFNyTpWU3XS0BBkDAN8og6HjUDTQioD-fkhQZvuJ3SB44-0WqbFJFu6Y96Cpw9Mgb6tN08oWcL0VQQS6D8W3HeXlZyTT-MDIt1HrJ8YfaEx0VjL3ofbOahFahGHGh6U47IBnksWHU50ptTnP82VHM85en16mQswe0d_dPvht4d-BaDAc");'></div>
+</div>
+</div>
+</div>
+</body></html>

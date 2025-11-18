@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Feedback Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#136dec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101822",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center bg-white dark:bg-background-dark dark:border-b dark:border-gray-800 p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined text-[#111418] dark:text-gray-200">arrow_back_ios_new</span>
+</div>
+<h2 class="text-[#111418] dark:text-gray-200 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">意见反馈</h2>
+</div>
+<main class="flex-grow pb-28">
+<!-- Feedback Content Section -->
+<section class="mt-2 bg-white dark:bg-background-dark pt-4">
+<h3 class="text-[#111418] dark:text-gray-200 text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2">反馈内容</h3>
+<div class="flex flex-col gap-1 px-4 py-3">
+<label class="flex flex-col min-w-40 flex-1">
+<textarea class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#111418] dark:text-gray-200 focus:outline-0 focus:ring-0 border border-[#dbe0e6] dark:border-gray-700 bg-background-light dark:bg-gray-800/50 focus:border-primary min-h-36 placeholder:text-gray-400 dark:placeholder-gray-500 p-[15px] text-base font-normal leading-normal" placeholder="请详细描述您遇到的问题或建议..."></textarea>
+</label>
+<p class="text-right text-[#617289] dark:text-gray-400 text-sm font-normal leading-normal pt-1">0/500</p>
+</div>
+</section>
+<!-- Image Upload Section -->
+<section class="mt-3 bg-white dark:bg-background-dark pt-4">
+<h3 class="text-[#111418] dark:text-gray-200 text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2">上传截图<span class="text-gray-400 font-normal ml-1">（可选）</span></h3>
+<div class="grid grid-cols-4 gap-4 px-4 py-3">
+<div class="relative w-full aspect-square">
+<img alt="Uploaded screenshot of a drone's flight path on a map." class="w-full h-full object-cover rounded-lg" data-alt="Uploaded screenshot of a drone's flight path on a map." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAINqsNulPBobJm_0Xd6d-pUed-NCe4ipCQnDAhuPVmuuCvYNiIgXnWhoYS943kimCy6zMZACv0v3C2MnOGfQTUiJGJyhv6twpqWzD8Qk6pMYaCnrwC9dAAShlisab9zD9xo1p13D6q54dbBH7jHDbtCG7PjSrZk8DNhSEncsDM0L6Xi5gd_WWKdIoHLC0oP_2wHA2rOOOtKYikf3sBnB_goUD3jL6Kb7VY9UzgkhJdj-7qXFrA7vY7BWta1_2B0tNnrnmMs1zn3Ic"/>
+<button class="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-gray-500 text-white dark:bg-gray-600">
+<span class="material-symbols-outlined !text-sm">close</span>
+</button>
+</div>
+<button class="flex aspect-square w-full flex-col items-center justify-center gap-1 rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-600 text-gray-400 dark:text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+<span class="material-symbols-outlined !text-3xl">add_photo_alternate</span>
+<span class="text-xs">1/3</span>
+</button>
+</div>
+</section>
+<!-- Contact Info Section -->
+<section class="mt-3 bg-white dark:bg-background-dark pt-4">
+<h3 class="text-[#111418] dark:text-gray-200 text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2">联系方式<span class="text-gray-400 font-normal ml-1">（可选）</span></h3>
+<div class="px-4 py-3">
+<input class="form-input flex w-full rounded-lg border border-[#dbe0e6] dark:border-gray-700 bg-background-light dark:bg-gray-800/50 px-4 py-3 text-base font-normal text-[#111418] dark:text-gray-200 placeholder:text-gray-400 dark:placeholder-gray-500 focus:border-primary focus:ring-0" placeholder="手机号/微信号，方便我们与您联系" type="text"/>
+</div>
+</section>
+</main>
+<!-- Floating Submit Button -->
+<div class="fixed bottom-0 left-0 w-full bg-white dark:bg-background-dark p-4 border-t border-gray-200 dark:border-gray-800">
+<button class="w-full rounded-lg bg-primary py-3 text-base font-bold text-white transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed">提交反馈</button>
+</div>
+</div>
+</body></html>

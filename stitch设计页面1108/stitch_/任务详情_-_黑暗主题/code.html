@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>任务详情</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#136dec",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101822",
+            "surface-dark": "#182029"
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 0,
+      'wght' 300,
+      'GRAD' 0,
+      'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 sticky top-0 z-10 border-b border-white/10">
+<div class="text-white flex size-10 -ml-2 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-2xl text-slate-300">arrow_back_ios_new</span>
+</div>
+<h1 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-slate-100 pr-8">任务详情</h1>
+</header>
+<main class="flex-1 px-4 pt-6 pb-28">
+<div class="mb-4 flex items-start justify-between">
+<h2 class="text-white tracking-light text-2xl font-bold leading-tight text-left max-w-[70%]">大疆Mavic 3 Pro城市宣传片航拍</h2>
+<p class="flex-1 text-right text-lg font-bold leading-normal text-primary">¥2000.00</p>
+</div>
+<div class="mb-6 flex gap-2">
+<div class="flex h-6 shrink-0 items-center justify-center gap-x-2 rounded bg-green-500/20 px-2">
+<p class="text-xs font-medium leading-normal text-green-400">开放中</p>
+</div>
+<div class="flex h-6 shrink-0 items-center justify-center gap-x-2 rounded bg-primary/20 px-2">
+<p class="text-xs font-medium leading-normal text-primary">航拍摄影</p>
+</div>
+</div>
+<div class="mb-6 space-y-4 rounded-xl bg-surface-dark p-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl text-slate-400">location_pin</span>
+<p class="flex-1 truncate text-base font-normal leading-normal text-slate-200">深圳市南山区</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl text-slate-400">calendar_today</span>
+<p class="flex-1 truncate text-base font-normal leading-normal text-slate-200">截止日期: 2023-10-31</p>
+</div>
+</div>
+<div class="mb-6 space-y-3">
+<h3 class="text-base font-semibold text-slate-200">任务描述</h3>
+<p class="text-sm font-normal leading-relaxed text-slate-400">
+        为城市旅游宣传片拍摄一组高质量的航拍镜头。要求使用大疆Mavic 3 Pro或同级别设备，捕捉日出、日落及城市夜景。需要提交至少10分钟的4K 60fps D-Log格式原始素材，并包含5张高质量航拍照片。
+      </p>
+</div>
+<div class="space-y-3">
+<h3 class="text-base font-semibold text-slate-200">发布者信息</h3>
+<div class="flex items-center justify-between rounded-xl bg-surface-dark p-4">
+<div class="flex items-center gap-3">
+<img class="size-10 rounded-full object-cover" data-alt="Publisher's avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK6QEq_aWP-eWN53smKDkAQTFxp2ue9SU-HsLok4nLBVi8S8zGypVDuOoeXxgjgZDer-vqHeQBMNucLz4FCIGv7V7xfr7u0SM9wDlwx64XBFhSfwTygFeTZ9iYuWjcJeIM8h6yLiPq5ElkrdQZt9xKALxAKhd0_7wWm82xlraxme3101fKgL-ofR4ouMLpxoLwBCN1JJN4Lqr5tOSKvz0z8fmBzorXrvCdTYYvvgdJ5Fe7fA-8_IUD8t03nmWT31BN_g-0XWrEEko"/>
+<div>
+<p class="text-base font-semibold text-slate-100">城市宣传部</p>
+<p class="text-xs text-slate-400">已实名认证</p>
+</div>
+</div>
+<button class="flex h-9 items-center justify-center gap-2 rounded-lg bg-slate-700 px-4 text-sm font-medium text-slate-200">
+<span class="material-symbols-outlined text-base">chat_bubble</span>
+<span>联系</span>
+</button>
+</div>
+</div>
+</main>
+<footer class="fixed bottom-0 left-0 z-10 w-full bg-background-dark/80 p-4 backdrop-blur-sm border-t border-white/10">
+<button class="flex h-14 w-full items-center justify-center rounded-xl bg-primary text-lg font-bold text-white shadow-lg shadow-primary/20">
+      立即抢单
+    </button>
+</footer>
+</div>
+
+</body></html>

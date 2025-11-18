@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Select Mission Location</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#136dec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101822",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark">
+<div class="relative flex h-screen w-full flex-col">
+<!-- Map Background -->
+<div class="absolute inset-0 h-full w-full bg-cover bg-center" data-alt="Dark themed aerial view of a city at night with illuminated streets" data-location="Shanghai" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDEpu7tE5FcVcz_6mm82HRUwZuzDZfsZCqljcUIAEv4Ec_bgHrHojQ69Z_fYZcBMhO9buEiDYtJgTcQJ7QsLmHTn4GyM1A_GNhj6d8o5cJ5qM_zocVEZU8-rQt6sIiQ4VyHm03He6vrbf0X5p75zo7718PhkFkxnauIexQghiVEmg4sLgbnzxhBlY2UvZXVPrUvI75NIBaDAV9RMxYkvM_5msQZttkqCHdgQ1ILfsRaxpTaDuWrpyXKcrAGT0FkhFxSTuLp7j0b7Kc");'></div>
+<!-- Center Marker Pin -->
+<div class="absolute inset-0 m-auto flex size-12 -translate-y-6 items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[48px]">location_on</span>
+</div>
+<!-- Floating UI Elements -->
+<div class="relative z-10 flex h-full flex-col justify-between p-4 pt-6 md:p-6">
+<!-- Top Section: Search Bar -->
+<div class="w-full">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-lg bg-background-dark/80 backdrop-blur-sm">
+<div class="text-white/70 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-transparent focus:border-none h-full placeholder:text-white/70 px-4 pl-2 text-base font-normal leading-normal" placeholder="输入任务地点" value=""/>
+</div>
+</label>
+</div>
+<!-- Bottom Section -->
+<div class="flex flex-col gap-4">
+<!-- Recenter FAB -->
+<div class="flex justify-end">
+<button class="flex size-14 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-background-dark/80 backdrop-blur-sm text-white shadow-lg">
+<span class="material-symbols-outlined text-2xl">my_location</span>
+</button>
+</div>
+<!-- Location Info Card -->
+<div class="flex flex-col gap-4 rounded-xl bg-background-dark/80 p-4 shadow-lg backdrop-blur-sm">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-col gap-1 flex-1">
+<p class="text-white text-base font-bold leading-tight">东方明珠广播电视塔</p>
+<p class="text-white/70 text-sm font-normal leading-normal">上海市浦东新区世纪大道1号</p>
+</div>
+<div class="h-16 w-16 flex-shrink-0 rounded-lg bg-cover bg-center" data-alt="A close-up view of the Oriental Pearl Tower" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfV1oX_TN3Uk45epxMMefpfVtQHc1zT2v3kNJWuljUPoYZrOFAWMlcs9oWd4R6CHuAHvdCbe2CLime6rPqa2kKzvcLOXJhjkPD05BdmYug9tupEayldWXKfMnnYuD9Z6LJtGG0aMA4p9Lcr13qo6AQNdWEcHG8SQHkDTxs2j197xtnI1iSNZqzF5TDs1lSo5XMXe8JaFIub3xZmqKYRudv_i8qeAjZZd2Dj3V8rf4z3ljY9LasQuF-FgcZCKEnk_EWLJxgJjIrWEU");'></div>
+</div>
+</div>
+<!-- Confirm Button -->
+<div class="w-full">
+<button class="flex min-w-[84px] w-full max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary text-white text-lg font-bold leading-normal tracking-wide">
+<span>确定此位置</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

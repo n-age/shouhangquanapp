@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="zh"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>飞手个人主页</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden text-[#111418] dark:text-white/90">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200/80 dark:border-white/10">
+<div class="flex size-12 shrink-0 items-center text-[#111418] dark:text-white/90">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-[#111418] dark:text-white/90 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">飞手主页</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-[#111418] dark:text-white/90 gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-2xl">more_horiz</span>
+</button>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-4">
+<!-- Profile Header -->
+<div class="flex gap-4 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-24 w-24 shrink-0" data-alt="Profile picture of a drone pilot" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAVUYCGjRMdsPyn0L7fSYwGB8B-2CusDSUGtqATXk30kHGdetKm0yRNtbux338nxJ1UfGS5BPOkTLA_-5vJHo-E86unAPEO73Fylzu8rm8HcMQk7v7BXv_ThzW8qgvU3KKiLuIlwDr_ojCNMoFfuBBhA1q8poE7oL7E7DQ1ZraWYNo7-E46CZxzudOv5kmLbRlmMc1MHPIyfpAlWDnZGiiWp2AfO3IGfIjKSMzKhVajB1NsUNEhBE2ssCYp2p9Z2WxaEVfvTLJ2wgw");'></div>
+<div class="flex flex-col justify-center gap-1">
+<p class="text-[#111418] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">无人机大师</p>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 rounded-full bg-green-100 dark:bg-green-900/50 px-2 py-1 text-xs font-medium text-green-700 dark:text-green-300">
+<span class="material-symbols-outlined !text-sm">verified</span> 已认证
+                        </span>
+<span class="inline-flex items-center rounded-full bg-blue-100 dark:bg-blue-900/50 px-2 py-1 text-xs font-medium text-blue-700 dark:text-blue-300">高级飞手</span>
+</div>
+</div>
+</div>
+<!-- Profile Stats -->
+<div class="flex flex-wrap gap-3">
+<div class="flex min-w-[100px] flex-1 basis-[fit-content] flex-col gap-1 rounded-lg border border-gray-200 dark:border-white/10 p-3 items-center text-center bg-white dark:bg-white/5">
+<p class="text-[#111418] dark:text-white tracking-light text-2xl font-bold leading-tight">1,200</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">总飞行小时</p>
+</div>
+<div class="flex min-w-[100px] flex-1 basis-[fit-content] flex-col gap-1 rounded-lg border border-gray-200 dark:border-white/10 p-3 items-center text-center bg-white dark:bg-white/5">
+<p class="text-[#111418] dark:text-white tracking-light text-2xl font-bold leading-tight">85</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">完成任务</p>
+</div>
+<div class="flex min-w-[100px] flex-1 basis-[fit-content] flex-col gap-1 rounded-lg border border-gray-200 dark:border-white/10 p-3 items-center text-center bg-white dark:bg-white/5">
+<p class="text-[#111418] dark:text-white tracking-light text-2xl font-bold leading-tight">230</p>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">关注者</p>
+</div>
+</div>
+<!-- Button Group -->
+<div class="flex flex-1 gap-3 flex-wrap justify-between pt-1">
+<button class="flex flex-1 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-gray-200 dark:bg-white/10 text-[#111418] dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">关注</span>
+</button>
+<button class="flex flex-1 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">联系飞手</span>
+</button>
+</div>
+<!-- About Me Card -->
+<div class="rounded-xl border border-gray-200 dark:border-white/10 p-4 bg-white dark:bg-white/5 flex flex-col gap-3">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">飞手简介</h3>
+<p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">拥有超过1200小时安全飞行经验的认证高级飞手。专注于商业航拍、农业植保和3D测绘建模。致力于为客户提供高效、精准、安全的无人机解决方案。</p>
+</div>
+<!-- Expertise Card -->
+<div class="rounded-xl border border-gray-200 dark:border-white/10 p-4 bg-white dark:bg-white/5 flex flex-col gap-3">
+<h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">擅长领域</h3>
+<div class="flex flex-wrap gap-2">
+<span class="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary dark:bg-primary/20 dark:text-sky-300">商业航拍</span>
+<span class="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary dark:bg-primary/20 dark:text-sky-300">农业植保</span>
+<span class="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary dark:bg-primary/20 dark:text-sky-300">测绘与建模</span>
+<span class="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary dark:bg-primary/20 dark:text-sky-300">婚礼跟拍</span>
+<span class="rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary dark:bg-primary/20 dark:text-sky-300">电力巡检</span>
+</div>
+</div>
+<!-- Completed Missions Section -->
+<div>
+<h3 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] pb-3 pt-2">完成的任务</h3>
+<!-- Mission List -->
+<div class="flex flex-col gap-4">
+<!-- Mission Card 1 -->
+<div class="flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5">
+<div class="bg-center bg-no-repeat aspect-video bg-cover" data-alt="Aerial shot of a modern city skyline at sunset" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB60swFUP7WSsuaQap_Z4qegZh69iP0mNRBye49Gu4vIvEV4MEmDU5IT7ub_sE4_Ba8WxVFffyiwX8W1Nz9vhTvwk57PPoWx9VzEhmyNZHOKIiJBbTH0x5mJ6JdjDyRb3GD8C0UT6hIlk5WMpVIMHPyfS5Y5JNqv3icEmwOyKaZLIItg1_89HETs-pJf4aHSp3OGtDZ5qw-RRROIfNDzJk8JrQTaoRoJ5P-PYaIpbLJr9fUruKgqCFoxKjEec4SWL5vhEeNYopCk3w");'></div>
+<div class="p-4">
+<p class="text-base font-bold text-[#111418] dark:text-white">城市天际线商业宣传片航拍</p>
+<div class="flex items-center gap-4 mt-2 text-sm text-gray-500 dark:text-gray-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined !text-base">calendar_today</span>
+<span>2023-10-15</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined !text-base">location_on</span>
+<span>上海</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Mission Card 2 -->
+<div class="flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5">
+<div class="bg-center bg-no-repeat aspect-video bg-cover" data-alt="Drone view of a vast green farmland" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD_q0cTN6VOPbsyH53NV5WUyi0qKdeT4-HUCntCr2eiUu5rf4M8f6MdtBECa8Us-R6eMWL8bV8o263h-nhWRmfG93goroQlpNzRwAzGIV-v5vsaE5T9HoQy9Mr2VpzOqBakcN8sRnYQ5Ame1ggChR9htTXaYsoDFDDJ9xISuF40F-uzq3tNtkgkaNmGA_-hCwmoI7T4afsHfDW2fvHtyz9oPQMT0NX_kPnC4EvZZG8Wg72qXpPqKt_3bDv55fC2rFEWXasWts_ridI");'></div>
+<div class="p-4">
+<p class="text-base font-bold text-[#111418] dark:text-white">万亩农田植保喷洒作业</p>
+<div class="flex items-center gap-4 mt-2 text-sm text-gray-500 dark:text-gray-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined !text-base">calendar_today</span>
+<span>2023-09-22</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined !text-base">location_on</span>
+<span>河南</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Mission Card 3 -->
+<div class="flex flex-col overflow-hidden rounded-xl border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5">
+<div class="bg-center bg-no-repeat aspect-video bg-cover" data-alt="A 3D model render of a construction site" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBC08_YfDcz76im7AUnm2C_gYWLJmGRl0D7RpIHp3sd1ujaIy810DCbQw67_sGm1qDklp7XtXQbWnRTiCX00Kfd_w7LNI57ykVEI7tCD8QudRbWaJeTzzB0ghb1l1Q-rYDZMSsR40vIpgpCN8ew1ViqjV8sqc9zvPIA01aUIuRe3_Brv8cxJ3bn-xOySEAo9XGGWi5MjB0lQXEcvIwoyJ9PcI600kd5xaMiTc-UDKG58EuUIWEg_AqtuKCmbeuqM3vQqyckrJ9qiPA");'></div>
+<div class="p-4">
+<p class="text-base font-bold text-[#111418] dark:text-white">建筑工地3D实景建模项目</p>
+<div class="flex items-center gap-4 mt-2 text-sm text-gray-500 dark:text-gray-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined !text-base">calendar_today</span>
+<span>2023-08-05</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined !text-base">location_on</span>
+<span>深圳</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

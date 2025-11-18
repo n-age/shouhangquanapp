@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>无人机飞手服务平台 - 后台管理</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#4A90E2",
+            "background-light": "#F2F3F5",
+            "background-dark": "#101822",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark">
+<!-- Top App Bar -->
+<div class="flex shrink-0 items-center justify-between bg-white dark:bg-background-dark dark:border-b dark:border-white/10 p-4 shadow-sm">
+<div class="flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-primary">
+          admin_panel_settings
+        </span>
+</div>
+<h1 class="flex-1 text-center text-lg font-bold text-[#333333] dark:text-white">后台管理</h1>
+<div class="flex w-10 items-center justify-end">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-[#333333] dark:text-white">
+<span class="material-symbols-outlined text-2xl">
+            logout
+          </span>
+</button>
+</div>
+</div>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto">
+<!-- Stats Section -->
+<div class="p-4">
+<div class="flex flex-wrap gap-4">
+<div class="flex min-w-[120px] flex-1 flex-col gap-1 rounded-lg bg-white dark:bg-slate-800 p-4 shadow-sm">
+<p class="text-sm font-medium text-[#888888] dark:text-slate-400">总用户</p>
+<p class="text-2xl font-bold tracking-tight text-[#333333] dark:text-white">1,204</p>
+</div>
+<div class="flex min-w-[120px] flex-1 flex-col gap-1 rounded-lg bg-white dark:bg-slate-800 p-4 shadow-sm">
+<p class="text-sm font-medium text-[#888888] dark:text-slate-400">活跃任务</p>
+<p class="text-2xl font-bold tracking-tight text-[#333333] dark:text-white">86</p>
+</div>
+<div class="flex min-w-[120px] flex-1 flex-col gap-1 rounded-lg bg-white dark:bg-slate-800 p-4 shadow-sm">
+<p class="text-sm font-medium text-[#888888] dark:text-slate-400">待审核认证</p>
+<p class="text-2xl font-bold tracking-tight text-red-500 dark:text-red-400">12</p>
+</div>
+</div>
+</div>
+<!-- Section Header -->
+<h2 class="px-4 pb-2 pt-2 text-base font-bold text-[#333333] dark:text-white">管理中心</h2>
+<!-- Management Grid -->
+<div class="grid grid-cols-2 gap-4 p-4 pt-2">
+<div class="relative flex flex-col items-center justify-center gap-2 rounded-lg bg-white dark:bg-slate-800 p-6 shadow-sm">
+<div class="absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">12</div>
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<h3 class="text-base font-bold text-[#333333] dark:text-white">认证审核</h3>
+</div>
+<div class="flex flex-col items-center justify-center gap-2 rounded-lg bg-white dark:bg-slate-800 p-6 shadow-sm">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">task_alt</span>
+</div>
+<h3 class="text-base font-bold text-[#333333] dark:text-white">任务管理</h3>
+</div>
+<div class="flex flex-col items-center justify-center gap-2 rounded-lg bg-white dark:bg-slate-800 p-6 shadow-sm">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">group</span>
+</div>
+<h3 class="text-base font-bold text-[#333333] dark:text-white">用户管理</h3>
+</div>
+<div class="flex flex-col items-center justify-center gap-2 rounded-lg bg-white dark:bg-slate-800 p-6 shadow-sm">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">receipt_long</span>
+</div>
+<h3 class="text-base font-bold text-[#333333] dark:text-white">订单管理</h3>
+</div>
+<div class="flex flex-col items-center justify-center gap-2 rounded-lg bg-white dark:bg-slate-800 p-6 shadow-sm">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">newspaper</span>
+</div>
+<h3 class="text-base font-bold text-[#333333] dark:text-white">新闻管理</h3>
+</div>
+<div class="flex flex-col items-center justify-center gap-2 rounded-lg bg-white dark:bg-slate-800 p-6 shadow-sm">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">monitoring</span>
+</div>
+<h3 class="text-base font-bold text-[#333333] dark:text-white">数据分析</h3>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<div class="sticky bottom-0 shrink-0 border-t border-[#e5e7eb] dark:border-white/10 bg-white dark:bg-background-dark px-2 pb-2 pt-1 shadow-[0_-1px_3px_rgba(0,0,0,0.05)]">
+<div class="flex">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 py-1 text-primary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-xs font-medium">仪表盘</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 py-1 text-[#888888] dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">mail</span>
+<p class="text-xs font-medium">消息</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 py-1 text-[#888888] dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<p class="text-xs font-medium">我的</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

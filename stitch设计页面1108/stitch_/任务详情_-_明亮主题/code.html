@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4A90E2", // Professional blue
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                        "text-light": "#333333",
+                        "text-dark": "#f0f0f0",
+                        "subtext-light": "#8E8E93",
+                        "subtext-dark": "#a0a0a0",
+                        "card-light": "#ffffff",
+                        "card-dark": "#1a242f",
+                        "divider-light": "#e5e7eb",
+                        "divider-dark": "#374151",
+                        "success": "#34C759", // Green for "Open" status
+                        "warning": "#FF9500", // Orange for "In Progress"
+                        "neutral": "#8E8E93", // Grey for "Completed"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "PingFang SC", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center justify-between border-b border-divider-light bg-background-light p-4 dark:border-divider-dark dark:bg-background-dark">
+<div class="flex size-10 shrink-0 items-center justify-center text-text-light dark:text-text-dark">
+<span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+</div>
+<h2 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-text-light dark:text-text-dark">任务详情</h2>
+<div class="size-10 shrink-0"></div> <!-- Spacer -->
+</div>
+<!-- Main Content Area -->
+<div class="flex-grow pb-28">
+<div class="p-4">
+<!-- Main Content Card -->
+<div class="overflow-hidden rounded-xl bg-card-light p-5 shadow-sm dark:bg-card-dark">
+<!-- Status Chip -->
+<div class="mb-4 flex">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-success/10 px-4 text-success">
+<p class="text-sm font-medium leading-normal">开放中</p>
+</div>
+</div>
+<!-- Headline Text -->
+<h1 class="text-[28px] font-bold leading-tight tracking-tight text-text-light dark:text-text-dark">商业地产航拍项目</h1>
+<!-- Title Text (Reward) -->
+<h1 class="pb-5 pt-2 text-3xl font-bold leading-tight tracking-[-0.015em] text-primary">¥1500</h1>
+<hr class="border-t border-divider-light dark:border-divider-dark"/>
+<!-- List Items -->
+<div class="space-y-2 pt-5">
+<div class="flex min-h-14 items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">photo_camera</span>
+</div>
+<p class="text-base font-normal leading-normal text-subtext-light dark:text-subtext-dark">任务类型</p>
+</div>
+<div class="shrink-0">
+<p class="text-base font-medium leading-normal text-text-light dark:text-text-dark">航拍摄影</p>
+</div>
+</div>
+<div class="flex min-h-14 items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<p class="text-base font-normal leading-normal text-subtext-light dark:text-subtext-dark">任务地点</p>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-base font-medium leading-normal text-text-light dark:text-text-dark">深圳市南山区科技园</p>
+</div>
+</div>
+<div class="flex min-h-14 items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+<span class="material-symbols-outlined">event</span>
+</div>
+<p class="text-base font-normal leading-normal text-subtext-light dark:text-subtext-dark">截止日期</p>
+</div>
+<div class="shrink-0">
+<p class="text-base font-medium leading-normal text-text-light dark:text-text-dark">2023-10-28 18:00</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Description Section -->
+<div class="mt-4 rounded-xl bg-card-light p-5 shadow-sm dark:bg-card-dark">
+<h3 class="mb-3 text-lg font-bold text-text-light dark:text-text-dark">任务描述</h3>
+<p class="text-base leading-relaxed text-subtext-light dark:text-subtext-dark">
+                        需要对科技园区的最新商业地产项目进行全面的航拍摄影与摄像。要求包括建筑物的多个角度、周边环境以及整体鸟瞰图。最终交付成果为至少20张高清照片和一段3分钟的4K剪辑视频。需要有商业航拍经验的飞手。
+                    </p>
+</div>
+<!-- Publisher Info Card -->
+<div class="mt-4 flex items-center justify-between rounded-xl bg-card-light p-4 shadow-sm dark:bg-card-dark">
+<div class="flex items-center gap-3">
+<img class="h-12 w-12 rounded-full object-cover" data-alt="Publisher's avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkri3nHKqZgbJs4uSS44qv6LJHl5NBe1gw6bXoOiKMxT9PTmrbR84GL_L1_Ix6XTHYvyA0j1gJzXNo-yfR6ISCgX04EySAS4S4BXPsKRZNOVFCvwMuLl76quiR3xfQ5RW3Kts0i_hiJPdmu_igMyZChOane-EgtwU9uQ2ycaP5FHG8vc6ezqf8XGpH6Hsd3xicBO7vam21C6jLlMi9_O3ZXH6St2tHpFT_-U4yayJ_vF7cvFooG0LMdQN3lyaCf0CXb_NWSdshS8I"/>
+<div>
+<p class="font-semibold text-text-light dark:text-text-dark">张先生</p>
+<p class="text-sm text-subtext-light dark:text-subtext-dark">任务发布者</p>
+</div>
+</div>
+<button class="flex h-10 items-center justify-center rounded-full border border-primary px-5 text-sm font-semibold text-primary">
+                        联系他
+                    </button>
+</div>
+</div>
+</div>
+<!-- Sticky Footer Action Button -->
+<div class="fixed bottom-0 left-0 w-full border-t border-divider-light bg-card-light/80 p-4 backdrop-blur-sm dark:border-divider-dark dark:bg-card-dark/80">
+<button class="h-14 w-full rounded-xl bg-primary text-lg font-bold text-white shadow-lg shadow-primary/30">
+                立即抢单
+            </button>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enterprise Authentication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#136dec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101822",
+            },
+            fontFamily: {
+              "display": ["Manrope", "Noto Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center justify-between border-b border-gray-200/80 bg-background-light/80 p-4 pb-2 backdrop-blur-sm dark:border-gray-800/80 dark:bg-background-dark/80">
+<div class="flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-2xl text-gray-800 dark:text-gray-200">arrow_back_ios_new</span>
+</div>
+<h2 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-gray-100 pr-10">企业认证</h2>
+</div>
+<main class="flex-1 px-4 pt-6 pb-28">
+<div class="flex flex-col gap-6">
+<!-- Enterprise Name Field -->
+<div class="flex flex-col gap-2">
+<label class="text-base font-medium text-gray-900 dark:text-gray-100" for="enterprise-name">企业名称</label>
+<input class="form-input h-14 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border border-gray-200 bg-white p-4 text-base font-normal leading-normal text-gray-900 placeholder:text-gray-500/80 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder:text-gray-400/80 dark:focus:border-primary" id="enterprise-name" placeholder="请输入营业执照上的企业全称" type="text" value=""/>
+</div>
+<!-- Social Credit Code Field -->
+<div class="flex flex-col gap-2">
+<label class="text-base font-medium text-gray-900 dark:text-gray-100" for="credit-code">统一社会信用代码</label>
+<input class="form-input h-14 w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border border-gray-200 bg-white p-4 text-base font-normal leading-normal text-gray-900 placeholder:text-gray-500/80 focus:border-primary focus:outline-0 focus:ring-2 focus:ring-primary/20 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder:text-gray-400/80 dark:focus:border-primary" id="credit-code" placeholder="请输入18位统一社会信用代码" type="text" value=""/>
+</div>
+<!-- Business License Upload -->
+<div class="flex flex-col gap-2">
+<p class="text-base font-medium text-gray-900 dark:text-gray-100">营业执照</p>
+<div class="flex cursor-pointer flex-col items-center gap-4 rounded-lg border-2 border-dashed border-gray-300 px-6 py-10 transition-colors hover:border-primary/80 hover:bg-primary/5 dark:border-gray-600 dark:hover:border-primary/70 dark:hover:bg-primary/10">
+<div class="flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-3xl">add_photo_alternate</span>
+</div>
+<div class="flex flex-col items-center gap-1 text-center">
+<p class="text-base font-semibold text-gray-800 dark:text-gray-200">点击上传营业执照照片</p>
+<p class="text-sm text-gray-600 dark:text-gray-400">请确保照片清晰可见</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Fixed Section -->
+<div class="fixed bottom-0 left-0 right-0 z-10 w-full border-t border-gray-200/80 bg-background-light/90 p-4 backdrop-blur-sm dark:border-gray-800/80 dark:bg-background-dark/90">
+<div class="flex flex-col items-center gap-3">
+<button class="h-12 w-full max-w-lg cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-primary text-base font-bold text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90 active:scale-[0.98]">
+<span class="truncate">提交审核</span>
+</button>
+<p class="text-center text-xs text-gray-500 dark:text-gray-400">我们承诺保护您的信息安全，认证信息仅用于平台审核</p>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Drone Pilot Service Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            font-size: inherit;
+        }
+        .icon-sm { font-size: 20px; }
+        .icon-md { font-size: 24px; }
+        .icon-lg { font-size: 32px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="relative h-56 w-full">
+<img class="absolute inset-0 h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYkksaZIuC4JxGu2luCwvLKAkROuGLvkhCcYhWbB8QQHkOovUWCJuhqgai_eIwVR7CKuczQEdG0Tcs7cJicLHabT2l1Ti9aaXfMQNG62rKm42vCsg3V9r_VXYEg3sSIL5vgzVn8x94CH-vDe3Lo56iQRVCilRdCNV0oQpfXRF97_n5QixBWFkkVVElZi5rRWS2IuOu60BYMy4fArgZyoeGvGaD2-f2zMIDoLmaQ7oYxrVYd-z_vbFe_cejL9lP3WIszz9u7qCMOH4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<div class="absolute bottom-4 flex w-full justify-center gap-2">
+<div class="h-1.5 w-6 rounded-full bg-white"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/50"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-white/50"></div>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-4 p-4">
+<div class="flex flex-1 flex-col items-center gap-2 text-center">
+<div class="flex size-12 items-center justify-center rounded-xl bg-primary/20 text-primary icon-md"><span class="material-symbols-outlined">description</span></div>
+<p class="text-white text-sm font-medium leading-tight">行业介绍</p>
+</div>
+<div class="flex flex-1 flex-col items-center gap-2 text-center">
+<div class="flex size-12 items-center justify-center rounded-xl bg-primary/20 text-primary icon-md"><span class="material-symbols-outlined">send</span></div>
+<p class="text-white text-sm font-medium leading-tight">飞手约单</p>
+</div>
+<div class="flex flex-1 flex-col items-center gap-2 text-center">
+<div class="flex size-12 items-center justify-center rounded-xl bg-primary/20 text-primary icon-md"><span class="material-symbols-outlined">workspace_premium</span></div>
+<p class="text-white text-sm font-medium leading-tight">证书介绍</p>
+</div>
+<div class="flex flex-1 flex-col items-center gap-2 text-center">
+<div class="flex size-12 items-center justify-center rounded-xl bg-primary/20 text-primary icon-md"><span class="material-symbols-outlined">storefront</span></div>
+<p class="text-white text-sm font-medium leading-tight">商讯直达</p>
+</div>
+</div>
+<div class="px-4 py-2">
+<div class="flex items-center gap-4 rounded-lg bg-[#2c2c2e]/50 px-4 py-2">
+<div class="flex items-center gap-3 overflow-hidden">
+<div class="flex-shrink-0 text-primary icon-md"><span class="material-symbols-outlined">campaign</span></div>
+<p class="flex-1 truncate text-white text-sm font-normal leading-normal">【公告】平台服务协议更新通知，即日起生效。</p>
+</div>
+</div>
+</div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">抢单大厅</h2>
+<div class="flex gap-3 px-4 pb-4 overflow-x-auto">
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-4"><p class="text-white text-sm font-medium leading-normal">全部</p></div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2c2c2e]/50 px-4"><p class="text-white text-sm font-medium leading-normal">航拍摄影</p></div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2c2c2e]/50 px-4"><p class="text-white text-sm font-medium leading-normal">测绘勘察</p></div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2c2c2e]/50 px-4"><p class="text-white text-sm font-medium leading-normal">农业植保</p></div>
+<div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#2c2c2e]/50 px-4"><p class="text-white text-sm font-medium leading-normal">巡检安防</p></div>
+</div>
+<div class="flex flex-col gap-4 px-4">
+<div class="flex flex-col gap-3 rounded-xl bg-[#1e293b] p-4 shadow-lg">
+<div class="flex items-start justify-between">
+<h3 class="text-white text-lg font-bold leading-tight">城市宣传片航拍项目</h3>
+<p class="text-lg font-bold text-orange-400">¥5000</p>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-400">
+<div class="inline-flex items-center gap-1 rounded bg-blue-500/20 px-2 py-1 text-xs font-medium text-blue-400">航拍摄影</div>
+<div class="inline-flex items-center gap-1"><span class="material-symbols-outlined icon-sm">location_on</span><span>深圳, 南山区</span></div>
+</div>
+<div class="border-t border-white/10 pt-3">
+<div class="flex items-center justify-between">
+<p class="text-sm text-gray-400">截止: 2023-12-31</p>
+<button class="flex h-9 items-center justify-center rounded-full bg-orange-400 px-6 text-sm font-bold text-black">抢单</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-[#1e293b] p-4 shadow-lg">
+<div class="flex items-start justify-between">
+<h3 class="text-white text-lg font-bold leading-tight">农田植保喷洒作业</h3>
+<p class="text-lg font-bold text-orange-400">¥8000</p>
+</div>
+<div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-400">
+<div class="inline-flex items-center gap-1 rounded bg-blue-500/20 px-2 py-1 text-xs font-medium text-blue-400">农业植保</div>
+<div class="inline-flex items-center gap-1"><span class="material-symbols-outlined icon-sm">location_on</span><span>广州, 增城区</span></div>
+</div>
+<div class="border-t border-white/10 pt-3">
+<div class="flex items-center justify-between">
+<p class="text-sm text-gray-400">截止: 2023-12-25</p>
+<button class="flex h-9 items-center justify-center rounded-full bg-orange-400 px-6 text-sm font-bold text-black">抢单</button>
+</div>
+</div>
+</div>
+</div>
+<h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-8">行业新闻</h2>
+<div class="flex flex-col gap-4 px-4 pb-8">
+<div class="flex items-center gap-4">
+<img class="h-20 w-20 shrink-0 rounded-lg object-cover" data-alt="A drone in mid-flight against a clear blue sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAto_wBg9BxDVr-TrsA7ZwdAGjBwB2dk_3Cn1wRACGbFrD7wQD94QWcmiOdyMOeVH9A7OK5L9b9Dr8LUjVbVDf07tr7B4_cVmbuD4rz06liM7a-niTGnR9sZRkOl71KQW-Rz5nR5J_QU3XSoUizBzx7IaRuk9qcQxhzV93qMNIf9hYj8wlxTLXFfWM5oS3mFqoAvV-adJzLHsTMMEalyutxxwqgn4SjgXKI1FfuKDvQdaEoDKC4RzFr7ASiZM1clNK6Q7GzGd6aSkk"/>
+<div class="flex flex-1 flex-col justify-between gap-2 self-stretch">
+<p class="text-white font-semibold leading-snug line-clamp-2">无人机技术新突破：续航时间提升50%</p>
+<p class="text-sm text-[#888888]">新华网 · 2小时前</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img class="h-20 w-20 shrink-0 rounded-lg object-cover" data-alt="A person operating a drone controller with a screen displaying a live feed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQVtE4GN9U9upBsNdfMteTKYQsxR-X7h3y_mRNwxbPIt4kT5LAIujJ0RLK5IBPfONEy5fVribJ_Be3dpthveJKrXTULuKMj3L1miZ34VCK1uU92xqOjAiba7hD0-6oT4fOFHzlXdKNxqh1DBMkZNan16yaz2vwYjfNFyplDwGVofbEdBJ2tRkrS0q1rvhbIPpsMNGoj7prKoBUxut5yZqC4mRIGyEoS1gHQOlH3jW4B2Mv1OnxdLbzgsG9e1lbyNvJJd2GpLg3Jg8"/>
+<div class="flex flex-1 flex-col justify-between gap-2 self-stretch">
+<p class="text-white font-semibold leading-snug line-clamp-2">政策解读：低空经济发展规划纲要发布</p>
+<p class="text-sm text-[#888888]">人民日报 · 1天前</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<img class="h-20 w-20 shrink-0 rounded-lg object-cover" data-alt="Close-up of a drone's camera lens and gimbal system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1Ykve9HyZcnO2sJrT267IHcmUF5HivJeoN5JlwmC4uzODYo8rYvQDYsi3_YupjADWsqy60EjK6wqtbJedSTPVsLXUsVMYV5mE2CIy3JXaGe3GvqbpqxPnz5MZomfdj_r23iQ05s3V4Ee9D76iTIla_pyWstH8LfiRYUezfdJIKqVduU9onGXtNTCg4U0622Y35Fe0x1Qk1ArZ7VUksOPSPOpDipM8Fwv4DTq6zLKhQlSS7zx3MVbFrvrBvR6ywFC5OcaNOVMY0bI"/>
+<div class="flex flex-1 flex-col justify-between gap-2 self-stretch">
+<p class="text-white font-semibold leading-snug line-clamp-2">农业无人机如何助力智慧农业实现增产增收</p>
+<p class="text-sm text-[#888888]">科技日报 · 3天前</p>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

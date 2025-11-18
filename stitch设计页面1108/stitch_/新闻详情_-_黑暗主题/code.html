@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>新闻详情</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans+SC:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "Noto Sans SC", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="sticky top-0 z-10 flex items-center justify-between bg-background-light/80 p-4 pb-2 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex size-12 shrink-0 items-center justify-start">
+<button class="flex items-center justify-center p-2 text-gray-800 dark:text-white">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+</div>
+<h2 class="flex-1 text-center text-lg font-bold leading-tight tracking-[-0.015em] text-gray-900 dark:text-white">新闻详情</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex h-12 max-w-[480px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg bg-transparent p-0 text-base font-bold leading-normal tracking-[0.015em] text-gray-800 dark:text-white min-w-0">
+<span class="material-symbols-outlined text-2xl">share</span>
+</button>
+</div>
+</div>
+<!-- Content Area -->
+<main class="flex-grow">
+<!-- Headline -->
+<h1 class="px-4 pt-6 pb-3 text-[32px] font-bold leading-tight tracking-tight text-gray-900 dark:text-white text-left font-display">最新无人机技术突破：续航能力提升一倍</h1>
+<!-- Meta Text -->
+<p class="px-4 pt-1 pb-3 text-sm font-normal leading-normal text-gray-500 dark:text-gray-400">发布于 2024年10月26日 · 来源：无人机前沿资讯</p>
+<!-- Body Text -->
+<p class="px-4 pt-1 pb-3 text-base font-normal leading-relaxed text-gray-800 dark:text-gray-200">
+                在这里，我们将详细介绍最新的无人机电池技术如何取得了革命性进展，成功将飞行续航时间延长了一倍。这项创新预计将对航拍、物流和农业等多个行业产生深远影响。
+            </p>
+<!-- Image -->
+<div class="w-full grow bg-background-light dark:bg-background-dark @container py-3 px-4">
+<div class="w-full gap-1 overflow-hidden bg-background-light dark:bg-background-dark @[480px]:gap-2 aspect-[16/9] flex rounded-xl">
+<div class="w-full flex-1 aspect-auto rounded-xl bg-cover bg-center bg-no-repeat" data-alt="A futuristic drone hovering against a blue sky with clouds." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDJzvnzJXhrzw8v6GTomafnn7L5oD0NVYDaf46rQKuhp9jDwzCiAwGQYEP8bI7_URqBpQwiMDqe4brrTPGlcsUOHKHBN2Tmwq1n6rrrDjcPKzNpQVdky8Wt0h0YdmZF5nvkSwybZ4A8CNNgqTcXSt_UzG5WHbeXb9V3a3o6oM0XfAxrgXHS_blJQtKoPHaMsxXPKxXvIUqS5T51MHxOiUOVD-pp2IqMSuBC3ooXETS9kdWA9nW5KDywAP5ffFTbzpFfLqaaufgYw7A");'></div>
+</div>
+</div>
+<p class="px-4 pt-1 pb-3 text-base font-normal leading-relaxed text-gray-800 dark:text-gray-200">
+                这项技术的核心在于一种新型的固态电池，它不仅能量密度更高，而且在安全性和使用寿命方面也远超传统的锂离子电池。研发团队表示，这种电池的设计灵感来源于仿生学，模拟了鸟类长途飞行的能量利用方式。
+            </p>
+<!-- Video Player -->
+<div class="px-4 py-3">
+<div class="relative w-full overflow-hidden rounded-xl aspect-video bg-gray-900">
+<img class="absolute inset-0 h-full w-full object-cover" data-alt="Drone flying over a stunning mountain landscape at sunset." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9SdGa8gG13cN_44GXJqOi51-sz-S4DPuu0vJ8Xg-Kdri89ttuefqrrL2JbxM4dP174r-Krs5h_P07MCGSMtPNYuRYGERagD4kOpljFCzi7_TZcO3dukbWoJumRHnijafnrr6KZeXOXwYculdohfeHiJXTmxUndC-0jZvf7uZEQrXLAIQsVykMfJVDFx3Wo0Q4zKmxcxvc7BXMi5408FLgsCPAlEwaHCAm4r9GIs6q5qKXsz1SnKvI9fHSzgfvStpw-7K9-Todtl0"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+<button class="flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-white/30 backdrop-blur-sm transition-transform hover:scale-105">
+<span class="material-symbols-outlined text-4xl text-white pl-1">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+<p class="px-4 pt-1 pb-3 text-base font-normal leading-relaxed text-gray-800 dark:text-gray-200">
+                目前，该技术已进入商业化前的最后测试阶段。预计首批搭载该电池的消费级无人机将在明年年初上市。这不仅对专业飞手是一个好消息，也为普通消费者带来了更长久的航拍乐趣。
+            </p>
+<!-- Spacing before footer -->
+<div class="h-24"></div>
+</main>
+<!-- Floating Action Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-10 p-4">
+<div class="mx-auto flex max-w-lg items-center justify-around rounded-full bg-gray-200/80 px-4 py-2 shadow-lg dark:bg-gray-800/80 backdrop-blur-md">
+<button class="flex flex-col items-center gap-1 p-2 text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined">thumb_up</span>
+<span class="text-xs">1.2k</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-xs">98</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-2 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+<span class="text-xs">收藏</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>
