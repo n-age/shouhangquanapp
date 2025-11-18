@@ -1,0 +1,48 @@
+/* miniprogram/pages/task-create/index.wxss */
+.container {
+  padding: 20rpx;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.form-card {
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx 30rpx 40rpx 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.form-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.form-group {
+  margin-bottom: 30rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 15rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 5rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  height: 200rpx;
+}
+
+.submit-button {
+  margin-top: 20rpx;
+}

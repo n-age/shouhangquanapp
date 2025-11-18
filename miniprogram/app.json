@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/task-hall/task-hall",
+    "pages/order-list/order-list",
+    "pages/task-details/index",
+    "pages/order-details/index",
+    "pages/task-create/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "无人机飞手服务平台",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
