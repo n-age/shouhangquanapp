@@ -1,0 +1,63 @@
+<!--miniprogram/pages/index/index.wxml-->
+<view class="container">
+  <!-- 搜索框 -->
+  <view class="search-bar">
+    <input class="search-input" placeholder="搜索任务/飞手" />
+  </view>
+
+  <!-- 功能分类 -->
+  <view class="category-grid">
+    <view class="category-item">
+      <view class="category-icon"></view>
+      <text class="category-text">植保作业</text>
+    </view>
+    <view class="category-item">
+      <view class="category-icon"></view>
+      <text class="category-text">航拍摄影</text>
+    </view>
+    <view class="category-item">
+      <view class="category-icon"></view>
+      <text class="category-text">电力巡检</text>
+    </view>
+    <view class="category-item">
+      <view class="category-icon"></view>
+      <text class="category-text">全部服务</text>
+    </view>
+  </view>
+
+  <!-- 新闻资讯 -->
+  <view class="news-section">
+    <text class="section-title">新闻资讯</text>
+    <view class="news-item">
+      <text class="news-text">T50无人机现已全面上市，性能卓越！</text>
+    </view>
+  </view>
+
+  <!-- 任务推荐 -->
+  <view class="task-list-section">
+    <text class="section-title">推荐任务</text>
+    <view class="task-card">
+      <view class="task-card-header">
+        <text class="task-title">水稻田飞防作业</text>
+        <text class="task-reward">¥1500</text>
+      </view>
+      <view class="task-card-body">
+        <text class="task-info">地点: 广东省广州市</text>
+        <text class="task-info">作业面积: 100亩</text>
+      </view>
+      <view class="task-card-footer">
+        <text class="task-tag">加急</text>
+      </view>
+    </view>
+    <view class="task-card">
+      <view class="task-card-header">
+        <text class="task-title">果园航拍摄影</text>
+        <text class="task-reward">¥800</text>
+      </view>
+      <view class="task-card-body">
+        <text class="task-info">地点: 广西壮族自治区桂林市</text>
+        <text class="task-info">需求: 3分钟宣传片素材</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,110 @@
+/* miniprogram/pages/index/index.wxss */
+.container {
+  padding: 20rpx;
+  background-color: #f7f7f7;
+}
+
+.search-bar {
+  margin-bottom: 20rpx;
+}
+
+.search-input {
+  background-color: #fff;
+  border-radius: 30rpx;
+  padding: 10rpx 30rpx;
+  font-size: 28rpx;
+}
+
+.category-grid {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+  background-color: #fff;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #eee; /* Placeholder for icon */
+  border-radius: 50%;
+  margin-bottom: 10rpx;
+}
+
+.category-text {
+  font-size: 24rpx;
+}
+
+.news-section, .task-list-section {
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.news-item {
+  padding: 10rpx 0;
+}
+
+.news-text {
+  font-size: 28rpx;
+}
+
+.task-card {
+  border: 1px solid #eee;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.task-title {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.task-reward {
+  font-size: 30rpx;
+  color: #e64340;
+}
+
+.task-card-body {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.task-info {
+  display: block;
+}
+
+.task-card-footer {
+  display: flex;
+}
+
+.task-tag {
+  background-color: #e64340;
+  color: #fff;
+  font-size: 22rpx;
+  padding: 5rpx 10rpx;
+  border-radius: 5rpx;
+}
