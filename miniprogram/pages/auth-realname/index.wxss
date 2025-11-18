@@ -1,0 +1,67 @@
+/* miniprogram/pages/auth-realname/index.wxss */
+.container {
+  padding: 20rpx;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.form-card {
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx 30rpx 40rpx 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.form-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.form-group {
+  margin-bottom: 30rpx;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 15rpx;
+}
+
+.form-input {
+  width: 100%;
+  padding: 15rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 5rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.uploader-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.uploader-item {
+  width: 48%;
+  height: 200rpx;
+  border: 2rpx dashed #ddd;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+  font-size: 24rpx;
+  overflow: hidden;
+}
+
+.uploader-image {
+  width: 100%;
+  height: 100%;
+}
+
+.submit-button {
+  margin-top: 20rpx;
+}

@@ -1,0 +1,80 @@
+/* miniprogram/pages/my-profile/index.wxss */
+.container {
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.user-info-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+  background-color: #eee;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.user-id {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.section {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  padding: 0 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.auth-grid {
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx 0;
+}
+
+.auth-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.auth-status {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+}
+
+.not-certified { color: #999; }
+.certified { color: #1296db; }
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 0;
+  font-size: 30rpx;
+}
+
+.arrow { color: #999; }

@@ -1,0 +1,32 @@
+<!--miniprogram/pages/auth-realname/index.wxml-->
+<view class="container">
+  <view class="form-card">
+    <view class="form-title">实名认证</view>
+
+    <view class="form-group">
+      <text class="form-label">真实姓名</text>
+      <input class="form-input" placeholder="请输入您的真实姓名" bindinput="handleInput" data-field="realName" value="{{formData.realName}}"/>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">身份证号</text>
+      <input class="form-input" placeholder="请输入您的身份证号" bindinput="handleInput" data-field="idCardNumber" value="{{formData.idCardNumber}}"/>
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">上传身份证照片</text>
+      <view class="uploader-container">
+        <view class="uploader-item" bindtap="uploadImage" data-type="front">
+          <image class="uploader-image" wx:if="{{idCardFrontUrl}}" src="{{idCardFrontUrl}}" mode="aspectFill"/>
+          <text wx:else>点击上传人像面</text>
+        </view>
+        <view class="uploader-item" bindtap="uploadImage" data-type="back">
+          <image class="uploader-image" wx:if="{{idCardBackUrl}}" src="{{idCardBackUrl}}" mode="aspectFill"/>
+          <text wx:else>点击上传国徽面</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <button class="submit-button" type="primary" bindtap="handleSubmit">提交认证</button>
+</view>
