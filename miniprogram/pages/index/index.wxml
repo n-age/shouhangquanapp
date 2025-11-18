@@ -7,56 +7,35 @@
 
   <!-- 功能分类 -->
   <view class="category-grid">
-    <view class="category-item">
+    <view class="category-item" wx:for="{{categories}}" wx:key="text">
       <view class="category-icon"></view>
-      <text class="category-text">植保作业</text>
-    </view>
-    <view class="category-item">
-      <view class="category-icon"></view>
-      <text class="category-text">航拍摄影</text>
-    </view>
-    <view class="category-item">
-      <view class="category-icon"></view>
-      <text class="category-text">电力巡检</text>
-    </view>
-    <view class="category-item">
-      <view class="category-icon"></view>
-      <text class="category-text">全部服务</text>
+      <text class="category-text">{{item.text}}</text>
     </view>
   </view>
 
   <!-- 新闻资讯 -->
   <view class="news-section">
     <text class="section-title">新闻资讯</text>
-    <view class="news-item">
-      <text class="news-text">T50无人机现已全面上市，性能卓越！</text>
+    <view class="news-item" wx:for="{{news}}" wx:key="text">
+      <text class="news-text">{{item.text}}</text>
     </view>
   </view>
 
   <!-- 任务推荐 -->
   <view class="task-list-section">
     <text class="section-title">推荐任务</text>
-    <view class="task-card">
+    <view class="task-card" wx:for="{{tasks}}" wx:key="id">
       <view class="task-card-header">
-        <text class="task-title">水稻田飞防作业</text>
-        <text class="task-reward">¥1500</text>
+        <text class="task-title">{{item.title}}</text>
+        <text class="task-reward">¥{{item.reward}}</text>
       </view>
       <view class="task-card-body">
-        <text class="task-info">地点: 广东省广州市</text>
-        <text class="task-info">作业面积: 100亩</text>
+        <text class="task-info">地点: {{item.location}}</text>
+        <text class="task-info" wx:if="{{item.area}}">作业面积: {{item.area}}</text>
+        <text class="task-info" wx:if="{{item.description}}">需求: {{item.description}}</text>
       </view>
-      <view class="task-card-footer">
-        <text class="task-tag">加急</text>
-      </view>
-    </view>
-    <view class="task-card">
-      <view class="task-card-header">
-        <text class="task-title">果园航拍摄影</text>
-        <text class="task-reward">¥800</text>
-      </view>
-      <view class="task-card-body">
-        <text class="task-info">地点: 广西壮族自治区桂林市</text>
-        <text class="task-info">需求: 3分钟宣传片素材</text>
+      <view class="task-card-footer" wx:if="{{item.tags.length}}">
+        <text class="task-tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</text>
       </view>
     </view>
   </view>

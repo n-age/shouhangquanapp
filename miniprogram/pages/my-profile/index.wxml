@@ -4,8 +4,8 @@
   <view class="user-info-card">
     <image class="avatar" />
     <view class="user-details">
-      <text class="nickname">用户昵称</text>
-      <text class="user-id">ID: 123456</text>
+      <text class="nickname">{{user.nickname}}</text>
+      <text class="user-id">ID: {{user.id}}</text>
     </view>
   </view>
 
@@ -13,29 +13,17 @@
   <view class="auth-section">
     <view class="section-title">我的认证</view>
     <view class="auth-grid">
-      <view class="auth-item">
-        <text>实名认证</text>
-        <text class="auth-status not-certified">未认证</text>
-      </view>
-      <view class="auth-item">
-        <text>飞手认证</text>
-        <text class="auth-status not-certified">未认证</text>
-      </view>
-      <view class="auth-item">
-        <text>企业认证</text>
-        <text class="auth-status not-certified">未认证</text>
+      <view class="auth-item" wx:for="{{authStatus}}" wx:key="name">
+        <text>{{item.name}}</text>
+        <text class="auth-status {{item.certified ? 'certified' : 'not-certified'}}">{{item.certified ? '已认证' : '未认证'}}</text>
       </view>
     </view>
   </view>
 
   <!-- 功能列表 -->
   <view class="menu-list">
-    <view class="menu-item">
-      <text>关于我们</text>
-      <text class="arrow">></text>
-    </view>
-    <view class="menu-item">
-      <text>意见反馈</text>
+    <view class="menu-item" wx:for="{{menuItems}}" wx:key="text">
+      <text>{{item.text}}</text>
       <text class="arrow">></text>
     </view>
     <view class="menu-item">

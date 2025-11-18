@@ -1,0 +1,38 @@
+<!--miniprogram/pages/order-list/index.wxml-->
+<view class="container">
+  <!-- 订单状态Tab -->
+  <view class="tabs">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="status"
+      class="tab-item {{currentTab === item.status ? 'active' : ''}}"
+      data-status="{{item.status}}"
+      bindtap="onTabClick">
+      {{item.label}}
+    </view>
+  </view>
+
+  <!-- 订单列表 -->
+  <view class="order-list">
+    <block wx:if="{{orderList.length > 0}}">
+      <view class="order-card" wx:for="{{orderList}}" wx:key="id" bindtap="goToOrderDetail" data-id="{{item.id}}">
+        <view class="order-card-header">
+          <text class="order-type">{{item.taskType}}</text>
+          <text class="order-status">{{item.statusText}}</text>
+        </view>
+        <view class="order-card-body">
+          <text class="order-info">订单号: {{item.orderNumber}}</text>
+          <text class="order-info">创建时间: {{item.createdAt}}</text>
+        </view>
+        <view class="order-card-footer">
+          <text class="order-price">总价: ¥{{item.totalPrice}}</text>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty-state">
+        <text>暂无订单</text>
+      </view>
+    </block>
+  </view>
+</view>
