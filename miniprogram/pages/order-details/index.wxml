@@ -1,4 +1,33 @@
 <!--miniprogram/pages/order-details/index.wxml-->
-<view style="text-align: center; margin-top: 100rpx;">
-  <text>订单详情页面正在开发中...</text>
+<view class="container">
+  <block wx:if="{{order}}">
+    <view class="card">
+      <view class="card-header">
+        <text class="title">{{order.taskInfo.title}}</text>
+        <text class="reward">¥{{order.amount}}</text>
+      </view>
+      <view class="tags">
+        <view class="tag-status status-{{order.status}}">{{order.statusText}}</view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">订单信息</view>
+      <view class="info-item">
+        <text>订单号: {{order.orderNumber}}</text>
+      </view>
+      <view class="info-item">
+        <text>创建时间: {{order.createdAt}}</text>
+      </view>
+      <view class="info-item">
+        <text>飞手: {{order.pilotInfo.nickName}}</text>
+      </view>
+      <view class="info-item">
+        <text>发布方: {{order.publisherInfo.nickName}}</text>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="loading-state">加载中...</view>
+  </block>
 </view>
