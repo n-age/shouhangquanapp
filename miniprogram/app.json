@@ -3,7 +3,8 @@
     "pages/task-hall/task-hall",
     "pages/order-list/order-list",
     "pages/task-details/index",
-    "pages/order-details/index"
+    "pages/order-details/index",
+    "pages/task-create/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
