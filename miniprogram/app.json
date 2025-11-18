@@ -7,7 +7,8 @@
     "pages/task-details/index",
     "pages/order-details/index",
     "pages/task-create/index",
-    "pages/auth-realname/index"
+    "pages/auth-realname/index",
+    "pages/auth-pilot/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -26,6 +26,10 @@ Page({
       wx.navigateTo({
         url: '/pages/auth-realname/index',
       });
+    } else if (authType === 'pilot') {
+      wx.navigateTo({
+        url: '/pages/auth-pilot/index',
+      });
     } else {
       wx.showToast({
         title: '该功能暂未开放',
