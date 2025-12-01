@@ -93,7 +93,7 @@ Page({
 
   goToCreateTask() {
     wx.navigateTo({
-      url: '/pages/task-create/index',
+      url: '/pages/task-create/task-create',
     });
   },
 
